@@ -1,5 +1,5 @@
 require('dotenv').config()
-require('@babel/register')
+
 const express = require('express')
 
 const configApp = require('./config/serverConfig')

@@ -1,0 +1,9 @@
+.news_item{
+    border: 1px solid rgba(0, 0, 0, 0.448);
+    border-radius: 5%;
+    overflow: hidden;
+}
+.news_image{
+    width: 100%;
+    max-height: 250px;
+}

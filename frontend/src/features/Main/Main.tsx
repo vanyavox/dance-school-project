@@ -1,10 +1,14 @@
 import { style } from '@mui/system';
 import React from 'react';
+import PageInfo from '../PageInfo/PageInfo';
 import YandexMaps from '../yandexMaps/YandexMaps';
 
 function MainPage(): JSX.Element {
   return (
-    <YandexMaps />
+    <div>
+      <PageInfo />
+      <YandexMaps />
+    </div>
   );
 }
 

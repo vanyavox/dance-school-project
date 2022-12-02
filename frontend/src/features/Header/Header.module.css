@@ -1,0 +1,28 @@
+.header__main {
+  width: 100%;
+  padding: 24px;
+  background: #8DBFCE;
+  background: -moz-linear-gradient(-60deg, #8dbfce8c 0%, #1C6EA4 74%, #6263C5 100%);
+  background: -webkit-linear-gradient(-60deg, #8dbfce8c 0%, #1C6EA4 74%, #6263C5 100%);
+  background: linear-gradient(120deg, #8dbfce8c 0%, #1C6EA4 74%, #6263C5 100%);
+  color: white;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  height: auto;
+  font-size: 14pt;
+}
+
+.header__logo {
+  font-size: 26pt;
+}
+
+.header__login > a {
+  margin: 10px;
+  padding-right: 10px;
+}
+
+a {
+  color: white;
+}

@@ -1,7 +1,7 @@
-'use strict';
+'use strict'
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
-  async up(queryInterface, Sequelize) {
+  async up (queryInterface, Sequelize) {
     await queryInterface.createTable('Lessons', {
       id: {
         allowNull: false,
@@ -13,17 +13,17 @@ module.exports = {
         type: Sequelize.INTEGER,
         references: {
           model: 'Teachers',
-          key: 'id',
+          key: 'id'
         },
-        onDelete: 'CASCADE',
+        onDelete: 'CASCADE'
       },
       student_id: {
         type: Sequelize.INTEGER,
         references: {
           model: 'Students',
-          key: 'id',
+          key: 'id'
         },
-        onDelete: 'CASCADE',
+        onDelete: 'CASCADE'
       },
       day: {
         type: Sequelize.INTEGER
@@ -42,9 +42,9 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE
       }
-    });
+    })
   },
-  async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('Lessons');
+  async down (queryInterface, Sequelize) {
+    await queryInterface.dropTable('Lessons')
   }
-};
+}

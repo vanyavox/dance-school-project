@@ -14,7 +14,7 @@ SwiperCore.use([Autoplay, Pagination, Navigation]);
 function SwiperList(): JSX.Element {
   return (
     <Swiper
-      spaceBetween={30}
+      spaceBetween={10}
       centeredSlides
       autoplay={{
         delay: 2500,
@@ -26,17 +26,17 @@ function SwiperList(): JSX.Element {
       navigation
       className="mySwiper"
     >
-      <SwiperSlide>
-        <img src="swiperImg/1641114050_1-abrakadabra-fun-p-kotik-za-kompom-3.jpeg" alt="" />
+      <SwiperSlide className="swiper-slide">
+        <img src="https://swiperjs.com/demos/images/nature-1.jpg" alt="" />
       </SwiperSlide>
-      <SwiperSlide>
-        <img src="swiperImg/wsx.png" alt="" />
+      <SwiperSlide className="swiper-slide">
+        <img src="https://swiperjs.com/demos/images/nature-2.jpg" alt="" />
       </SwiperSlide>
-      <SwiperSlide>
-        <img src="swiperImg/Снимок экрана 2022-01-06 в 11.55.44 PM.png" alt="" />
+      <SwiperSlide className="swiper-slide">
+        <img src="https://swiperjs.com/demos/images/nature-3.jpg" alt="" />
       </SwiperSlide>
-      <SwiperSlide>
-        <img src="swiperImg/Снимок экрана 2022-01-07 в 12.10.56 AM.png" alt="" />
+      <SwiperSlide className="swiper-slide">
+        <img src="https://swiperjs.com/demos/images/nature-4.jpg" alt="" />
       </SwiperSlide>
     </Swiper>
   );

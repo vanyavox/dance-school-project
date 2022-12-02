@@ -1,7 +1,7 @@
-'use strict';
+'use strict'
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
-  async up(queryInterface, Sequelize) {
+  async up (queryInterface, Sequelize) {
     await queryInterface.createTable('Tourlists', {
       id: {
         allowNull: false,
@@ -13,17 +13,17 @@ module.exports = {
         type: Sequelize.INTEGER,
         references: {
           model: 'Students',
-          key: 'id',
+          key: 'id'
         },
-        onDelete: 'CASCADE',
+        onDelete: 'CASCADE'
       },
       tournament_id: {
         type: Sequelize.INTEGER,
         references: {
           model: 'Tournaments',
-          key: 'id',
+          key: 'id'
         },
-        onDelete: 'CASCADE',
+        onDelete: 'CASCADE'
       },
       createdAt: {
         allowNull: false,
@@ -33,9 +33,9 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE
       }
-    });
+    })
   },
-  async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('Tourlists');
+  async down (queryInterface, Sequelize) {
+    await queryInterface.dropTable('Tourlists')
   }
-};
+}

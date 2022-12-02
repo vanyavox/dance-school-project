@@ -1,59 +1,44 @@
 import React from 'react';
-import SwiperCore, { EffectCoverflow, Pagination } from 'swiper';
+// Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/swiper-bundle.min.css';
-import 'swiper/swiper.min.css';
-import './types/SwiperList.css';
 
-SwiperCore.use([EffectCoverflow, Pagination]);
+import './types/SwiperList.css';
+import 'swiper/swiper-bundle.min.css';
+
+import SwiperCore, {
+  Autoplay, Pagination, Navigation
+} from 'swiper';
+
+SwiperCore.use([Autoplay, Pagination, Navigation]);
 
 function SwiperList(): JSX.Element {
   return (
-    <div>
-      <Swiper
-        effect="coverflow"
-        grabCursor
-        centeredSlides
-        slidesPerView="auto"
-        coverflowEffect={{
-          rotate: 50,
-          stretch: 0,
-          depth: 100,
-          modifier: 1,
-          slideShadows: false,
-        }}
-        pagination
-        className="mySwiper"
-      >
-        <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-1.jpg" alt="" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-2.jpg" alt="" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-3.jpg" alt="" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-4.jpg" alt="" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-5.jpg" alt="" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-6.jpg" alt="" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-7.jpg" alt="" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-8.jpg" alt="" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-9.jpg" alt="" />
-        </SwiperSlide>
-      </Swiper>
-    </div>
+    <Swiper
+      spaceBetween={30}
+      centeredSlides
+      autoplay={{
+        delay: 2500,
+        disableOnInteraction: false
+      }}
+      pagination={{
+        clickable: true
+      }}
+      navigation
+      className="mySwiper"
+    >
+      <SwiperSlide>
+        <img src="swiperImg/1641114050_1-abrakadabra-fun-p-kotik-za-kompom-3.jpeg" alt="" />
+      </SwiperSlide>
+      <SwiperSlide>
+        <img src="swiperImg/wsx.png" alt="" />
+      </SwiperSlide>
+      <SwiperSlide>
+        <img src="swiperImg/Снимок экрана 2022-01-06 в 11.55.44 PM.png" alt="" />
+      </SwiperSlide>
+      <SwiperSlide>
+        <img src="swiperImg/Снимок экрана 2022-01-07 в 12.10.56 AM.png" alt="" />
+      </SwiperSlide>
+    </Swiper>
   );
 }
 

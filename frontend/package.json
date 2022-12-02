@@ -76,7 +76,7 @@
     },
     "parserOptions": {
       "project": [
-        "tsconfig.json"
+        "**/tsconfig.json"
       ]
     }
   },
@@ -101,6 +101,7 @@
     "eslint-plugin-hooks": "^0.4.3",
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-jsx-a11y": "^6.6.1",
-    "eslint-plugin-react": "^7.31.11"
+    "eslint-plugin-react": "^7.31.11",
+    "sass": "^1.56.1"
   }
 }

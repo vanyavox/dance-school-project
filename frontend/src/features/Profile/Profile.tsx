@@ -6,14 +6,14 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import style from './Profile.module.css';
 
-function Profile() {
+function Profile(): JSX.Element {
   const [images, setImages] = React.useState([]);
   const maxNumber = 69;
 
   const onChange = (
     imageList: ImageListType,
     addUpdateIndex: number[] | undefined
-  ) => {
+  ): void => {
     console.log(imageList, addUpdateIndex);
     setImages(imageList as never[]);
   };

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ImageUploading, { ImageListType } from 'react-images-uploading';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
@@ -7,8 +7,9 @@ import TextField from '@mui/material/TextField';
 import style from './Profile.module.css';
 
 function Profile(): JSX.Element {
-  const [images, setImages] = React.useState([]);
-  const maxNumber = 69;
+  const [images, setImages] = useState([]);
+  const [show, setShow] = useState<boolean>(true);
+  const maxNumber = 60;
 
   const onChange = (
     imageList: ImageListType,
@@ -16,6 +17,7 @@ function Profile(): JSX.Element {
   ): void => {
     console.log(imageList, addUpdateIndex);
     setImages(imageList as never[]);
+    setShow(false);
   };
 
   return (
@@ -35,14 +37,16 @@ function Profile(): JSX.Element {
           dragProps
         }) => (
           <div className="upload__image-wrapper">
-            <Button
-              variant="contained"
-              style={isDragging ? { color: 'red' } : undefined}
-              onClick={onImageUpload}
-              {...dragProps}
-            >
-              Загрузить аватарку
-            </Button>
+            {show && (
+              <Button
+                variant="contained"
+                style={isDragging ? { color: 'red' } : undefined}
+                onClick={onImageUpload}
+                {...dragProps}
+              >
+                Загрузить аватарку
+              </Button>
+            )}
             &nbsp;
             {imageList.map((image, index) => (
               <div key={index} className="image-item">
@@ -55,12 +59,13 @@ function Profile(): JSX.Element {
                   <Button
                     variant="contained"
                     onClick={() => onImageUpdate(index)}
-                  >Update
+                  >Изменить
                   </Button>
+                  &nbsp;
                   <Button
                     variant="contained"
                     onClick={() => onImageRemove(index)}
-                  >Remove
+                  >Удалить
                   </Button>
                 </div>
               </div>

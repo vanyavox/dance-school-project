@@ -9,7 +9,6 @@ import style from './Profile.module.css';
 function Profile(): JSX.Element {
   const [images, setImages] = useState([]);
   const [show, setShow] = useState<boolean>(true);
-  const maxNumber = 60;
 
   const onChange = (
     imageList: ImageListType,
@@ -26,7 +25,7 @@ function Profile(): JSX.Element {
         multiple
         value={images}
         onChange={onChange}
-        maxNumber={maxNumber}
+
       >
         {({
           imageList,

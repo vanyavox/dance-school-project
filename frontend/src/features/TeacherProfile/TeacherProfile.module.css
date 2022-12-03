@@ -1,0 +1,47 @@
+.teacher__info {
+  padding-top: 15px;
+  width: 60%;
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.profile__left > img {
+  width: 300px;
+  border-radius: 3%;
+}
+
+.profile__right {
+  font-size: 16pt;
+  margin-left: 10px;
+  width: 70%;
+}
+
+.profile__name {
+  font-weight: 600;
+  font-size: 20pt;
+}
+
+button {
+  background-color: #039BE5;
+  padding: 20px;
+  border-radius: 5px;
+  border: none;
+  color: white;
+  font-size: 14pt;
+  margin-top: 10px;
+}
+
+button:hover {
+  background-color: #039ae58f;
+}
+
+.teacher__links {
+  width: 80%;
+  padding-left: 50px;
+  margin: auto;
+  margin-top: 5px;
+  color: #6e6e6e;
+}

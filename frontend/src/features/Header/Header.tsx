@@ -10,7 +10,10 @@ function Header(): JSX.Element {
         <NavLink className={style.header__logo} to="/">
           K2
         </NavLink>
-        <NavLink to="/">
+        <NavLink to="/news">
+          Новости
+        </NavLink>
+        <NavLink to="/teachers">
           Преподаватели
         </NavLink>
         <NavLink to="/">

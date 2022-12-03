@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { RootState, useAppDispatch } from '../../store';
-import { addAsyncTeachers, addTeacher } from './teacherSlice';
+import { addAsyncTeachers } from './teacherSlice';
 import style from './TeacherList.module.css';
+import Teacher from '../TeacherItem/Teacher';
 
 function TeacherList(): JSX.Element {
   const { teachers } = useSelector((state: RootState) => state.teachers);
@@ -10,15 +11,17 @@ function TeacherList(): JSX.Element {
 
   useEffect(() => {
     dispatch(addAsyncTeachers());
-  }, []);
-
-  console.log(teachers);
+  }, [dispatch]);
 
   return (
-    <div className={style.content__body}>
-      Teachers
-
-    </div>
+    <>
+      <div className={style.teacher__links}>Школа Танцев/Преподаватели</div>
+      <div className={style.content__body}>
+        {teachers.map((teacher) => (
+          <Teacher key={teacher.id} teacher={teacher} />
+        ))}
+      </div>
+    </>
   );
 }
 

@@ -9,7 +9,7 @@ import NewsList from '../features/News/newsList/NewsList';
 
 function App(): JSX.Element {
   return (
-    <div className="App">
+    <>
       <Routes>
         <Route path="/" element={<Header />}>
           <Route path="/" element={<Main />} />
@@ -18,7 +18,7 @@ function App(): JSX.Element {
         </Route>
       </Routes>
       <Footer />
-    </div>
+    </>
   );
 }
 

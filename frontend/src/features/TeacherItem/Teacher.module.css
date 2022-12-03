@@ -1,0 +1,43 @@
+.teacher__card {
+  width: 25%;
+  padding: 5px;
+  border: 1px solid #fdfdfd1c;
+  border-radius: 8px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.teacher__card > img {
+  width: 60%;
+  border-radius: 3%;
+}
+
+.teacher__name {
+  font-size: 16pt;
+  font-weight: 600;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+.teacher__direction {
+  font-size: 14pt;
+  font-weight: 400;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+.teacher__experience {
+  font-size: 14pt;
+  font-weight: 400;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+.teacher__card:hover {
+  transform: scale(1.02);
+  background-color: #d1d1d117;
+}

@@ -1,10 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { useDispatch } from 'react-redux';
+import newsSlice from './features/News/newsList/newsSlice';
 import teacherSlice from './features/TeacherList/teacherSlice';
 
 const store = configureStore({
   reducer: {
     teachers: teacherSlice,
+    news: newsSlice,
   },
 });
 

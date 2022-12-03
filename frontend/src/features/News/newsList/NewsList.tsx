@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { RootState, useAppDispatch } from '../../store';
+import { RootState, useAppDispatch } from '../../../store';
 import NewsItem from '../newsItem/NewsItem';
 import { loadAsyncNews } from './newsSlice';
 import './NewsList.css';

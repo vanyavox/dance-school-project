@@ -2,7 +2,7 @@ import React from 'react';
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
 
-import './types/SwiperList.css';
+import './SwiperList.css';
 import 'swiper/swiper-bundle.min.css';
 
 import SwiperCore, {

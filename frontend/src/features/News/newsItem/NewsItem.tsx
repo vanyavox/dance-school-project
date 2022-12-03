@@ -1,5 +1,4 @@
 import React from 'react';
-import { CardMedia, Card, CardContent, Typography, CardActions, Button } from '@mui/material';
 import News from '../newsList/types/News';
 import './NewsItem.css';
 

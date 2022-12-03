@@ -12,6 +12,10 @@ const port = process.env.PORT || 5000
 configApp(app)
 app.use('/api', apiRoute)
 
+const teacherRoute = require('./Routes/api')
+
+app.use('/api/teachers', teacherRoute)
+
 app.listen(port, () => {
   console.log(`Я поехал на порту: ${port}`)
 })

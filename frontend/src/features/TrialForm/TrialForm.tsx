@@ -1,15 +1,18 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import { useAppDispatch } from '../../store';
 import style from './TrialForm.module.css';
-import TrialFormUser from './types/TrialFormUser';
+import { addAsyncRequest } from './trialFormSlice';
+import { NewRequest } from './types/state';
 
 function TrialForm(): JSX.Element {
-  const handleAdd = (trialUser: TrialFormUser): void => {
-    console.log((trialUser));
+  const dispatch = useAppDispatch();
+  const handleAdd = (trialUser: NewRequest): void => {
+    dispatch(addAsyncRequest(trialUser));
   };
-  const { register, handleSubmit } = useForm<TrialFormUser>();
+  const { register, handleSubmit } = useForm<NewRequest>();
 
-  const onSubmit = (data: TrialFormUser): void => {
+  const onSubmit = (data: NewRequest): void => {
     handleAdd(data);
   };
   return (

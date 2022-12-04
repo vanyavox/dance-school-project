@@ -9,7 +9,7 @@ const initialState: State = {
 };
 
 export const loadAsyncNews = createAsyncThunk('news', async () => api.loadNews()
-.then((data) => data));
+.then((data) => data.reverse()));
 
 export const addNews = createAsyncThunk('news/addNews', async (news:News) => {
     const newNews = await api.addNews(news);

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { ChangeEvent, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useSelector } from 'react-redux';
 import { Modal, Box } from '@mui/material';
@@ -8,7 +8,7 @@ import { deleteNews, loadAsyncNews, updateNews, addNews } from './newsSlice';
 import style from './NewsLists.module.css';
 import News from './types/News';
 
-function NewsList():JSX.Element {
+function NewsList(): JSX.Element {
   const { news } = useSelector((state:RootState) => state.news);
   const dispatch = useAppDispatch();
 
@@ -19,7 +19,6 @@ function NewsList():JSX.Element {
   const handleRemove = (newsToDelete: News): void => {
     dispatch(deleteNews(newsToDelete.id));
   };
-  console.log(news);
 // update news item
   const handleUpdate = (newsToUpdate: News): void => {
     dispatch(updateNews(newsToUpdate));
@@ -39,10 +38,12 @@ function NewsList():JSX.Element {
       handleAdd(data);
       handleClose();
   }
+  // sorting
 
   return (
     <div className="news_list">
       <button type="button" onClick={handleOpen}>Добавить </button>
+
         <Modal
           open={open}
           onClose={handleClose}

@@ -8,10 +8,11 @@ const app = express()
 const port = process.env.PORT || 5000
 configApp(app)
 
-const apiRoute = require('./Routes/apiRoute')
 const teacherRoute = require('./Routes/apiTeacher')
 const requestRoute = require('./Routes/apiRequest')
-app.use('/api', apiRoute)
+const newsApiRoute = require('./Routes/NewsApiRoute')
+
+app.use('/api', newsApiRoute)
 app.use('/api/teachers', teacherRoute)
 app.use('/api/requests', requestRoute)
 

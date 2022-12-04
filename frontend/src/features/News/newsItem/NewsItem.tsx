@@ -1,8 +1,8 @@
 import React from 'react';
-import { useForm, SubmitHandler } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
+import { Modal, Box, Input, TextField } from '@mui/material';
 import News from '../newsList/types/News';
-import './NewsItem.css';
-import { Button, Modal, Box, Typography, TextField, Autocomplete } from '@mui/material';
+import style from './NewsItems.module.css';
 
 interface NewsPropsm {
   oneNews: News;
@@ -11,12 +11,13 @@ interface NewsPropsm {
 }
 
 function NewsItem({ oneNews, handleRemove, handleUpdate }: NewsPropsm):JSX.Element {
+// modal dialog
   const [open, setOpen] = React.useState(false);
   const handleOpen = ():void => setOpen(true);
   const handleClose = ():void => setOpen(false);
-
+// useform
   const { register, handleSubmit } = useForm<News>();
-  // const onSubmit: SubmitHandler<News> = (data) => handleUpdate(data);
+
   function onSubmit(data:News):void {
     const value: News = {
       id: oneNews.id,
@@ -25,19 +26,8 @@ function NewsItem({ oneNews, handleRemove, handleUpdate }: NewsPropsm):JSX.Eleme
       description: data.description,
       news_type: data.news_type };
     handleUpdate(value);
+    handleClose();
   }
-
-  const style = {
-    position: 'absolute' as 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    width: 400,
-    bgcolor: 'background.paper',
-    border: '2px solid #000',
-    boxShadow: 24,
-    p: 4,
-  };
 
   return (
       <div id={String(oneNews.id)} className="news_item">
@@ -53,9 +43,12 @@ function NewsItem({ oneNews, handleRemove, handleUpdate }: NewsPropsm):JSX.Eleme
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-description"
               >
-                <Box sx={style}>
+                <Box className={style.modal__item}>
                   <form onSubmit={handleSubmit(onSubmit)}>
-                    <input {...register('title')} />
+                    <TextField
+                      label="Название"
+                      {...register('title')}
+                    />
                     <input {...register('description')} />
                     <input {...register('image')} />
                     <input {...register('news_type')} />

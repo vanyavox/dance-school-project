@@ -8,9 +8,10 @@ const app = express()
 const port = process.env.PORT || 5000
 configApp(app)
 
-const apiRoute = require('./Routes/apiRoute')
+const NewsApiRoute = require('./Routes/NewsApiRoute')
 const teacherRoute = require('./Routes/api')
-app.use('/api', apiRoute)
+
+app.use('/api', NewsApiRoute)
 app.use('/api/teachers', teacherRoute)
 
 app.listen(port, () => {

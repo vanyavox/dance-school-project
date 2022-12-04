@@ -4,5 +4,6 @@ export interface State {
     news: News[],
 }
 
-export type Action =
-| { type: 'news', payload: News[] };
+// export type Action =
+// | { type: 'news', payload: News[] }
+// | { type: 'news', payload: News }

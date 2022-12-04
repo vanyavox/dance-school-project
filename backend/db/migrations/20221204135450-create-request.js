@@ -10,14 +10,31 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       student_id: {
-        type: Sequelize.INTEGER,
-        references: {
-          model: 'Students',
-          key: 'id'
-        }
+        type: Sequelize.INTEGER
+      },
+      name: {
+        type: Sequelize.TEXT,
+        allowNull: false
+      },
+      date: {
+        type: Sequelize.TEXT,
+        allowNull: false
+      },
+      time: {
+        type: Sequelize.TEXT,
+        allowNull: false
+      },
+      lesson_type: {
+        type: Sequelize.TEXT,
+        allowNull: false
+      },
+      phone: {
+        type: Sequelize.TEXT,
+        allowNull: false
       },
       status: {
-        type: Sequelize.TEXT
+        type: Sequelize.TEXT,
+        allowNull: false
       },
       createdAt: {
         allowNull: false,

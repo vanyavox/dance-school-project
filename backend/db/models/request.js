@@ -1,7 +1,7 @@
-'use strict'
+'use strict';
 const {
   Model
-} = require('sequelize')
+} = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class Request extends Model {
     /**
@@ -9,38 +9,21 @@ module.exports = (sequelize, DataTypes) => {
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
-    static associate ({ Student }) {
-      Request.belongsTo(Student, { foreignKey: 'student_id' })
+    static associate(models) {
+      // define association here
     }
   }
   Request.init({
-    id: {
-      allowNull: false,
-      autoIncrement: true,
-      primaryKey: true,
-      type: DataTypes.INTEGER
-    },
-    student_id: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: 'Students',
-        key: 'id'
-      }
-    },
-    status: {
-      type: DataTypes.TEXT
-    },
-    createdAt: {
-      allowNull: false,
-      type: DataTypes.DATE
-    },
-    updatedAt: {
-      allowNull: false,
-      type: DataTypes.DATE
-    }
+    student_id: DataTypes.INTEGER,
+    name: DataTypes.TEXT,
+    date: DataTypes.TEXT,
+    time: DataTypes.TEXT,
+    lesson_type: DataTypes.TEXT,
+    phone: DataTypes.TEXT,
+    status: DataTypes.TEXT
   }, {
     sequelize,
-    modelName: 'Request'
-  })
-  return Request
-}
+    modelName: 'Request',
+  });
+  return Request;
+};

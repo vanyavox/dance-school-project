@@ -1,3 +1,4 @@
+import { Avatar } from '@mui/material';
 import React from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
 import style from './Header.module.css';
@@ -9,7 +10,10 @@ function Header(): JSX.Element {
         <NavLink className={style.header__logo} to="/">
           K2
         </NavLink>
-        <NavLink to="/">
+        <NavLink to="/news">
+          Новости
+        </NavLink>
+        <NavLink to="/teachers">
           Преподаватели
         </NavLink>
         <NavLink to="/">
@@ -26,6 +30,13 @@ function Header(): JSX.Element {
             Зарегистрироваться
           </NavLink>
         </div>
+        <NavLink to="/profile">
+          <Avatar
+            alt="My_profile"
+            src=""
+            sx={{ width: 56, height: 56 }}
+          />
+        </NavLink>
       </nav>
       <Outlet />
     </>

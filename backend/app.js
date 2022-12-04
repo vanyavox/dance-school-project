@@ -4,16 +4,14 @@ const express = require('express')
 
 const configApp = require('./config/serverConfig')
 
-const NewsApiRoute = require('./Routes/NewsApiRoute')
-
 const app = express()
 const port = process.env.PORT || 5000
-
 configApp(app)
-app.use('/api', NewsApiRoute)
 
+const NewsApiRoute = require('./Routes/NewsApiRoute')
 const teacherRoute = require('./Routes/api')
 
+app.use('/api', NewsApiRoute)
 app.use('/api/teachers', teacherRoute)
 
 app.listen(port, () => {

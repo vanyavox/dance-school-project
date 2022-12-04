@@ -7,15 +7,15 @@ function Footer(): JSX.Element {
     <>
       <div className={style.footer__main}>
         <div className={style.footer__block}>
-          <Link to="/">Контакты</Link>
-          <Link to="/">О школе</Link>
-          <Link to="/">Преподаватели</Link>
+          <Link to="/contacts">Контакты</Link>
+          <Link to="/about">О школе</Link>
+          <Link to="/teachers">Преподаватели</Link>
         </div>
         <div className={style.footer__block}>
           <Link to="/">Групповые / Индивидуальные занятия</Link>
           <Link to="/">Направления</Link>
           <Link to="/">Соревнования</Link>
-          <Link className={style.footer_link} to="/">Карта сайта</Link>
+          <Link className={style.footer_link} to="/map">Карта сайта</Link>
         </div>
         <div className={style.footer__block_end}>
           <p>

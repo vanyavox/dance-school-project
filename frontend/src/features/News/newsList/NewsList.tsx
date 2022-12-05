@@ -9,67 +9,69 @@ import style from './NewsLists.module.css';
 import News from './types/News';
 
 function NewsList(): JSX.Element {
-  const { news } = useSelector((state:RootState) => state.news);
+  const { news } = useSelector((state: RootState) => state.news);
   const dispatch = useAppDispatch();
 
   useEffect(() => {
     dispatch(loadAsyncNews());
   }, []);
-// delete news item
+
+  // delete news item
   const handleRemove = (newsToDelete: News): void => {
     dispatch(deleteNews(newsToDelete.id));
   };
-// update news item
+  // update news item
   const handleUpdate = (newsToUpdate: News): void => {
     dispatch(updateNews(newsToUpdate));
   };
-// add news item
+  // add news item
   const handleAdd = (newsToAdd: News): void => {
     dispatch(addNews(newsToAdd));
   };
-// modal dialog
-  const [open, setOpen] = React.useState(false);
-  const handleOpen = ():void => setOpen(true);
-  const handleClose = ():void => setOpen(false);
+  // modal dialog
+  const [active, setActive] = useState(false);
+  const handleOpen = (): void => setActive(!active);
+  const handleClose = (): void => setActive(!active);
 
   const { register, handleSubmit } = useForm<News>();
 
-  function onSubmit(data:News):void {
-      handleAdd(data);
-      handleClose();
+  function onSubmit(data: News): void {
+    handleAdd(data);
+    handleClose();
   }
-  // sorting
 
   return (
-    <div className="news_list">
-      <button type="button" onClick={handleOpen}>Добавить </button>
-
-        <Modal
-          open={open}
-          onClose={handleClose}
-          aria-labelledby="modal-modal-title"
-          aria-describedby="modal-modal-description"
-        >
-          <Box sx={style}>
-            <form onSubmit={handleSubmit(onSubmit)}>
-              <input {...register('title')} />
-              <input {...register('description')} />
-              <input {...register('image')} />
-              <input {...register('news_type')} />
-              <input type="submit" />
-            </form>
-          </Box>
-        </Modal>
-     <ul>
-      {news.map((oneNews) => (
-        <NewsItem
-          key={oneNews.id}
-          oneNews={oneNews}
-          handleRemove={handleRemove}
-          handleUpdate={handleUpdate}
-        />
+    <div className={style.news_list}>
+      <button type="button" onClick={handleOpen}>Добавить  Новость / Анонс</button>
+      {active && (
+        <div className={active ? 'modal active' : 'modal'} onClick={() => setActive(false)}>
+          <div className={active ? 'modal_content active' : 'modal_content'} onClick={(e) => e.stopPropagation()}>
+            <div className={style.modal_form}>
+              <form onSubmit={handleSubmit(onSubmit)}>
+                <input {...register('title')} placeholder="Название" />
+                <br />
+                <textarea rows={10} {...register('description')} placeholder="Описание"/>
+                <br />
+                <input {...register('image')} placeholder="Ссылка на картинку" />
+                <br />
+                <input {...register('news_type')} placeholder="Тип события: Новость/ Анонс Турнира" />
+                <br />
+                <button className={style.btn_add} type="submit">Добавить</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      )}
+      <ul>
+        {news.map((oneNews) => (
+          <NewsItem
+            key={oneNews.id}
+            oneNews={oneNews}
+            handleRemove={handleRemove}
+            handleUpdate={handleUpdate}
+          />
         ))}
-     </ul>
+      </ul>
     </div>
   );
 }

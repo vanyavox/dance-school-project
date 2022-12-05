@@ -4,7 +4,13 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  width: 80%;
+  width: 65%;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  background-image:url(https://sun9-13.userapi.com/impg/N7dRVs6WWgojqYTiL-yFWzkJXSA45y420ajDsg/p-uhxGZFNT8.jpg?size=1440x2160&quality=95&sign=834ea44346cc3486993947fa3c570729&type=album);
+  background-size:cover;
+  background-position-y: 73%;
+  opacity: 0.8;
 }
 
 .form__div {

@@ -1,11 +1,18 @@
 .footer__main {
-  width: 100%;
   padding: 24px;
   background-color: #FFFFFF;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  height: auto;
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  border-top: 1px solid rgba(226, 226, 226, 0.253);
 }
 
 .footer__block > a, a:active {
@@ -52,6 +59,7 @@
   justify-content: center;
   align-items: center;
   color: #747474;
+  background-color: #FFFFFF;
 }
 
 .social__icons > a {

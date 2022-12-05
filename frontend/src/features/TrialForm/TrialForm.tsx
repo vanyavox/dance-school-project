@@ -1,9 +1,9 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useAppDispatch } from '../../store';
-import style from './TrialForm.module.css';
 import { addAsyncRequest } from './trialFormSlice';
 import { NewRequest } from './types/state';
+import style from './TrialForm.module.css';
 
 function TrialForm(): JSX.Element {
   const dispatch = useAppDispatch();

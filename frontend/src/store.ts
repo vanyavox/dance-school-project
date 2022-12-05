@@ -2,13 +2,15 @@ import { configureStore } from '@reduxjs/toolkit';
 import { useDispatch } from 'react-redux';
 import newsSlice from './features/News/newsList/newsSlice';
 import teacherSlice from './features/TeacherList/teacherSlice';
+import tournamentsSlice from './features/Tournament/tournamentsSlice';
 import trialFormSlice from './features/TrialForm/trialFormSlice';
 
 const store = configureStore({
   reducer: {
     teachers: teacherSlice,
     news: newsSlice,
-    requests: trialFormSlice
+    requests: trialFormSlice,
+    tournaments: tournamentsSlice,
   },
 });
 

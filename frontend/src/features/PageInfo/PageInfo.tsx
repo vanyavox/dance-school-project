@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import Tournament from '../Tournament/Tournament';
 import style from './PageInfo.module.css';
 
 function PageInfo(): JSX.Element {
@@ -20,6 +21,7 @@ function PageInfo(): JSX.Element {
       <div className={style.buttons}>
         <button className={style.btn__trial} type="button">Записаться</button>
         <button className={style.btn__hall} type="button">Расположение школ</button>
+
       </div>
     </div>
   );

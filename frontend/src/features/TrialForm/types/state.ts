@@ -8,7 +8,6 @@ export interface NewRequest {
   phone: string;
   status: string;
 }
-
 export interface State {
   requests: NewRequest[];
 }

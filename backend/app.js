@@ -11,10 +11,12 @@ configApp(app)
 const teacherRoute = require('./Routes/apiTeacher')
 const requestRoute = require('./Routes/apiRequest')
 const newsApiRoute = require('./Routes/NewsApiRoute')
+const tournamentRoute = require('./Routes/apiTournament')
 
 app.use('/api', newsApiRoute)
 app.use('/api/teachers', teacherRoute)
 app.use('/api/requests', requestRoute)
+app.use('/api/tournaments', tournamentRoute)
 
 app.listen(port, () => {
   console.log(`Я поехал на порту: ${port}`)

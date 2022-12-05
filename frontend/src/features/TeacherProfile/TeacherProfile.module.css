@@ -6,6 +6,7 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  height: 75vh;
 }
 
 .profile__left > img {

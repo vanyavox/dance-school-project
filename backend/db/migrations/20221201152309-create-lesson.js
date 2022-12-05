@@ -25,10 +25,25 @@ module.exports = {
         },
         onDelete: 'CASCADE'
       },
-      day: {
-        type: Sequelize.INTEGER
+      monday: {
+        type: Sequelize.TEXT
       },
-      time: {
+      tuesday: {
+        type: Sequelize.TEXT
+      },
+      wednesday: {
+        type: Sequelize.TEXT
+      },
+      thursday: {
+        type: Sequelize.TEXT
+      },
+      friday: {
+        type: Sequelize.TEXT
+      },
+      saturday: {
+        type: Sequelize.TEXT
+      },
+      sunday: {
         type: Sequelize.TEXT
       },
       lesson_type: {

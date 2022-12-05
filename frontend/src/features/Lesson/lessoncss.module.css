@@ -1,0 +1,44 @@
+.form__div{
+    display: flex;
+    margin: auto;
+    justify-content: center;
+    width: 80%;
+}
+
+.table__main{
+    border: 1px solid black;
+}
+
+.table__header{
+    display: flex;
+    justify-content: space-around;
+    width: 70%;  
+}
+
+.table__line{
+    display: flex;
+    width: 100%;
+}
+
+.table__week{
+    display: flex;
+    flex-direction: row;
+    width: 70%;
+    justify-content: space-around;
+}
+
+.table__img{
+    width: 80%;
+}
+
+.table__teachers{
+    width: 30%;
+}
+
+.table__td{
+    min-width: 60px;
+}
+
+
+
+

@@ -5,6 +5,7 @@
   "dependencies": {
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
+    "@mui/icons-material": "^5.10.16",
     "@mui/material": "^5.10.16",
     "@pbe/react-yandex-maps": "^1.2.2",
     "@reduxjs/toolkit": "^1.9.1",

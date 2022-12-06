@@ -12,11 +12,18 @@ import Login from '../features/Login/Login';
 import Registration from '../features/Registration/Registration';
 import { useAppDispatch } from '../store';
 import { getUser } from '../features/Registration/userSlice';
+import TrialForm from '../features/TrialForm/TrialForm';
+import Map from '../features/Map/Map';
+import About from '../features/About/About';
+import Contacts from '../features/Contacts/Contacts';
+import LessonForm from '../features/Lesson/Lesson';
+import AdminPanel from '../features/AdminPanel/AdminPanel';
+import { initAsyncRequest } from '../features/TrialForm/trialFormSlice';
 
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
-
   useEffect(() => {
+    dispatch(initAsyncRequest());
     dispatch(getUser());
   }, []);
 
@@ -31,6 +38,12 @@ function App(): JSX.Element {
           <Route path="teachers/:id" element={<TeacherProfile />} />
           <Route path="auth/login" element={<Login />} />
           <Route path="auth/registration" element={<Registration />} />
+          <Route path="/trialform" element={<TrialForm />} />
+          <Route path="/map" element={<Map />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/contacts" element={<Contacts />} />
+          <Route path="/lessons" element={<LessonForm />} />
+          <Route path="/admin" element={<AdminPanel />} />
         </Route>
       </Routes>
       <Footer />

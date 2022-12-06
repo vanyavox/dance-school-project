@@ -1,13 +1,10 @@
 import React from 'react';
-// Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
-
-import style from './SwiperList.module.css';
-import 'swiper/swiper-bundle.min.css';
-
 import SwiperCore, {
   Autoplay, Pagination, Navigation
 } from 'swiper';
+import 'swiper/swiper-bundle.min.css';
+import style from './SwiperList.module.css';
 
 SwiperCore.use([Autoplay, Pagination, Navigation]);
 
@@ -27,9 +24,6 @@ function SwiperList(): JSX.Element {
         navigation
         className={style.mySwiper}
       >
-        <SwiperSlide className={style.swiper__slide}>
-          <img src="https://fdsarr.ru/upload/iblock/46a/roc75bz584vig5162s99ap9f2yaps4g7/KS_FIN_TS_2022_65_new_1920.jpg" alt="" />
-        </SwiperSlide>
         <SwiperSlide className={style.swiper__slide}>
           <img src="https://fdsarr.ru/upload/iblock/09d/ft_1920x580-karusel.jpg" alt="" />
         </SwiperSlide>

@@ -1,0 +1,43 @@
+.trial__form {
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 65%;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  background-image:url(https://sun9-13.userapi.com/impg/N7dRVs6WWgojqYTiL-yFWzkJXSA45y420ajDsg/p-uhxGZFNT8.jpg?size=1440x2160&quality=95&sign=834ea44346cc3486993947fa3c570729&type=album);
+  background-size:cover;
+  background-position-y: 73%;
+  opacity: 0.8;
+  color: rgb(241, 241, 241);
+}
+
+.form__div {
+  padding-top: 10px;
+  margin-right: 10px;
+  padding-left: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+input {
+  padding: 5px;
+  font-size: 14pt;
+  width: 400px;
+}
+
+select {
+  padding: 5px;
+  font-size: 14pt;
+}
+
+form {
+  font-size: 14pt;
+}
+
+.btn__reg {
+  padding: 15px;
+  margin: 10px;
+}

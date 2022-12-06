@@ -5,3 +5,4 @@ export default interface News {
     image: string;
     news_type: string;
 }
+ export type NewsId = News['id'];

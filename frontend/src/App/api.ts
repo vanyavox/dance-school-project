@@ -1,19 +1,6 @@
 import { UserLogin } from '../features/Login/types/UserLogin';
-import News from '../features/News/newsList/types/News';
 import { Response, User, UserRegistration } from '../features/Registration/types/UserState';
 
-export const loadNews = async (): Promise<News[]> => {
-  const res = await fetch('http://localhost:4000/api/news');
-
-  return res.json();
-};
-
-export const addNews = async (): Promise<News> => {
-  const res = await fetch('http://localhost:4000/api/news');
-  console.log(res);
-
-  return res.json();
-};
 export const login = async (user: UserLogin): Promise<Response> => {
   const res = await (fetch('http://localhost:4000/api/auth/login', {
     method: 'post',
@@ -48,8 +35,8 @@ export const updateprofile = async (user: User): Promise<User> => {
   return res.json();
 };
 
-export async function getuser(): Promise<| { isLoggedIn: true; user: User; } | { isLoggedIn: false; }> {
+export async function getuser(): Promise<
+  | { isLoggedIn: true; user: User; } | { isLoggedIn: false; }> {
   const res = await fetch('http://localhost:4000/api/auth/user');
-  
   return res.json();
 }

@@ -33,7 +33,7 @@ function LessonsDiv({ lesson, handleAdd, handleUpdate, teachId }: LessonPropsm):
     handleUpdate(value);
   }
   const { email, name, surname, age, phone, role } = useSelector((state: RootState) => state.user);
-  console.log(role);
+  
   return (
     <div key={lesson.id} className={style.table__week}>
 

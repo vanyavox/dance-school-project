@@ -2,11 +2,10 @@ import News, { NewsId } from './newsList/types/News';
 
 export const loadNews = async (): Promise<News[]> => {
   const res = await fetch('http://localhost:4000/api/news');
-
   return res.json();
 };
 
-export const addNews = async (news:News): Promise<News> => {
+export const addNews = async (news: News): Promise<News> => {
   const res = await fetch('http://localhost:4000/api/news', {
     method: 'Post',
     headers: { 'Content-type': 'application/json' },
@@ -19,7 +18,7 @@ export const deleteNews = async (id: NewsId): Promise<void> => {
     method: 'Delete'
   });
 };
-export const updateNews = async (news:News): Promise<void> => {
+export const updateNews = async (news: News): Promise<void> => {
   await fetch(`http://localhost:4000/api/news/${news.id}`, {
     method: 'PUT',
     body: JSON.stringify(news),

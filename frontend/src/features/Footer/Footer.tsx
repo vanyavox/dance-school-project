@@ -4,7 +4,7 @@ import style from './Footer.module.css';
 
 function Footer(): JSX.Element {
   return (
-    <>
+    <div className={style.footer}>
       <div className={style.footer__main}>
         <div className={style.footer__block}>
           <Link to="/contacts">Контакты</Link>
@@ -37,7 +37,7 @@ function Footer(): JSX.Element {
           </a>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 

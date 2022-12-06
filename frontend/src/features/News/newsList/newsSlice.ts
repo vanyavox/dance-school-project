@@ -36,7 +36,7 @@ extraReducers: (builder) =>
         state.news = action.payload;
     })
     .addCase(addNews.fulfilled, (state, action) => {
-        state.news.push(action.payload);
+        state.news.unshift(action.payload);
     })
     .addCase(deleteNews.fulfilled, (state, action) => {
         state.news = state.news.filter((oneNews) => oneNews.id !== action.payload);

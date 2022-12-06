@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import Footer from '../features/Footer/Footer';
 import Header from '../features/Header/Header';
@@ -13,8 +13,16 @@ import Map from '../features/Map/Map';
 import About from '../features/About/About';
 import Contacts from '../features/Contacts/Contacts';
 import LessonForm from '../features/Lesson/Lesson';
+import AdminPanel from '../features/AdminPanel/AdminPanel';
+import { initAsyncRequest } from '../features/TrialForm/trialFormSlice';
+import { useAppDispatch } from '../store';
 
 function App(): JSX.Element {
+  const dispatch = useAppDispatch();
+  useEffect(() => {
+    dispatch(initAsyncRequest());
+  }, []);
+
   return (
     <>
       <Routes>
@@ -29,6 +37,7 @@ function App(): JSX.Element {
           <Route path="/about" element={<About />} />
           <Route path="/contacts" element={<Contacts />} />
           <Route path="/lessons" element={<LessonForm />} />
+          <Route path="/admin" element={<AdminPanel />} />
         </Route>
       </Routes>
       <Footer />

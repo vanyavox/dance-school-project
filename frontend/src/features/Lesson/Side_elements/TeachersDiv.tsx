@@ -1,11 +1,12 @@
 import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { RootState, useAppDispatch } from '../../store';
-import { Teacher } from '../TeacherList/types/state';
+
 import LessonsDiv from './LessonsDiv';
-import { addLessons, loadLessons, updateLessons } from './lessonSlice';
-import style from './lessoncss.module.css';
-import Lesson from './types/Lesson';
+import { addLessons, loadLessons, updateLessons } from '../lessonSlice';
+import style from '../lessoncss.module.css';
+import Lesson from '../types/Lesson';
+import { Teacher } from '../../TeacherList/types/state';
+import { RootState, useAppDispatch } from '../../../store';
 
 function TeachersDiv({ teacher }: { teacher: Teacher }):JSX.Element {
     const { lessons } = useSelector((state:RootState) => state.lessons);

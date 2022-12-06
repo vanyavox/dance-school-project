@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { RootState, useAppDispatch } from '../../store';
 import { addAsyncTeachers } from '../TeacherList/teacherSlice';
 import style from './lessoncss.module.css';
-import TeachersDiv from './TeachersDiv';
+import TeachersDiv from './Side_elements/TeachersDiv';
 
 function LessonForm():JSX.Element {
   const { teachers } = useSelector((state:RootState) => state.teachers);

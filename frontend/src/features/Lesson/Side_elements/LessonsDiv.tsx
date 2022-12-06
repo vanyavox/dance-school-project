@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import Lesson from './types/Lesson';
-import style from './lessoncss.module.css';
+import Lesson from '../types/Lesson';
+
+import style from '../lessoncss.module.css';
 
 interface LessonPropsm {
     lesson: Lesson;
@@ -13,7 +14,7 @@ interface LessonPropsm {
 function LessonsDiv({ lesson, handleAdd, handleUpdate, teachId }: LessonPropsm):JSX.Element {
   // useform
   const { register, handleSubmit } = useForm<Lesson>();
-const [admin, setAdmin] = useState('admin'); // измени на другое что бы посмотреть за юзера
+const [admin, setAdmin] = useState('admi'); // измени на другое что бы посмотреть за юзера
   function onSubmit(data: Lesson): void {
     const value: Lesson = {
       id: lesson.id,

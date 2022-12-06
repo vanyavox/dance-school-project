@@ -1,6 +1,6 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { Modal, Box, Input, TextField } from '@mui/material';
+import { Modal, Box, TextField } from '@mui/material';
 import News from '../newsList/types/News';
 import style from './NewsItems.module.css';
 
@@ -35,8 +35,8 @@ function NewsItem({ oneNews, handleRemove, handleUpdate }: NewsPropsm):JSX.Eleme
         <h4>{oneNews.title}</h4>
         <h4>{oneNews.news_type}</h4>
         <p>{oneNews.description}</p>
-        <button type="button" onClick={() => handleRemove(oneNews)}>Удалить </button>
-        <button type="button" onClick={handleOpen}>Изменить </button>
+        <button type="button" onClick={() => handleRemove(oneNews)}>Удалить</button>
+        <button type="button" onClick={handleOpen}>Изменить</button>
               <Modal
                 open={open}
                 onClose={handleClose}

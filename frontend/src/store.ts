@@ -8,7 +8,7 @@ const store = configureStore({
   reducer: {
     teachers: teacherSlice,
     news: newsSlice,
-    requests: trialFormSlice
+    requests: trialFormSlice,
   },
 });
 

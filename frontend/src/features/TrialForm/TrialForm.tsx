@@ -10,11 +10,13 @@ function TrialForm(): JSX.Element {
   const handleAdd = (trialUser: NewRequest): void => {
     dispatch(addAsyncRequest(trialUser));
   };
+
   const { register, handleSubmit } = useForm<NewRequest>();
 
   const onSubmit = (data: NewRequest): void => {
     handleAdd(data);
   };
+
   return (
     <div className={style.trial__form}>
       <form onSubmit={handleSubmit(onSubmit)}>

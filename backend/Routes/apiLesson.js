@@ -8,7 +8,7 @@ router.get('/', async (req, res) => {
       raw: true
     })
     console.log(lessons)
-    res.status(200).json({ lessons, message: 'Lesson found' })
+    res.status(200).json(lessons)
   } catch (error) {
     res.status(error.status).json({ error: error.message })
   }
@@ -28,6 +28,21 @@ router.get('/', async (req, res) => {
       }, { where: { id } })
       res.status(202).json(lessons)
     } catch (error) { res.status(500).json({ message: error.message }) }
+  })
+  .post('/', async (req, res) => {
+    const { monday, tuesday, wednesday, thursday, friday, saturday, sunday } = req.body
+    try {
+      const lessons = await Lesson.create({
+        monday,
+        tuesday,
+        wednesday,
+        thursday,
+        friday,
+        saturday,
+        sunday
+      })
+      res.status(201).json(lessons)
+    } catch (error) { res.json({ message: error.message }) }
   })
 
 module.exports = router

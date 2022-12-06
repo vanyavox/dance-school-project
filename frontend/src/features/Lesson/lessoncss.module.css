@@ -36,7 +36,8 @@
 }
 
 .table__td{
-    min-width: 60px;
+    width: 60px;
+    overflow: hidden;
 }
 
 

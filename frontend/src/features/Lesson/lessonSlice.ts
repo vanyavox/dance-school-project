@@ -12,10 +12,15 @@ const initialState: State = {
 export const loadLessons = createAsyncThunk('lessons', async () => api.loadLesson()
 .then((data) => data)
 );
-export const updateLessons = createAsyncThunk('news/uptateNews', async (lesson:Lesson) => {
+export const updateLessons = createAsyncThunk('lessons/uptateLessons', async (lesson:Lesson) => {
     await api.updateLessons(lesson);
     return lesson;
 });
+export const addLessons = createAsyncThunk('lessons/addLessons', async (lesson:Lesson) => {
+    const newNews = await api.addLessons(lesson);
+     return newNews;
+    }
+);
 
 const lessonSlice = createSlice({
     name: 'lesson',
@@ -24,7 +29,7 @@ const lessonSlice = createSlice({
     extraReducers: (builder) =>
     builder
     .addCase(loadLessons.fulfilled, (state, action) => {
-        state.lessons = action.payload.lessons;
+        state.lessons = action.payload;
     })
     .addCase(loadLessons.rejected, (state, action) => {
         state.error = action.error.message;
@@ -34,6 +39,9 @@ const lessonSlice = createSlice({
             (x) => x.id === action.payload.id
           );
         Object.assign(oldEvent!, action.payload);
+    })
+    .addCase(addLessons.fulfilled, (state, action) => {
+        state.lessons.push(action.payload);
     })
 });
 

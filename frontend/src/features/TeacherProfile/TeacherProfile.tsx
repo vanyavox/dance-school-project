@@ -1,15 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
-import userEvent from '@testing-library/user-event';
-import { RootState, useAppDispatch } from '../../store';
-import { addAsyncTeachers } from '../TeacherList/teacherSlice';
+
+
 import style from './TeacherProfile.module.css';
 import { NewRequest } from './types/state';
 
 function TeacherProfile(): JSX.Element {
-
   // const { user } = useSelector((state: RootState) => state.user);
   const [teacher, setTeacher] = useState({ name: '', photo: '', surname: '', direction: '', experience: '', description: '' });
   const { id } = useParams();

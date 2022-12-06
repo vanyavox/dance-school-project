@@ -1,5 +1,5 @@
 .main__block {
-  width: 80%;
+  width: 90%;
   margin: auto;
   font-size: 16pt;
 }
@@ -13,7 +13,7 @@
 
 .requests_block {
   border: 1px solid rgba(129, 129, 129, 0.205);
-  width: 40%;
+  width: 45%;
   padding: 10px;
   background-color: #cecdcd33;
 }
@@ -99,7 +99,24 @@ form {
 }
 
 .btn_unautorized {
-  padding: 2px;
+  padding: 4px;
   font-size: 10pt;
   margin-left: 5px;
+}
+
+h3 {
+  vertical-align: middle;
+}
+
+.teachers_block {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  background-color: #cecdcd33;
+  width: 92%;
+  margin: auto;
+  padding: 5px;
+  border: 1px solid rgba(129, 129, 129, 0.205);
 }

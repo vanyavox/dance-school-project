@@ -13,6 +13,7 @@ function AdminPanel(): JSX.Element {
   const [active, setActive] = useState<boolean>(false);
   const [unAutorized, setUnautorized] = useState<boolean>(true);
   const { requests } = useSelector((state: RootState) => state.requests);
+  const { teachers } = useSelector((state: RootState) => state.teachers);
 
   const handleAdd = (trialUser: NewRequest): void => {
     dispatch(addAsyncRequest(trialUser));
@@ -35,7 +36,8 @@ function AdminPanel(): JSX.Element {
             <div className={style.modal_form}>
               <form onSubmit={handleSubmit(onSubmit)}>
                 <div className={style.form__div}>
-                  <label htmlFor="name">Ваше имя</label>
+                  <h3>Информация о танцоре</h3>
+                  <label htmlFor="name">Имя</label>
                   <br />
                   <input {...register('name')} name="name" type="text" placeholder="Имя" />
                   <br />
@@ -91,7 +93,7 @@ function AdminPanel(): JSX.Element {
                 : (<div>Записей нет</div>)}
             </div>
             <div className={style.requests_block}>
-              <div className={style.request_head}>Необработанные заявки</div>
+              <div className={style.request_head}>Обработанные заявки</div>
               {requests.length !== 0 ? (
                 requests.map((req: Req) => req.status === 'Обработана' && (
                   <Request
@@ -104,6 +106,10 @@ function AdminPanel(): JSX.Element {
             </div>
           </div>
         )}
+        <h3>Управление преподавателями</h3>
+        <div className={style.teachers_block}>
+          asadfas
+        </div>
       </div>
 
     </div>

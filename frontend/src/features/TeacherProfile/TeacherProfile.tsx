@@ -1,20 +1,14 @@
-import React, { useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { RootState, useAppDispatch } from '../../store';
-import { addAsyncTeachers } from '../TeacherList/teacherSlice';
 import style from './TeacherProfile.module.css';
 
 function TeacherProfile(): JSX.Element {
-  const { teachers } = useSelector((state: RootState) => state.teachers);
+  const [teacher, setTeacher] = useState({ name: '', photo: '', surname: '', direction: '', experience: '', description: '' });
   const { id } = useParams();
-  const dispatch = useAppDispatch();
 
   useEffect(() => {
-    dispatch(addAsyncTeachers());
-  }, [dispatch]);
-  const currentTeacher = teachers.filter((teacher) => teacher.id === Number(id));
-  const teacher = currentTeacher[0];
+    fetch(`http://localhost:4000/api/teachers/${id}`).then((data) => data.json()).then((res) => setTeacher(res));
+  }, []);
 
   return (
     <>

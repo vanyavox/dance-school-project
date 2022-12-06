@@ -1,17 +1,11 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useSelector } from 'react-redux';
-import { RootState, useAppDispatch } from '../../store';
-import { addAsyncTeachers } from './teacherSlice';
+import { RootState } from '../../store';
 import style from './TeacherList.module.css';
 import Teacher from '../TeacherItem/Teacher';
 
 function TeacherList(): JSX.Element {
   const { teachers } = useSelector((state: RootState) => state.teachers);
-  const dispatch = useAppDispatch();
-
-  useEffect(() => {
-    dispatch(addAsyncTeachers());
-  }, [dispatch]);
 
   return (
     <>

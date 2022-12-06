@@ -80,23 +80,27 @@ function AdminPanel(): JSX.Element {
           <div className={style.requests}>
             <div className={style.requests_block}>
               <div className={style.request_head}>Необработанные заявки</div>
-              {requests.map((req: Req) => req.status === 'Обрабатывается' && (
-                <Request
-                  key={req.id}
-                  req={req}
-                />
+              {requests.length !== 0 ? (
+                requests.map((req: Req) => req.status === 'Обрабатывается' && (
+                  <Request
+                    key={req.id}
+                    req={req}
+                  />
+                ))
               )
-              )}
+                : (<div>Записей нет</div>)}
             </div>
             <div className={style.requests_block}>
               <div className={style.request_head}>Необработанные заявки</div>
-              {requests.map((req: Req) => req.status === 'Обработана' && (
-                <Request
-                  key={req.id}
-                  req={req}
-                />
+              {requests.length !== 0 ? (
+                requests.map((req: Req) => req.status === 'Обработана' && (
+                  <Request
+                    key={req.id}
+                    req={req}
+                  />
+                ))
               )
-              )}
+                : (<div>Записей нет</div>)}
             </div>
           </div>
         )}

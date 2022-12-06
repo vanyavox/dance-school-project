@@ -1,3 +1,89 @@
-.modal__item{
-  
+.news_item {
+  width: 100%;
+  margin: auto;
+  font-size: 18pt;
+}
+
+.news_item > img {
+  width: 100%;
+  border-radius: 15px;
+}
+
+.news_item > button {
+  padding: 10px;
+  margin: 10px;
+  margin-left: 0px;
+}
+
+.modal {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.403);
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.5s;
+}
+
+.modal_content {
+  padding: 20px;
+  border-radius: 10px;
+  background-color: white;
+  width: 30vw;
+  height: 400px;
+  transform: scale(0.5);
+  transition: 0.4s all;
+}
+
+.modal.active {
+  opacity: 1;
+  transform: scale(1);
+  pointer-events: all;
+}
+
+.modal_content.active {
+  transform: scale(1);
+}
+
+.modal_form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 40px;
+  position: relative;
+  background-color: #f0f0f048;
+  border-radius: 15px;
+  margin-top: 10px;
+}
+
+.modal_form > button {
+  width: 50px;
+  padding: 5px;
+}
+
+form textarea {
+  font-size: 16pt;
+  width: 100%;
+}
+
+form > input {
+  width: 99.1%;
+}
+
+form {
+  width: 100%;
+}
+
+.btn_delete {
+  background-color: #DC143C;
+}
+
+.btn_delete:hover {
+  background-color: #dc143c7e;
 }

@@ -9,7 +9,7 @@
   margin: auto;
   flex-direction: row;
   width: 75%;
-  background-color: #edc2a139;
+  background-color: #edc2a123;
   margin-top: 2em;
   margin-bottom: 2em;
   border-radius: 20px;
@@ -34,18 +34,10 @@
   font-style: italic;
 }
 
-input {
-  padding: 0.75em 1.5em;
-  line-height: normal;
-  border-radius: 0;
-  border: none;
-}
-
 .btn__reg {
   display: flex;
   align-items: center;
   justify-content: center;
-  /* width: 96%; */
   height: 45px;
   border-radius: 25px;
   margin: 20px;
@@ -62,38 +54,76 @@ input {
 }
 
 .btn__reg:hover {
-  display: flex;
   align-items: center;
-  background: #e0ccba;
-  box-shadow: 0 15px 20px #b0947e;
+  background: #c4a991;
+  box-shadow: 0 15px 20px #967d6a;
   color: white;
   font-size: 15px;
   transform: translateY(-7px);
 }
 
 .select_box {
-  width: 100%;
-  padding: 0;
   list-style: none;
-  /* border-radius: 2; */
   font-family: 'Courier New', monospace;
-  font-size: 13px;
+  font-family: inherit;
+  width: 100%;
+  border: 0;
+  border-bottom: 2px solid #c3c3c3;
+  outline: 0;
+  font-size: 1.3rem;
   color: #60666d;
+  padding: 7px 0;
+  background: transparent;
+  transition: border-color 0.2s;
 }
 
-.select_box__option {
-  display: block;
-  padding: 15px;
-  background-color: #fff;
+.form_input {
+  font-family: inherit;
+  width: 100%;
+  border: 0;
+  border-bottom: 2px solid #c3c3c3;
+  outline: 0;
+  font-size: 1.3rem;
+  color: #60666d;
+  padding: 7px 0;
+  background: transparent;
+  transition: border-color 0.2s;
 }
 
-.select_box__option:hover,
-.select_box__option:focus {
-  color: #546c84;
-  background-color: #fbfbfb;
-}
-
-label {
+.form_input::placeholder {
   font-family: 'Courier New', monospace;
-  font-size: 13px;
+}
+
+.form_input:placeholder-shown~.form_label {
+  font-size: 1.3rem;
+  cursor: text;
+  top: 20px;
+}
+
+.form_label {
+  position: absolute;
+  top: 0;
+  display: block;
+  transition: 0.2s;
+  font-size: 1rem;
+  color: #9b9b9b;
+}
+
+.form_input:focus {
+  border-image: linear-gradient(to right, #967d6a, #ffd7b8);
+  border-image-slice: 1;
+}
+
+.form_input:focus~.form_label {
+  position: absolute;
+  top: 0;
+  display: block;
+  transition: 0.2s;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.form_input:required,
+.form_input:invalid {
+  box-shadow: none;
 }

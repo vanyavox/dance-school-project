@@ -123,19 +123,22 @@ const userSlice = createSlice({
       })
       .addCase(getUser.fulfilled, (state, action) => {
         // state.authChecked = true;
-        console.log(action.payload);
-        state.role = action.payload.user.role;
-        state.email = action.payload.user.email;
-        state.name = action.payload.user.name;
-        state.surname = action.payload.user.surname;
-        state.age = action.payload.user.age;
-        state.phone = action.payload.user.phone;
-        state.id = action.payload.user.id;
-        state.authChecked = action.payload.isLoggedIn;
         if (!action.payload.isLoggedIn) {
-          // state = initialState;
+          state = initialState;
           console.log(state);
+        }else{
+
+          console.log(action.payload);
+          state.role = action.payload.user.role;
+          state.email = action.payload.user.email;
+          state.name = action.payload.user.name;
+          state.surname = action.payload.user.surname;
+          state.age = action.payload.user.age;
+          state.phone = action.payload.user.phone;
+          state.id = action.payload.user.id;
+          state.authChecked = action.payload.isLoggedIn;
         }
+        
       });
   },
 });

@@ -1,3 +1,10 @@
+.main__div{
+    width: 100%;
+    display: flex;
+    margin: auto;
+    justify-content: center;
+    flex-direction: column;
+}
 .form__div{
     display: flex;
     margin: auto;
@@ -29,6 +36,8 @@
 
 .table__img{
     width: 80%;
+    height: 50%;
+    border-radius: 50%;
 }
 
 .table__teachers{

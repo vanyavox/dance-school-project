@@ -12,6 +12,7 @@ import TrialForm from '../features/TrialForm/TrialForm';
 import Map from '../features/Map/Map';
 import About from '../features/About/About';
 import Contacts from '../features/Contacts/Contacts';
+import LessonForm from '../features/Lesson/Lesson';
 import AdminPanel from '../features/AdminPanel/AdminPanel';
 import { initAsyncRequest } from '../features/TrialForm/trialFormSlice';
 import { useAppDispatch } from '../store';
@@ -35,6 +36,7 @@ function App(): JSX.Element {
           <Route path="/map" element={<Map />} />
           <Route path="/about" element={<About />} />
           <Route path="/contacts" element={<Contacts />} />
+          <Route path="/lessons" element={<LessonForm />} />
           <Route path="/admin" element={<AdminPanel />} />
         </Route>
       </Routes>

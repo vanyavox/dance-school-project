@@ -11,8 +11,10 @@ configApp(app)
 const teacherRoute = require('./Routes/apiTeacher')
 const requestRoute = require('./Routes/apiRequest')
 const newsApiRoute = require('./Routes/NewsApiRoute')
+const apiLesson = require('./Routes/apiLesson')
 
 app.use('/api', newsApiRoute)
+app.use('/api/lessons', apiLesson)
 app.use('/api/teachers', teacherRoute)
 app.use('/api/requests', requestRoute)
 

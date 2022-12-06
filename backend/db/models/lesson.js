@@ -35,10 +35,25 @@ module.exports = (sequelize, DataTypes) => {
         key: 'id'
       }
     },
-    day: {
-      type: DataTypes.INTEGER
+    monday: {
+      type: DataTypes.TEXT
     },
-    time: {
+    tuesday: {
+      type: DataTypes.TEXT
+    },
+    wednesday: {
+      type: DataTypes.TEXT
+    },
+    thursday: {
+      type: DataTypes.TEXT
+    },
+    friday: {
+      type: DataTypes.TEXT
+    },
+    saturday: {
+      type: DataTypes.TEXT
+    },
+    sunday: {
       type: DataTypes.TEXT
     },
     lesson_type: {

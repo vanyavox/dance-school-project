@@ -1,5 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { useDispatch } from 'react-redux';
+import lessonSlice from './features/Lesson/lessonSlice';
 import newsSlice from './features/News/newsList/newsSlice';
 import teacherSlice from './features/TeacherList/teacherSlice';
 import trialFormSlice from './features/TrialForm/trialFormSlice';
@@ -9,6 +10,7 @@ const store = configureStore({
     teachers: teacherSlice,
     news: newsSlice,
     requests: trialFormSlice,
+    lessons: lessonSlice,
   },
 });
 

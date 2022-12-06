@@ -4,8 +4,6 @@ const { Student } = require('../db/models')
 
 router.get('/user', async (req, res) => {
   const { user_id } = req.session
-  console.log(req.session)
-  // // console.log(res.locals.user)
   if (user_id) {
     const user = await Student.findOne({ where: { id: user_id } })
     res.json({ user, isLoggedIn: true })

@@ -14,10 +14,6 @@
     min-width: 80%;
 }
 
-.table__main{
-   
-}
-
 .table__header{
     display: flex;
     justify-content: space-around;
@@ -91,6 +87,18 @@
 
 }
 /*admin*/
+.table__day{
+    display: flex;
+}
 
-
+.table__label{
+    width: 150px;
+    height: 10px;
+}
+.table__input{
+width: 120px;
+}
+button{
+    cursor: pointer;
+}
 

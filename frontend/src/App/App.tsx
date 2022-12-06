@@ -8,6 +8,10 @@ import TeacherList from '../features/TeacherList/TeacherList';
 import NewsList from '../features/News/newsList/NewsList';
 import Profile from '../features/Profile/Profile';
 import TeacherProfile from '../features/TeacherProfile/TeacherProfile';
+import Login from '../features/Login/Login';
+import Registration from '../features/Registration/Registration';
+import { useAppDispatch } from '../store';
+import { getUser } from '../features/Registration/userSlice';
 import TrialForm from '../features/TrialForm/TrialForm';
 import Map from '../features/Map/Map';
 import About from '../features/About/About';
@@ -15,12 +19,12 @@ import Contacts from '../features/Contacts/Contacts';
 import LessonForm from '../features/Lesson/Lesson';
 import AdminPanel from '../features/AdminPanel/AdminPanel';
 import { initAsyncRequest } from '../features/TrialForm/trialFormSlice';
-import { useAppDispatch } from '../store';
 
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
   useEffect(() => {
     dispatch(initAsyncRequest());
+    dispatch(getUser());
   }, []);
 
   return (
@@ -32,6 +36,8 @@ function App(): JSX.Element {
           <Route path="/news" element={<NewsList />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="teachers/:id" element={<TeacherProfile />} />
+          <Route path="auth/login" element={<Login />} />
+          <Route path="auth/registration" element={<Registration />} />
           <Route path="/trialform" element={<TrialForm />} />
           <Route path="/map" element={<Map />} />
           <Route path="/about" element={<About />} />

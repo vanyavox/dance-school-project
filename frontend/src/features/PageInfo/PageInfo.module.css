@@ -10,6 +10,9 @@
 }
 
 .btn__trial {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 80%;
   height: 45px;
   border-radius: 45px;
@@ -26,6 +29,8 @@
 }
 
 .btn__trial:hover {
+  display: flex;
+  align-items: center;
   background: #e0ccba;
   box-shadow: 0 15px 20px #b0947e;
   color: white;
@@ -34,7 +39,7 @@
 }
 
 h1 {
-  font-size: 40pt;
+  font-size: 43pt;
   margin: auto;
   color: #4a4a4a;
   font-family: 'Rhythm and Jazz', monospace;
@@ -58,10 +63,11 @@ ul {
 }
 .info_list li {
   position: relative;
-  padding: 20px 0 15px 40px;
-  color: #dfb594;
-  font-variant: small-caps;
+  padding: 23px 0 10px 30px;
+  color: #c69f82;
   cursor: pointer;
+  font-size: 15pt;
+  
 }
 
 .info_list li:before {

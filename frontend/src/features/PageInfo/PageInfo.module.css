@@ -10,29 +10,26 @@
 }
 
 .btn__trial {
-  display: flex;
   align-items: center;
   justify-content: center;
-  width: 80%;
-  height: 45px;
+  height: 55px;
   border-radius: 45px;
-  margin: 20px;
+  margin: 30px;
   font-family: 'Courier New', monospace;
   font-size: 13px;
   text-transform: uppercase;
   text-align: center;
   letter-spacing: 3px;
   color: #524f4e;
-  background: white;
+  background: #fedbbc3f;
   box-shadow: 0 8px 15px rgba(0, 0, 0, .1);
   transition: .3s;
 }
 
 .btn__trial:hover {
-  display: flex;
   align-items: center;
-  background: #e0ccba;
-  box-shadow: 0 15px 20px #b0947e;
+  background: #c4a991;
+  box-shadow: 0 15px 20px #967d6a;
   color: white;
   font-size: 15px;
   transform: translateY(-7px);
@@ -64,7 +61,7 @@ ul {
 .info_list li {
   position: relative;
   padding: 23px 0 10px 30px;
-  color: #c69f82;
+  color: #9a8171;
   cursor: pointer;
   font-size: 15pt;
   
@@ -75,7 +72,7 @@ ul {
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  background: #c29d80;
+  background: #8f735e;
   content: "";
   left: 0;
   transition: .3s ease-in-out;
@@ -94,7 +91,7 @@ ul {
 .info_list li:last-child:after {content: none;}
 
 .buttons {
-  width: 30%;
+  width: 50%;
   margin: auto;
 }
 

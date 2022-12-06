@@ -7,7 +7,6 @@ function PageInfo(): JSX.Element {
       <div className={style.info_page}>
         <div>
           <h1>Клуб бальных танцев</h1>
-          <h1 className={style.h1__logo}>К2</h1>
           <ul className={style.info_list}>
             <li>Помогаем воспитывать характер и достигать своих целей</li>
             <li>Программы обучения для профессионалов и любителей от 2 до 16 лет</li>

@@ -24,3 +24,82 @@
   border-bottom: 1px solid black;
   width: 100%;
 }
+
+.modal {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.403);
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.5s;
+}
+
+.modal_content {
+  padding: 20px;
+  border-radius: 10px;
+  background-color: white;
+  height: 400px;
+  transform: scale(0.5);
+  transition: 0.4s all;
+}
+
+.modal.active {
+  opacity: 1;
+  transform: scale(1);
+  pointer-events: all;
+}
+
+.modal_content.active {
+  transform: scale(1);
+}
+
+.modal_form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  position: relative;
+  background-color: #f0f0f048;
+  border-radius: 15px;
+  margin-top: 10px;
+}
+
+.modal_form > button {
+  width: 50px;
+  padding: 5px;
+}
+
+.btn_add {
+  background-color: #3CB371;
+  padding: 8px;
+}
+
+form {
+  width: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: auto;
+}
+
+.btn_add_new {
+  padding: 5px;
+}
+
+.btn_add_new_save {
+  padding: 5px;
+  background-color: #3CB371;
+}
+
+.btn_unautorized {
+  padding: 2px;
+  font-size: 10pt;
+  margin-left: 5px;
+}

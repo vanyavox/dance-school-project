@@ -29,7 +29,7 @@ router
       date,
       time
     })
-    res.status(200).json({ message: 'Произошла запись', status: newRequest })
+    res.status(200).json({ message: 'Произошла запись', newreq: newRequest })
   })
   .delete('/:id', async (req, res) => {
     try {

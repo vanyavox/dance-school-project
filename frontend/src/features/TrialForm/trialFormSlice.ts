@@ -36,7 +36,7 @@ const trialFormSlice = createSlice({
   initialState,
   reducers: {
     addRequest: (state, action) => {
-      state.requests.push(action.payload);
+      state.requests.push(action.payload.status);
     },
     initRequest: (state, action) => {
       state.requests = action.payload;
@@ -48,15 +48,12 @@ const trialFormSlice = createSlice({
         state.requests = action.payload;
       })
       .addCase(addAsyncRequest.fulfilled, (state, action) => {
-        state.requests.push(action.payload);
+        state.requests.push(action.payload.newreq);
       })
       .addCase(deleteAsyncRequest.fulfilled, (state, action) => {
         state.requests = state.requests.filter((req) => req.id !== Number(action.payload));
       })
       .addCase(changeAsyncRequest.fulfilled, (state, action) => {
-        console.log(action.payload);
-        console.log(state.requests);
-
         state.requests = state.requests.map((req) => {
           if (req.id === action.payload.id) {
             return {

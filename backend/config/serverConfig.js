@@ -9,13 +9,13 @@ const sessionConfig = require('./sessionConfig')
 
 function configApp(app) {
   app.use(express.urlencoded({ extended: true }))
+  app.use(getUser)
   app.use(cors({ origin: ['http://localhost:3000'], credentials: true }))
   app.use(express.json())
   app.use(cookieParser())
   app.use(session(sessionConfig))
   app.use(morgan('dev'))
   app.use(express.static('public'))
-  app.use(getUser)
 }
 
 module.exports = configApp

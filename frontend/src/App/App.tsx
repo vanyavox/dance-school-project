@@ -25,7 +25,7 @@ function App(): JSX.Element {
   useEffect(() => {
     dispatch(initAsyncRequest());
     dispatch(getUser());
-  }, []);
+  }, [dispatch]);
 
   return (
     <>

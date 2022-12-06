@@ -1,9 +1,8 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useSelector } from 'react-redux';
-import { RootState, useAppDispatch } from '../../store';
+import { RootState } from '../../store';
 import style from './AdminPanel.module.css';
 import Request from './Request/RequestProcessing';
-import { initAsyncRequest } from '../TrialForm/trialFormSlice';
 import Req from './Request/types/Request';
 
 function AdminPanel(): JSX.Element {

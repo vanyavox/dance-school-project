@@ -3,20 +3,25 @@ import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import userEvent from '@testing-library/user-event';
+import { Phone } from '@mui/icons-material';
 import { RootState, useAppDispatch } from '../../store';
 import { addAsyncTeachers } from '../TeacherList/teacherSlice';
 import style from './TeacherProfile.module.css';
 import { NewRequest } from './types/state';
 
 function TeacherProfile(): JSX.Element {
+  const { teachers } = useSelector((state: RootState) => state.teachers);
+  const { name, phone } = useSelector((state: RootState) => state.user);
+  const user = useSelector((state: RootState) => state.user);
 
-  // const { user } = useSelector((state: RootState) => state.user);
-  const [teacher, setTeacher] = useState({ name: '', photo: '', surname: '', direction: '', experience: '', description: '' });
   const { id } = useParams();
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
-    fetch(`http://localhost:4000/api/teachers/${id}`).then((data) => data.json()).then((res) => setTeacher(res));
-  }, []);
+    dispatch(addAsyncTeachers());
+  }, [dispatch]);
+  const currentTeacher = teachers.filter((teacher) => teacher.id === Number(id));
+  const teacher = currentTeacher[0];
 
   // modal dialog
   const [active, setActive] = useState(false);
@@ -38,10 +43,6 @@ function TeacherProfile(): JSX.Element {
     setModal((prev: boolean) => !prev);
   }
 
-  // const { isLoggedIn } = props;
-
-  // if (isLoggedIn) {
-
   return (
     modal ? (
       <>
@@ -55,7 +56,7 @@ function TeacherProfile(): JSX.Element {
             <div>Направление: {teacher.direction}</div>
             <div>Опыт работы: {teacher.experience}</div>
             <div>{teacher.description}</div>
-            <button type="button" onClick={toogle}>Записаться</button>
+            {user.authChecked && (<button type="button" onClick={toogle}>Записаться</button>)}
           </div>
         </div>
       </>
@@ -65,10 +66,9 @@ function TeacherProfile(): JSX.Element {
         <form onSubmit={handleSubmit(onSubmit)} className={style.modal_form}>
           <div className={style.form__div}>
             <label htmlFor="name">Ваше имя</label>
-            <input {...register('name')} name="name" type="text" placeholder="Ваше имя" value={'user'} />
-            
+            <input {...register('name')} name="name" type="text" placeholder="Ваше имя" value={name} />
             <label htmlFor="phone">Телефон для связи</label>
-            <input {...register('phone')} type="tel" name="phone" list="tel-list" placeholder="+7 (XXX) XXX-XX-XX" pattern="\+7\s?[\(]{0,1}9[0-9]{2}[\)]{0,1}\s?\d{3}[-]{0,1}\d{2}[-]{0,1}\d{2}" />
+            <input {...register('phone')} type="tel" name="phone" list="tel-list" placeholder="+7 (XXX) XXX-XX-XX" pattern="\+7\s?[\(]{0,1}9[0-9]{2}[\)]{0,1}\s?\d{3}[-]{0,1}\d{2}[-]{0,1}\d{2}" value={phone} />
             <label htmlFor="lesson_type">Направление</label>
             <select {...register('lesson_type')} name="lesson_type">
               <option value="Латина">Латина</option>
@@ -88,8 +88,6 @@ function TeacherProfile(): JSX.Element {
       </div>
     )
   );
-
-  // return <div />;
 }
 
 export default TeacherProfile;

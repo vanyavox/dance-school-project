@@ -12,7 +12,7 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { RootState, useAppDispatch } from '../../store';
-import { clearLoginError, clearPasswordError, registration } from './userSlice';
+import { clearEmailError, clearLoginError, clearPasswordError, registration } from './userSlice';
 
 const theme = createTheme();
 
@@ -24,13 +24,14 @@ function Registration(): JSX.Element {
   const [userEmail, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [passwordRepit, setRepitPassword] = useState('');
+  const [userPhone, setPhone] = useState('');
   const { emailError, passwordError, name, loginError, authChecked } = useSelector((state: RootState) => state.user);
   console.log(name, authChecked);
 
   const handleSubmit = (event: React.FormEvent): void => {
     event.preventDefault();
     // console.log(userEmail);
-    dispatch(registration({ name: userName, email: userEmail, password, passwordRepit }));
+    dispatch(registration({ name: userName, email: userEmail, password, passwordRepit, userPhone }));
   };
   useEffect(() => {
     if (name.length > 0) {
@@ -41,6 +42,11 @@ function Registration(): JSX.Element {
   const handleEmailChange = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(event.target.value);
     dispatch(clearLoginError());
+  }, [dispatch]);
+
+  const handlePhoneChange = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
+    setPhone(event.target.value);
+    dispatch(clearEmailError());
   }, [dispatch]);
 
   const handlePasswordChange = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
@@ -126,6 +132,21 @@ function Registration(): JSX.Element {
                   autoComplete="new-password"
                   helperText={passwordError}
                   error={!!passwordError}
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  value={userPhone}
+                  onChange={handlePhoneChange}
+                  autoComplete="given-phone"
+                  name="phone"
+                  required
+                  fullWidth
+                  id="phone"
+                  label="Phone"
+                  autoFocus
+                  helperText={emailError}
+                  error={!!emailError}
                 />
               </Grid>
             </Grid>

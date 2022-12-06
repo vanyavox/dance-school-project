@@ -10,11 +10,13 @@ function TrialForm(): JSX.Element {
   const handleAdd = (trialUser: NewRequest): void => {
     dispatch(addAsyncRequest(trialUser));
   };
+
   const { register, handleSubmit } = useForm<NewRequest>();
 
   const onSubmit = (data: NewRequest): void => {
     handleAdd(data);
   };
+
   return (
     <div className={style.trial__form}>
       <form onSubmit={handleSubmit(onSubmit)}>
@@ -33,8 +35,8 @@ function TrialForm(): JSX.Element {
           <input {...register('date')} name="date" type="date" placeholder="Ваше имя" />
           <label htmlFor="time">Выбрать время</label>
           <input {...register('time')} name="time" type="time" placeholder="Ваше имя" />
+          <button className={style.btn__reg} type="submit">Записаться</button>
         </div>
-        <button className={style.btn__reg} type="submit">Записаться</button>
       </form>
 
     </div>

@@ -9,17 +9,14 @@ import style from './TeacherProfile.module.css';
 import { NewRequest } from './types/state';
 
 function TeacherProfile(): JSX.Element {
-  const { teachers } = useSelector((state: RootState) => state.teachers);
-  // const { user } = useSelector((state: RootState) => state.user);
 
+  // const { user } = useSelector((state: RootState) => state.user);
+  const [teacher, setTeacher] = useState({ name: '', photo: '', surname: '', direction: '', experience: '', description: '' });
   const { id } = useParams();
-  const dispatch = useAppDispatch();
 
   useEffect(() => {
-    dispatch(addAsyncTeachers());
-  }, [dispatch]);
-  const currentTeacher = teachers.filter((teacher) => teacher.id === Number(id));
-  const teacher = currentTeacher[0];
+    fetch(`http://localhost:4000/api/teachers/${id}`).then((data) => data.json()).then((res) => setTeacher(res));
+  }, []);
 
   // modal dialog
   const [active, setActive] = useState(false);

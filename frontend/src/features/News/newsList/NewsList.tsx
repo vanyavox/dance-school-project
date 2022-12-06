@@ -50,7 +50,7 @@ function NewsList(): JSX.Element {
               <form onSubmit={handleSubmit(onSubmit)}>
                 <input {...register('title')} placeholder="Название" />
                 <br />
-                <textarea rows={10} {...register('description')} placeholder="Описание"/>
+                <textarea rows={10} {...register('description')} placeholder="Описание" />
                 <br />
                 <input {...register('image')} placeholder="Ссылка на картинку" />
                 <br />

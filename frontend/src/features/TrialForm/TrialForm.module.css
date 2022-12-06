@@ -20,6 +20,8 @@
   padding-left: 10px;
   display: flex;
   flex-direction: column;
+  width: 400px;
+  margin: auto;
 }
 
 input {
@@ -31,13 +33,18 @@ input {
 select {
   padding: 5px;
   font-size: 14pt;
+  width: 414px;
 }
 
 form {
   font-size: 14pt;
+  margin: auto;
 }
 
 .btn__reg {
   padding: 15px;
-  margin: 10px;
+  width: 300px;
+  margin: auto;
+  margin-top: 5px;
+  margin-bottom: 5px;
 }

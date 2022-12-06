@@ -24,7 +24,7 @@ function Header(): JSX.Element {
         <NavLink to="/">
           Направления
         </NavLink>
-        <NavLink to="/">
+        <NavLink to="/lessons">
           Расписание
         </NavLink>
         <div className={style.header__login}>

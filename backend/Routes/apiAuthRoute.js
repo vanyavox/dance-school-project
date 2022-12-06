@@ -3,10 +3,10 @@ const bcrypt = require('bcrypt')
 const { Student } = require('../db/models')
 
 router.get('/user', async (req, res) => {
-  const { user } = res.locals
-  // console.log(res.locals.user.id)
-  // const user = await Student.findOne({ where: { id: res.locals.user.id } })
-  console.log(user);
+  const { user_id } = req.session
+  console.log(req.session)
+  const user = await Student.findOne({ where: { id: user_id } })
+  // // console.log(res.locals.user)
   if (user) {
     res.json({ user, isLoggedIn: true })
   } else {
@@ -40,7 +40,7 @@ router.post('/registration', async (req, res) => {
         return
       }
     } else {
-      res.json({ status: 'error', message: 'Заполните все поля' })
+      res.json({ status: 'error empty', message: 'Заполните все поля' })
     }
   } catch (error) {
     console.log(error.message)

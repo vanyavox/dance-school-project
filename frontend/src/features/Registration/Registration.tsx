@@ -129,7 +129,6 @@ function Registration(): JSX.Element {
                 />
               </Grid>
             </Grid>
-
             <Button
               type="submit"
               fullWidth

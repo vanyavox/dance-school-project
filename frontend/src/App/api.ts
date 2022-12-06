@@ -35,8 +35,7 @@ export const updateprofile = async (user: User): Promise<User> => {
   return res.json();
 };
 
-export async function getuser(): Promise<
-  | { isLoggedIn: true; user: User; } | { isLoggedIn: false; }> {
-  const res = await fetch('http://localhost:4000/api/auth/user');
+export async function getuser(): Promise<{ isLoggedIn: boolean; user: User; }> {
+  const res = await fetch('http://localhost:4000/api/auth/user', { credentials: 'include' });
   return res.json();
 }

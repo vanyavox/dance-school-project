@@ -42,16 +42,7 @@ const userSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(registration.fulfilled, (state, action) => {
-        if (action.payload.user) {
-          state.email = action.payload.user.email;
-          state.name = action.payload.user.name;
-          state.id = action.payload.user.id;
-          state.authChecked = true;
-          state.emailError = '';
-          state.loginError = '';
-          state.passwordError = '';
-          return;
-        }
+        
         if (action.payload.status === 'error login') {
           state.loginError = action.payload.message;
           state.emailError = '';
@@ -63,6 +54,20 @@ const userSlice = createSlice({
         if (action.payload.status === 'error confirm') {
           state.passwordError = action.payload.message;
           state.emailError = '';
+        }
+        if (action.payload.status === 'error empty') {
+          state.loginError = action.payload.message;
+          state.emailError = '';
+        }
+        if (action.payload.user) {
+          state.email = action.payload.user.email;
+          state.name = action.payload.user.name;
+          state.id = action.payload.user.id;
+          state.authChecked = true;
+          state.emailError = '';
+          state.loginError = '';
+          state.passwordError = '';
+          return;
         }
       })
       .addCase(registration.rejected, (state, action) => {
@@ -82,8 +87,12 @@ const userSlice = createSlice({
           return;
         }
         if (action.payload.user) {
+          state.role = action.payload.user.role;
           state.email = action.payload.user.email;
           state.name = action.payload.user.name;
+          state.surname = action.payload.user.surname;
+          state.age = action.payload.user.age;
+          state.phone = action.payload.user.phone;
           state.id = action.payload.user.id;
           state.authChecked = true;
           state.emailError = '';
@@ -104,6 +113,7 @@ const userSlice = createSlice({
       })
       .addCase(update.fulfilled, (state, action) => {
         if (action.payload) {
+          console.log(action.payload);
           state.email = action.payload.email;
           state.name = action.payload.name;
           state.surname = action.payload.surname;
@@ -114,9 +124,16 @@ const userSlice = createSlice({
       .addCase(getUser.fulfilled, (state, action) => {
         // state.authChecked = true;
         console.log(action.payload);
+        state.role = action.payload.user.role;
+        state.email = action.payload.user.email;
+        state.name = action.payload.user.name;
+        state.surname = action.payload.user.surname;
+        state.age = action.payload.user.age;
+        state.phone = action.payload.user.phone;
+        state.id = action.payload.user.id;
         state.authChecked = action.payload.isLoggedIn;
         if (!action.payload.isLoggedIn) {
-          state = initialState;
+          // state = initialState;
           console.log(state);
         }
       });

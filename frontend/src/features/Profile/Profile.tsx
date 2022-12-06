@@ -106,6 +106,7 @@ function Profile(): JSX.Element {
             onChange={(event) => setUserName(event.target.value)}
             autoComplete="given-name"
             name="name"
+            defaultValue={name}
             required
             fullWidth
             id="firstName"

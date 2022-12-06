@@ -27,11 +27,9 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.TEXT
     },
     surname: {
-      allowNull: false,
       type: DataTypes.TEXT
     },
     age: {
-      allowNull: false,
       type: DataTypes.INTEGER
     },
     email: {
@@ -44,7 +42,6 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.TEXT
     },
     phone: {
-      allowNull: false,
       type: DataTypes.TEXT
     },
     role: {

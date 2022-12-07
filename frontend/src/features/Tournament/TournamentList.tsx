@@ -26,18 +26,18 @@ function TournamentList(): JSX.Element {
       <div>
         {role === 'admin' && authChecked === true && (
           <div>
-            <button type="button" onClick={handleOpen}>Добавить соревнование</button>
+            <button type="button" onClick={handleOpen} className={style.tournament__button}>Добавить соревнование</button>
             {active &&
              (
 
             <form onSubmit={handleSubmit(onSubmit)}>
-            <p>Название турнира</p>
-            <input {...register('tour_name')} type="text" required autoComplete="off" name="tour_name" placeholder="Введите название турнира" />
-            <p>Место проведения</p>
-            <input {...register('place')} type="text" required autoComplete="off" name="place" placeholder="Место турнира" />
-            <p>Дата проведения</p>
-            <input {...register('date')} type="date" name="date" placeholder="Введите дату" />
-            <button type="submit">Сохранить</button>
+            <p className={style.tournament__p}>Название турнира</p>
+            <input {...register('tour_name')} type="text" className={style.tournament__input} placeholder="Введите название турнира" />
+            <p className={style.tournament__p}>Место проведения</p>
+            <input {...register('place')} type="text" className={style.tournament__input} placeholder="Место турнира" />
+            <p className={style.tournament__p}>Дата проведения</p>
+            <input {...register('date')} type="date" className={style.tournament__input} placeholder="Введите дату" />
+            <button type="submit" className={style.tournament__button}>Сохранить</button>
             </form>
              )}
           </div>

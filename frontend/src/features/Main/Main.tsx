@@ -3,11 +3,13 @@ import PageInfo from '../PageInfo/PageInfo';
 import SwiperList from '../Swiper/SwiperList';
 import TrialForm from '../TrialForm/TrialForm';
 import YandexMaps from '../yandexMaps/YandexMaps';
+import BasicModal from './Video';
 
 function MainPage(): JSX.Element {
   return (
     <div>
       <SwiperList />
+      <BasicModal />
       <PageInfo />
       <YandexMaps />
       <TrialForm />

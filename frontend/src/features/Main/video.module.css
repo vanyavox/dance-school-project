@@ -24,3 +24,10 @@
   font-size: 15px;
   transform: translateY(-1px);
 }
+
+
+.video__div{
+
+  display: flex;
+  justify-content: center;
+}

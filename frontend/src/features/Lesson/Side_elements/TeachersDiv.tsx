@@ -30,7 +30,7 @@ function TeachersDiv({ teacher }: { teacher: Teacher }):JSX.Element {
               <p className={style.teacher__p}>Cтаж: {teacher.experience}</p>
               <p className={style.teacher__p}> Направление: {teacher.direction}</p>
               </div>
-              <button type="button" className={style.button__teacher}>Записаться</button>
+              <button type="button" className={style.btn__trial}>Записаться</button>
           </div>
       {
           lessons.map((lesson) => teacher.id === lesson.teacher_id && (

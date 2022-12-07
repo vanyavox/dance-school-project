@@ -2,6 +2,7 @@ const morgan = require('morgan')
 const session = require('express-session')
 const cookieParser = require('cookie-parser')
 const express = require('express')
+const upload = require('express-fileupload')
 const cors = require('cors')
 const getUser = require('../middlewares/getUser')
 
@@ -16,6 +17,7 @@ function configApp(app) {
   app.use(session(sessionConfig))
   app.use(morgan('dev'))
   app.use(express.static('public'))
+  app.use(upload())
 }
 
 module.exports = configApp

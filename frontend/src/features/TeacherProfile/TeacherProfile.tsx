@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import userEvent from '@testing-library/user-event';
@@ -14,9 +13,10 @@ import { addAsyncRequest } from '../TrialForm/trialFormSlice';
 
 
 function TeacherProfile(): JSX.Element {
-
   const dispatch = useAppDispatch();
 
+  const [teacher, setTeacher] = useState({ name: '', photo: '', surname: '', direction: '', experience: '', description: '' });
+  
   const { teachers } = useSelector((state: RootState) => state.teachers);
   const { name, phone } = useSelector((state: RootState) => state.user);
   const user = useSelector((state: RootState) => state.user);
@@ -24,13 +24,11 @@ function TeacherProfile(): JSX.Element {
   const { id } = useParams();
 
 
-  useEffect(() => {
-    dispatch(addAsyncTeachers());
-  }, [dispatch]);
-  const currentTeacher = teachers.filter((teacher) => teacher.id === Number(id));
-  const teacher = currentTeacher[0];
+ useEffect(() => {
+    fetch(`http://localhost:4000/api/teachers/${id}`).then((data) => data.json()).then((res) => setTeacher(res));
+  }, []);
 
-  // modal dialog
+
   const [active, setActive] = useState(false);
   const { register, handleSubmit } = useForm<NewRequest>();
 
@@ -41,8 +39,6 @@ function TeacherProfile(): JSX.Element {
       setModal((prev: boolean) => !prev);
       setActive(false)
     }, 2000);
-
-
   };
 
   const [modal, setModal] = useState(true);
@@ -74,7 +70,7 @@ function TeacherProfile(): JSX.Element {
         <form onSubmit={handleSubmit(onSubmit)} className={style.modal_form}>
           <div className={style.form__div}>
             <label htmlFor="name">Ваше имя</label>
-            <input {...register('name')} name="name" type="text" placeholder="Ваше имя" value={name} />
+            <input {...register('name')} name="name" type="text" placeholder="Ваше имя" value="user" />
             <label htmlFor="phone">Телефон для связи</label>
             <input {...register('phone')} type="tel" name="phone" list="tel-list" placeholder="+7 (XXX) XXX-XX-XX" pattern="\+7\s?[\(]{0,1}9[0-9]{2}[\)]{0,1}\s?\d{3}[-]{0,1}\d{2}[-]{0,1}\d{2}" value={phone} />
             <label htmlFor="lesson_type">Направление</label>

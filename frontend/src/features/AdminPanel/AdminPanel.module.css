@@ -1,5 +1,5 @@
 .main__block {
-  width: 80%;
+  width: 90%;
   margin: auto;
   font-size: 16pt;
 }
@@ -13,7 +13,7 @@
 
 .requests_block {
   border: 1px solid rgba(129, 129, 129, 0.205);
-  width: 40%;
+  width: 45%;
   padding: 10px;
   background-color: #cecdcd33;
 }
@@ -26,32 +26,22 @@
 }
 
 .modal {
-  width: 100%;
-  height: 100%;
   background-color: rgba(0, 0, 0, 0.403);
-  position: fixed;
-  top: 0;
-  left: 0;
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
   opacity: 0;
   pointer-events: none;
-  transition: 0.5s;
 }
 
 .modal_content {
   padding: 20px;
   border-radius: 10px;
   background-color: white;
-  height: 400px;
-  transform: scale(0.5);
-  transition: 0.4s all;
 }
 
 .modal.active {
   opacity: 1;
-  transform: scale(1);
   pointer-events: all;
 }
 
@@ -61,11 +51,9 @@
 
 .modal_form {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 40px;
-  position: relative;
+  flex-direction: row;
+  justify-content: flex-start;
+  flex-wrap: wrap;
   background-color: #f0f0f048;
   border-radius: 15px;
   margin-top: 10px;
@@ -83,10 +71,7 @@
 
 form {
   width: auto;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin: auto;
+  margin-bottom: auto;
 }
 
 .btn_add_new {
@@ -99,7 +84,24 @@ form {
 }
 
 .btn_unautorized {
-  padding: 2px;
+  padding: 4px;
   font-size: 10pt;
   margin-left: 5px;
+}
+
+h3 {
+  vertical-align: middle;
+}
+
+.teachers_block {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: stretch;
+  flex-wrap: wrap;
+  background-color: #cecdcd33;
+  width: 91.3%;
+  margin: auto;
+  padding: 5px;
+  border: 1px solid rgba(129, 129, 129, 0.205);
 }

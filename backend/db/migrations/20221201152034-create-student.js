@@ -34,6 +34,9 @@ module.exports = {
       role: {
         type: Sequelize.TEXT
       },
+      image: {
+        type: Sequelize.TEXT
+      },
       partner_id: {
         type: Sequelize.INTEGER
       },

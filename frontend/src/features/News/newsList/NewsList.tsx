@@ -13,10 +13,6 @@ function NewsList(): JSX.Element {
   const { authChecked, role } = useSelector((state: RootState) => state.user);
   const dispatch = useAppDispatch();
 
-  useEffect(() => {
-    dispatch(loadAsyncNews());
-  }, []);
-
   // delete news item
   const handleRemove = (newsToDelete: News): void => {
     dispatch(deleteNews(newsToDelete.id));
@@ -44,7 +40,10 @@ function NewsList(): JSX.Element {
   return (
     <div className={style.news_list}>
       {role === 'admin' &&
-      (<button type="button" onClick={handleOpen}>Добавить  Новость / Анонс</button>)}
+      (<button type="button" onClick={handleOpen} className={style.news_button}>Добавить  Новость / Анонс</button>)}
+
+      
+
       {active && (
         <div className={active ? 'modal active' : 'modal'} onClick={() => setActive(false)}>
           <div className={active ? 'modal_content active' : 'modal_content'} onClick={(e) => e.stopPropagation()}>
@@ -58,9 +57,7 @@ function NewsList(): JSX.Element {
                 <br />
                 <input {...register('news_type')} placeholder="Тип события: Новость/ Анонс Турнира" />
                 <br />
-
-                <button className={style.btn_add} type="submit">Добавить</button>
-
+                <button className={style.button_add} type="submit">Добавить</button>
               </form>
             </div>
           </div>

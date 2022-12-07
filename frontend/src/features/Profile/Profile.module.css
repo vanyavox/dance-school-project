@@ -7,3 +7,17 @@
   justify-content: center;
   align-items: center;
 }
+
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: 0 -40px;
+}
+
+.list{
+  margin: 0 40px;
+}
+.item{
+  margin-top: 18px;
+}

@@ -1,23 +1,24 @@
-.swiper {
-  width: 100%;
-  padding-top: 50px;
-  padding-bottom: 50px;
-}
-
 .swiper__slide {
-  background-position: center;
-  background-size: cover;
-  margin: auto;
+  position: relative;
+  transform: scale(0.84);
+  transition: all 0.3s ease-in-out;
+  overflow: hidden;
+  border-radius: 0.4285rem;
 }
 
 .swiper__slide img {
   display: block;
-  width: 82%;
+  width: 100%;
   height: auto;
   margin: auto;
 }
 
 .swiper__content {
-  width: 80%;
+  width: 85%;
   margin: auto;
+  margin-top: 2em;
+  margin-bottom: 2em;
+  display: flex;
+  align-items: center;
 }
+

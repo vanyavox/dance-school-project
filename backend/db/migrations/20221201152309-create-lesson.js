@@ -18,6 +18,7 @@ module.exports = {
         onDelete: 'CASCADE'
       },
       student_id: {
+        allowNull: false,
         type: Sequelize.INTEGER,
         references: {
           model: 'Students',

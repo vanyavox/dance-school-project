@@ -7,9 +7,14 @@ import { RootState, useAppDispatch } from '../../store';
 import { addAsyncTeachers } from '../TeacherList/teacherSlice';
 import style from './TeacherProfile.module.css';
 import { NewRequest } from './types/state';
+import { addAsyncRequest } from '../TrialForm/trialFormSlice';
+
+
+
 
 function TeacherProfile(): JSX.Element {
-  // const { user } = useSelector((state: RootState) => state.user);
+  const dispatch = useAppDispatch();
+
   const [teacher, setTeacher] = useState({ name: '', photo: '', surname: '', direction: '', experience: '', description: '' });
   
   const { teachers } = useSelector((state: RootState) => state.teachers);
@@ -17,24 +22,23 @@ function TeacherProfile(): JSX.Element {
   const user = useSelector((state: RootState) => state.user);
 
   const { id } = useParams();
-  const dispatch = useAppDispatch();
+
 
  useEffect(() => {
     fetch(`http://localhost:4000/api/teachers/${id}`).then((data) => data.json()).then((res) => setTeacher(res));
   }, []);
 
-  // modal dialog
+
   const [active, setActive] = useState(false);
-  const handleOpen = (): void => setActive(!active);
-  const handleClose = (): void => setActive(!active);
-  // const handleAdd = (trialUser: NewRequest): void => {
-  //   dispatch(addAsyncRequest(trialUser));
-  // };
   const { register, handleSubmit } = useForm<NewRequest>();
 
-  const onSubmit = (data: NewRequest): void => {
-    // handleAdd(data);
-    handleClose();
+  const onSubmit = (trialUser: NewRequest): void => {
+    dispatch(addAsyncRequest(trialUser));
+    setActive(true)
+    setTimeout(() => {
+      setModal((prev: boolean) => !prev);
+      setActive(false)
+    }, 2000);
   };
 
   const [modal, setModal] = useState(true);
@@ -80,9 +84,10 @@ function TeacherProfile(): JSX.Element {
             <label htmlFor="time">Выбрать время</label>
             <input {...register('time')} name="time" type="time" placeholder="Ваше имя" />
           </div>
-          <button className={style.btn__reg} onClick={handleOpen} type="submit">Записаться</button>
+          <button className={style.btn__reg} type="submit">Записаться</button>
+          {active && <div>Hello</div>}
           <br />
-          <button className={style.btn__reg} onClick={toogle} type="submit">Назад</button>
+          <button className={style.btn__reg} onClick={toogle} type="button">Назад</button>
         </form>
 
       </div>

@@ -98,7 +98,7 @@ const userSlice = createSlice({
           state.age = action.payload.user.age;
           state.phone = action.payload.user.phone;
           state.id = action.payload.user.id;
-          state.image = action.payload.user.image;
+          state.image = `/upload/${action.payload.user.image}`
           state.authChecked = true;
           state.emailError = '';
           state.loginError = '';
@@ -115,7 +115,6 @@ const userSlice = createSlice({
           state.phone = '';
           state.role = '';
           state.image = '';
-          console.log(state);
         }
       })
       .addCase(update.fulfilled, (state, action) => {
@@ -139,7 +138,7 @@ const userSlice = createSlice({
           state.age = action.payload.user.age;
           state.phone = action.payload.user.phone;
           state.id = action.payload.user.id;
-          state.image = action.payload.user.image
+          state.image = `/upload/${action.payload.user.image}`
           state.authChecked = action.payload.isLoggedIn;
         }
       })

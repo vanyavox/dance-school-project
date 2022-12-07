@@ -5,6 +5,8 @@ import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Snackbar from '@mui/material/Snackbar';
+import EditIcon from '@mui/icons-material/Edit';
+import Fab from '@mui/material/Fab';
 import Stack from '@mui/material/Stack';
 import MuiAlert, { AlertProps } from '@mui/material/Alert';
 import { useForm } from 'react-hook-form';
@@ -20,6 +22,7 @@ const Alert = React.forwardRef<HTMLDivElement, AlertProps>((
 
 function Profile(): JSX.Element {
   const [images, setImages] = useState([]);
+  const [show, setShow] = useState(false);
   const [open, setOpen] = useState(false);
   const { email, name, surname, age, phone, image } = useSelector((state: RootState) => state.user);
   const [nameUser, setUserName] = useState(name);
@@ -55,102 +58,144 @@ function Profile(): JSX.Element {
 
   return (
     <div className={style.profile}>
-      <Avatar
-        alt="avatar"
-        src={url || ''}
-        sx={{ width: 200, height: 200 }}
-      />
-      <Input
-        value=""
-        name="avatar"
-        type="file"
-        onChange={handleChangleFile}
-        required
-      />
-      <br />
-      <Box
-        sx={{
-          width: 500,
-          maxWidth: '100%',
-        }}
-      >
-        <form onSubmit={handleSubmit(onSubmit)}>
-
-          <TextField
-            value={nameUser || ''}
-            {...register('name')}
-            onChange={(event) => setUserName(event.target.value)}
-            name="name"
-            defaultValue={name}
-            required
-            fullWidth
-            id="firstName"
-            label="Имя"
-            autoFocus
-          />
+      {!show && (
+        <>
+          <span><h2>Мой профиль</h2></span>
           &nbsp;
-          <TextField
-            value={surnameUser || ''}
-            {...register('surname')}
-            onChange={(event) => setSurnameUser(event.target.value)}
-            name="surname"
-            required
-            fullWidth
-            id="secondName"
-            label="Фамилия"
-            autoFocus
-          />
-          &nbsp;
-          <TextField
-            value={ageUser || ''}
-            {...register('age')}
-            onChange={(event) => setAgeUser(Number(event.target.value))}
-            name="age"
-            required
-            fullWidth
-            id="age"
-            label="Возраст"
-            autoFocus
-          />
-          &nbsp;
-          <TextField
-            value={emailUser || ''}
-            {...register('email')}
-            onChange={(event) => setEmailUser(event.target.value)}
-            name="email"
-            required
-            fullWidth
-            id="email"
-            label="Email"
+          <div className="container">
+            <div>
+              <Avatar
+                alt="avatar"
+                src={url || ''}
+                sx={{ width: 200, height: 200 }}
+              />
+            </div>
+            <div className="iformation">
+              <h2>
+                <div>Имя: {name}</div>
+                <div>Фамилия: {surname}</div>
+                <div>Возраст: {age}</div>
+                <div>Email: {email}</div>
+                <div>Телефон: {phone}</div>
+                <div>Партнер по танцам: </div>
+                <div>Рейтинговые очки: </div>
+              </h2>
+            </div>
+          </div>
+          <Fab color="secondary" aria-label="edit">
+            <EditIcon type="button" onClick={() => setShow((p) => !p)} />
+          </Fab>
 
-          />
-          &nbsp;
-          <TextField
-            fullWidth
-            label="Телефон"
-            required
-            id="phone"
-            type="tel"
-            placeholder="+7 (xxx) xxx-xx-xx"
-            pattern="\+7\s?[\(]{0,1}9[0-9]{2}[\)]{0,1}\s?\d{3}[-]{0,1}\d{2}[-]{0,1}\d{2}"
-            value={phoneUser || ''}
-            {...register('phone')}
-            onChange={(event) => setPhonelUser(event.target.value)}
-          />
+        </>
+      )}
+      {
+        show && (
+          <>
+            <Avatar
+              alt="avatar"
+              src={url || ''}
+              sx={{ width: 200, height: 200 }}
+            />
+            <Input
+              value=""
+              name="avatar"
+              type="file"
+              onChange={handleChangleFile}
+              required
+            />
+            <br />
+            <Box
+              sx={{
+                width: 500,
+                maxWidth: '100%',
+              }}
+            >
+              <form onSubmit={handleSubmit(onSubmit)}>
 
-          <Button
-            variant="contained"
-            type="submit"
-          >Сохранить изменения
-          </Button>
-        </form>
-        <Snackbar open={open} autoHideDuration={5000} onClose={handleClose}>
-          <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
-            Данные профиля успешно сохранены!
-          </Alert>
-        </Snackbar>
-      </Box>
+                <TextField
+                  value={nameUser || ''}
+                  {...register('name')}
+                  onChange={(event) => setUserName(event.target.value)}
+                  name="name"
+                  defaultValue={name}
+                  required
+                  fullWidth
+                  id="firstName"
+                  label="Имя"
+                  autoFocus
+                />
+                &nbsp;
+                <TextField
+                  value={surnameUser || ''}
+                  {...register('surname')}
+                  onChange={(event) => setSurnameUser(event.target.value)}
+                  name="surname"
+                  required
+                  fullWidth
+                  id="secondName"
+                  label="Фамилия"
+                  autoFocus
+                />
+                &nbsp;
+                <TextField
+                  value={ageUser || ''}
+                  {...register('age')}
+                  onChange={(event) => setAgeUser(Number(event.target.value))}
+                  name="age"
+                  required
+                  fullWidth
+                  id="age"
+                  label="Возраст"
+                  autoFocus
+                />
+                &nbsp;
+                <TextField
+                  value={emailUser || ''}
+                  {...register('email')}
+                  onChange={(event) => setEmailUser(event.target.value)}
+                  name="email"
+                  required
+                  fullWidth
+                  id="email"
+                  label="Email"
 
+                />
+                &nbsp;
+                <TextField
+                  fullWidth
+                  label="Телефон"
+                  required
+                  id="phone"
+                  type="tel"
+                  placeholder="+7 (xxx) xxx-xx-xx"
+                  pattern="\+7\s?[\(]{0,1}9[0-9]{2}[\)]{0,1}\s?\d{3}[-]{0,1}\d{2}[-]{0,1}\d{2}"
+                  value={phoneUser || ''}
+                  {...register('phone')}
+                  onChange={(event) => setPhonelUser(event.target.value)}
+                />
+                &nbsp;
+                <Button
+                  variant="contained"
+                  type="submit"
+                >Сохранить изменения
+                </Button>
+                &nbsp;
+                <Button
+                  variant="contained"
+                  type="submit"
+                  onClick={() => setShow((p) => !p)}
+                >Назад
+                </Button>
+              </form>
+              <Snackbar open={open} autoHideDuration={5000} onClose={handleClose}>
+                <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
+                  Данные профиля успешно сохранены!
+                </Alert>
+              </Snackbar>
+            </Box>
+          </>
+        )
+      }
     </div>
   );
 }

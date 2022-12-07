@@ -40,7 +40,8 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
 function Header(): JSX.Element {
   const dispatch = useAppDispatch();
   const { image } = useSelector((state: RootState) => state.user);
-  const url = `http://localhost:4000${image}`;
+  
+  const url = `http://localhost:4000/${image}`;
 
   return (
     <>

@@ -13,7 +13,7 @@ export const updateLessons = async (lessons:Lesson): Promise<void> => {
   });
 };
 export const addLessons = async (lessons:Lesson): Promise<Lesson> => {
-  const res = await fetch('http://localhost:4000/api/news', {
+  const res = await fetch('http://localhost:4000/api/lessons', {
     method: 'Post',
     headers: { 'Content-type': 'application/json' },
     body: JSON.stringify(lessons)

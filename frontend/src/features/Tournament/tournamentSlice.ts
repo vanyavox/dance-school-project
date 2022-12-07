@@ -2,10 +2,12 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { State } from './types/state';
 import * as api from './api';
 import Tournament, { TournamentId } from './types/Toornament';
+import TourList from './types/tourList';
 
 const initialState: State = {
     tournaments: [],
-    error: ''
+    error: '',
+    tourlists: []
 };
 
 export const loadToutnament = createAsyncThunk('toutnament', async () => api.loadTournament()
@@ -13,6 +15,11 @@ export const loadToutnament = createAsyncThunk('toutnament', async () => api.loa
 
 export const addToutnament = createAsyncThunk('toutnament/addToutnament', async (toutnament:Tournament) => {
     const toutnamentNew = await api.addTournament(toutnament);
+     return toutnamentNew;
+    }
+);
+export const addTourList = createAsyncThunk('toutnament/addTourList', async (tourList: TourList) => {
+    const toutnamentNew = await api.addTourlist(tourList);
      return toutnamentNew;
     }
 );
@@ -41,8 +48,8 @@ extraReducers: (builder) =>
     .addCase(addToutnament.fulfilled, (state, action) => {
         state.tournaments.unshift(action.payload);
     })
-    .addCase(addToutnament.rejected, (state, action) => {
-        state.error = 'data not updated';
+    .addCase(addTourList.fulfilled, (state, action) => {
+        state.tourlists.unshift(action.payload);
     })
     .addCase(deleteToutnament.fulfilled, (state, action) => {
         state.tournaments = state.tournaments.filter(

@@ -1,4 +1,5 @@
 import Tournament, { TournamentId } from './types/Toornament';
+import TourList from './types/tourList';
 
 export const loadTournament = async (): Promise<Tournament[]> => {
     const res = await fetch('http://localhost:4000/api/tournament');
@@ -24,4 +25,12 @@ export const loadTournament = async (): Promise<Tournament[]> => {
       body: JSON.stringify(tournament),
       headers: { 'Content-type': 'application/json' },
     });
+  };
+  export const addTourlist = async (tourList:TourList): Promise<TourList> => {
+    const res = await fetch('http://localhost:4000/api/tournament/record', {
+      method: 'Post',
+      headers: { 'Content-type': 'application/json' },
+      body: JSON.stringify(tourList)
+    });
+    return res.json();
   };

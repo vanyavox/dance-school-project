@@ -22,7 +22,7 @@ function TournamentList(): JSX.Element {
 
   return (
     <div className={style.toutnament__list}>
-      <h1>Турниры</h1>
+      <p className={style.tournament__head}>Турниры</p>
       <div>
         {role === 'admin' && authChecked === true && (
           <div>

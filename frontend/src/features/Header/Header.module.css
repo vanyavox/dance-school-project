@@ -1,10 +1,6 @@
 .header__main {
-
+  background-color: #3D3131;
   padding: 24px;
-  background: #8DBFCE;
-  background: -moz-linear-gradient(-60deg, #8dbfce8c 0%, #1C6EA4 74%, #6263C5 100%);
-  background: -webkit-linear-gradient(-60deg, #8dbfce8c 0%, #1C6EA4 74%, #6263C5 100%);
-  background: linear-gradient(120deg, #8dbfce8c 0%, #1C6EA4 74%, #6263C5 100%);
   color: white;
   display: flex;
   flex-direction: row;

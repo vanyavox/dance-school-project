@@ -14,9 +14,9 @@ router.get('/user', async (req, res) => {
 
 router.post('/registration', async (req, res) => {
   const {
-    name, email, password, passwordRepit
+    name, email, password, passwordRepit, userPhone
   } = req.body
-  console.log(name, email, password, passwordRepit)
+  console.log(userPhone)
   try {
     if (password && email && name && passwordRepit) {
       const user = await Student.findOne({ where: { email } })
@@ -28,9 +28,14 @@ router.post('/registration', async (req, res) => {
         res.json({ status: 'error password', message: 'Пароль должен содержать не менее 8 символов' })
         return
       }
+      if (userPhone.length < 12) {
+        res.json({ status: 'error phone', message: 'Введите корректный номер' })
+        return
+      }
       if (password === passwordRepit) {
         const hashPassword = await bcrypt.hash(password, 10)
-        const newUser = await Student.create({ name, email, password: hashPassword, role: 'student' })
+        const newUser = await Student.create({ name, email, password: hashPassword, role: 'student', phone: userPhone })
+        console.log(newUser)
         req.session.user_id = newUser.id
         res.status(200).json({ message: 'Пользователь зарегистрирован', user: newUser })
       } else {

@@ -1,0 +1,35 @@
+.toutnament__list{
+    display: flex;
+    margin: auto;
+    justify-content: center;
+    flex-direction: column;
+    width: 70%; 
+    
+}
+
+.tournament__line{
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid black;
+    border-top: 1px solid black;
+    
+}
+.tournament__p{
+    width: 25%;
+    text-align: center;
+}
+.tournament__button{
+    width: 25%;
+    margin: auto;
+    pointer-events: all;
+}
+.modal__content {
+    display: flex;
+    position: fixed;
+    pointer-events: all;
+    top: 30%;
+    left: 40%;
+    width: 20%;
+    background-color: rgb(100, 90, 90);
+}
+

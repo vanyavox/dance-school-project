@@ -4,6 +4,7 @@ import lessonSlice from './features/Lesson/lessonSlice';
 import newsSlice from './features/News/newsList/newsSlice';
 import userSlice from './features/Registration/userSlice';
 import teacherSlice from './features/TeacherList/teacherSlice';
+import tournamentSlice from './features/Tournament/tournamentSlice';
 import trialFormSlice from './features/TrialForm/trialFormSlice';
 
 const store = configureStore({
@@ -13,6 +14,7 @@ const store = configureStore({
     news: newsSlice,
     requests: trialFormSlice,
     lessons: lessonSlice,
+    toutnament: tournamentSlice,
   },
 });
 

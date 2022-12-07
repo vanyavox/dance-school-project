@@ -2,7 +2,6 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { State, User, UserRegistration } from './types/UserState';
 import * as api from '../../App/api';
 import { UserLogin } from '../Login/types/UserLogin';
-import { RootState } from '../../store';
 
 export const registration = createAsyncThunk('api/auth/registration', async (user: UserRegistration) => api.registration(user));
 
@@ -14,7 +13,13 @@ export const update = createAsyncThunk('users/user/profile', async (user: User) 
 
 export const getUser = createAsyncThunk('api/auth/user', () => api.getuser());
 
-// export const selectorAuthChecked = (state: RootState): boolean => state.auth.authChecked;
+export const addAsyncAvatar = createAsyncThunk('users/user/profile/avatar', (files: any) => fetch('http://localhost:4000/users/user/profile/avatar', {
+  method: 'post',
+  body: files,
+  credentials: 'include'
+})
+  .then((result) => result.json())
+  .then((data) => data));
 
 export const initialState: State = {
   id: '',
@@ -24,6 +29,7 @@ export const initialState: State = {
   age: 0,
   phone: '',
   role: '',
+  image: '',
   emailError: '',
   loginError: '',
   passwordError: '',
@@ -42,7 +48,6 @@ const userSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(registration.fulfilled, (state, action) => {
-        
         if (action.payload.status === 'error login') {
           state.loginError = action.payload.message;
           state.emailError = '';
@@ -55,19 +60,24 @@ const userSlice = createSlice({
           state.passwordError = action.payload.message;
           state.emailError = '';
         }
+
         if (action.payload.status === 'error empty') {
           state.loginError = action.payload.message;
           state.emailError = '';
         }
+        if (action.payload.status === 'error phone') {
+          state.emailError = action.payload.message;
+        }
+
         if (action.payload.user) {
           state.email = action.payload.user.email;
           state.name = action.payload.user.name;
+          state.phone = action.payload.user.phone;
           state.id = action.payload.user.id;
           state.authChecked = true;
           state.emailError = '';
           state.loginError = '';
           state.passwordError = '';
-          return;
         }
       })
       .addCase(registration.rejected, (state, action) => {
@@ -94,6 +104,7 @@ const userSlice = createSlice({
           state.age = action.payload.user.age;
           state.phone = action.payload.user.phone;
           state.id = action.payload.user.id;
+          state.image = `/upload/${action.payload.user.image}`
           state.authChecked = true;
           state.emailError = '';
           state.loginError = '';
@@ -104,16 +115,16 @@ const userSlice = createSlice({
       .addCase(logout.fulfilled, (state, action) => {
         if (action.payload.message === 'Session destroy') {
           state.name = '';
+          state.surname = '';
           state.authChecked = false;
           state.email = '';
           state.phone = '';
           state.role = '';
-          console.log(state);
+          state.image = '';
         }
       })
       .addCase(update.fulfilled, (state, action) => {
         if (action.payload) {
-          console.log(action.payload);
           state.email = action.payload.email;
           state.name = action.payload.name;
           state.surname = action.payload.surname;
@@ -125,10 +136,7 @@ const userSlice = createSlice({
         // state.authChecked = true;
         if (!action.payload.isLoggedIn) {
           state = initialState;
-          console.log(state);
-        }else{
-
-          console.log(action.payload);
+        } else {
           state.role = action.payload.user.role;
           state.email = action.payload.user.email;
           state.name = action.payload.user.name;
@@ -136,9 +144,12 @@ const userSlice = createSlice({
           state.age = action.payload.user.age;
           state.phone = action.payload.user.phone;
           state.id = action.payload.user.id;
+          state.image = `/upload/${action.payload.user.image}`
           state.authChecked = action.payload.isLoggedIn;
         }
-        
+      })
+      .addCase(addAsyncAvatar.fulfilled, (state, action) => {
+        state.image = action.payload[0];
       });
   },
 });

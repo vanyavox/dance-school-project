@@ -19,7 +19,7 @@ function LessonForm():JSX.Element {
     <div className={style.form__div}>
       <div className={style.table__main}>
         <div className={style.table__line}>
-            <p className={style.table__teachers}>Преподаватели</p>
+            <p className={style.table__teachers}>Преподаватель</p>
             <div className={style.table__header}>
                 <p className={style.table__td}>пн</p>
                 <p className={style.table__td}>вт</p>

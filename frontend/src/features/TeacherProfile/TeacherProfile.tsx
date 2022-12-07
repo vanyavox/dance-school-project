@@ -1,43 +1,35 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
-import userEvent from '@testing-library/user-event';
-import { Phone } from '@mui/icons-material';
+import { useSelector } from 'react-redux';
 import { RootState, useAppDispatch } from '../../store';
-import { addAsyncTeachers } from '../TeacherList/teacherSlice';
 import style from './TeacherProfile.module.css';
 import { NewRequest } from './types/state';
 import { addAsyncRequest } from '../TrialForm/trialFormSlice';
-
-
-
 
 function TeacherProfile(): JSX.Element {
   const dispatch = useAppDispatch();
 
   const [teacher, setTeacher] = useState({ name: '', photo: '', surname: '', direction: '', experience: '', description: '' });
-  
-  const { teachers } = useSelector((state: RootState) => state.teachers);
+
   const { name, phone } = useSelector((state: RootState) => state.user);
   const user = useSelector((state: RootState) => state.user);
 
   const { id } = useParams();
 
-
- useEffect(() => {
+  useEffect(() => {
     fetch(`http://localhost:4000/api/teachers/${id}`).then((data) => data.json()).then((res) => setTeacher(res));
   }, []);
-
 
   const [active, setActive] = useState(false);
   const { register, handleSubmit } = useForm<NewRequest>();
 
   const onSubmit = (trialUser: NewRequest): void => {
     dispatch(addAsyncRequest(trialUser));
-    setActive(true)
+    setActive(true);
     setTimeout(() => {
       setModal((prev: boolean) => !prev);
-      setActive(false)
+      setActive(false);
     }, 2000);
   };
 

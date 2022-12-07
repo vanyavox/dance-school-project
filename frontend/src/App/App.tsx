@@ -22,7 +22,7 @@ import { initAsyncRequest } from '../features/TrialForm/trialFormSlice';
 import { loadAsyncNews } from '../features/News/newsList/newsSlice';
 import { loadToutnament } from '../features/Tournament/tournamentSlice';
 import TournamentList from '../features/Tournament/TournamentList';
-import { addAsyncTeachers } from '../features/TeacherList/teacherSlice';
+import { initAsyncTeachers } from '../features/TeacherList/teacherSlice';
 
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
@@ -31,7 +31,7 @@ function App(): JSX.Element {
     dispatch(getUser());
     dispatch(loadAsyncNews());
     dispatch(loadToutnament());
-    dispatch(addAsyncTeachers());
+    dispatch(initAsyncTeachers());
   }, [dispatch]);
 
   return (

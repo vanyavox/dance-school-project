@@ -9,7 +9,7 @@ export const initAsyncRequest = createAsyncThunk('requests/initAsyncRequest', ()
   .then((result) => result.json())
   .then((data) => data));
 
-export const addAsyncRequest = createAsyncThunk('requests/addAsyncRequest', (request: NewRequest) => fetch('http://localhost:4000/api/requests', {
+export const addAsyncRequest = createAsyncThunk('requests/addAsyncRequest', (request: NewRequest) => fetch('http://localhost:4000/api/requests/', {
   method: 'Post',
   headers: { 'Content-type': 'application/json' },
   body: JSON.stringify(request)

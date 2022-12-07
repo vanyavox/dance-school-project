@@ -34,6 +34,7 @@ function NewsItem({ oneNews, handleRemove, handleUpdate }: NewsPropsm): JSX.Elem
       <h4>{oneNews.news_type} {oneNews.title}</h4>
       <img src={oneNews.image} alt="News_image" className="news_image" />
       <p>{oneNews.description}</p>
+      {}
       <button className={style.btn_delete} type="button" onClick={() => handleRemove(oneNews)}>Удалить</button>
       <button type="button" onClick={handleOpen}>Редактировать</button>
 

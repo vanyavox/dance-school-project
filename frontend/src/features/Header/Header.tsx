@@ -8,13 +8,13 @@ import style from './Header.module.css';
 
 function Header(): JSX.Element {
   const dispatch = useAppDispatch();
-
+  const { authChecked } = useSelector((state: RootState) => state.user);
   return (
     <>
       <nav className={style.header__main}>
-        <NavLink className={style.header__logo} to="/">
+      <NavLink className={style.header__logo} to="/">
           K2
-        </NavLink>
+      </NavLink>
         <NavLink to="/news">
           Новости
         </NavLink>
@@ -27,6 +27,7 @@ function Header(): JSX.Element {
         <NavLink to="/lessons">
           Расписание
         </NavLink>
+        {authChecked !== true ? (
         <div className={style.header__login}>
           <NavLink to="/auth/login">
             Войти
@@ -34,10 +35,12 @@ function Header(): JSX.Element {
           <NavLink to="/auth/registration">
             Зарегистрироваться
           </NavLink>
+        </div>
+        ) : (
           <NavLink to="/" onClick={() => dispatch(logout())}>
             Выйти
           </NavLink>
-        </div>
+        )}
         <NavLink to="/profile">
           <Avatar
             alt="My_profile"

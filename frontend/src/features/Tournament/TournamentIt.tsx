@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useForm } from 'react-hook-form';
+import { Modal, Box, Button, Typography } from '@mui/material';
 import Toornament from './types/Toornament';
 import style from './tournamentcss.module.css';
 import { RootState, useAppDispatch } from '../../store';
@@ -9,7 +10,7 @@ import TourList from './types/tourList';
 
 function TournamentIt({ tournament }: { tournament: Toornament }): JSX.Element {
   const dispatch = useAppDispatch();
-  const { role, authChecked, name, id } = useSelector((state: RootState) => state.user);
+  const { role, authChecked, name, id, surname } = useSelector((state: RootState) => state.user);
   const { register, handleSubmit } = useForm<Toornament>();
 
   const [activeAdmin, setActiveAdmin] = useState(false);
@@ -41,20 +42,43 @@ function TournamentIt({ tournament }: { tournament: Toornament }): JSX.Element {
       student_id: Number(id),
       tournament_id: tournament.id,
     };
+    handleClose();
     handleAddTour(value);
-    handleOpenUser();
   }
+  // modal
+  const stylemodal = {
+    position: 'absolute' as 'absolute',
+    top: '40%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    width: 500,
+    height: 200,
+    bgcolor: '#884a7655',
+    padding: 'px',
+
+    p: 4,
+  };
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = ():void => setOpen(true);
+  const handleClose = ():void => setOpen(false);
 
   return (
-    <>
-    {activeUser && (
-
-      <form className={style.modal__content} onSubmit={handleSubmit(onSubmitUser)}>
-        <p>{tournament.tour_name}</p>
-        <p>{name}</p>
-        <button type="submit">Подтвердите запись</button>
-      </form>
-      )}
+    <div>
+      <Modal
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box sx={stylemodal}>
+        <form className={style.modal__content} onSubmit={handleSubmit(onSubmitUser)}>
+          <h3>Подтвердите запись</h3>
+          <p className={style.tournament__p__modal}>Название турнира: {tournament.tour_name}</p>
+          <p className={style.tournament__p__modal}>Ваше ФИО: {name} {surname}</p>
+          <button className={style.tournament__button__modal} type="submit">Подтвердить</button>
+        </form>
+        </Box>
+      </Modal>
     <div className={style.tournament__line}>
       {!activeAdmin && (
         <>
@@ -65,7 +89,7 @@ function TournamentIt({ tournament }: { tournament: Toornament }): JSX.Element {
         </>
       )}
       { authChecked === true && role === 'student' && (
-        <button type="button" className={style.tournament__button} onClick={handleOpenUser}>Записаться на турнир</button>
+        <button type="button" className={style.tournament__button} onClick={handleOpen}>Записаться на турнир</button>
       )}
       {role === 'admin' && authChecked === true && activeAdmin === false && (
           <>
@@ -87,7 +111,7 @@ function TournamentIt({ tournament }: { tournament: Toornament }): JSX.Element {
         </form>
 )}
     </div>
-    </>
+    </div>
   );
 }
 

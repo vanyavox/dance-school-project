@@ -7,12 +7,15 @@ import { NewRequest } from '../TrialForm/types/state';
 import style from './AdminPanel.module.css';
 import Request from './Request/RequestProcessing';
 import Req from './Request/types/Request';
+import TeacherAdd from './TeacherCard/TeacherAdd';
+import TeacherCard from './TeacherCard/TeacherCard';
 
 function AdminPanel(): JSX.Element {
   const dispatch = useAppDispatch();
   const [active, setActive] = useState<boolean>(false);
   const [unAutorized, setUnautorized] = useState<boolean>(true);
   const { requests } = useSelector((state: RootState) => state.requests);
+  const { teachers } = useSelector((state: RootState) => state.teachers);
 
   const handleAdd = (trialUser: NewRequest): void => {
     dispatch(addAsyncRequest(trialUser));
@@ -28,14 +31,15 @@ function AdminPanel(): JSX.Element {
 
   return (
     <div className={style.main__block}>
-      <button className={style.btn_add_new} type="button" onClick={toggleModal}>Добавить заявку</button>
+      <button className={style.btn_add_new} type="button" onClick={toggleModal}>Панель управления</button>
       {active && (
         <div className={active ? 'modal active' : 'modal'} onClick={() => setActive(false)}>
           <div className={active ? 'modal_content active' : 'modal_content'} onClick={(e) => e.stopPropagation()}>
             <div className={style.modal_form}>
               <form onSubmit={handleSubmit(onSubmit)}>
                 <div className={style.form__div}>
-                  <label htmlFor="name">Ваше имя</label>
+                  <h3>Информация о танцоре</h3>
+                  <label htmlFor="name">Имя</label>
                   <br />
                   <input {...register('name')} name="name" type="text" placeholder="Имя" />
                   <br />
@@ -62,6 +66,7 @@ function AdminPanel(): JSX.Element {
                   <button className={style.btn_add_new_save} type="submit">Сохранить</button>
                 </div>
               </form>
+          <TeacherAdd />
             </div>
           </div>
         </div>
@@ -91,7 +96,7 @@ function AdminPanel(): JSX.Element {
                 : (<div>Записей нет</div>)}
             </div>
             <div className={style.requests_block}>
-              <div className={style.request_head}>Необработанные заявки</div>
+              <div className={style.request_head}>Обработанные заявки</div>
               {requests.length !== 0 ? (
                 requests.map((req: Req) => req.status === 'Обработана' && (
                   <Request
@@ -104,6 +109,13 @@ function AdminPanel(): JSX.Element {
             </div>
           </div>
         )}
+        <h3>Преподаватели</h3>
+
+        <div className={style.teachers_block}>
+          {teachers.map((teacher) => (
+            <TeacherCard key={teacher.id} teacher={teacher} />
+          ))}
+        </div>
       </div>
 
     </div>

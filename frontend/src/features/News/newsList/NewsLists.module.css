@@ -1,5 +1,5 @@
 .news_list {
-  width: 60%;
+  width: 50%;
   margin: auto;
   font-size: 18pt;
 }
@@ -60,6 +60,10 @@
 .modal_form > button {
   width: 50px;
   padding: 5px;
+}
+
+.modal_form > form {
+  width: 100%;
 }
 
 .btn_add {

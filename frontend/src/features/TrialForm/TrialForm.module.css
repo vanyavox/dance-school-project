@@ -1,79 +1,70 @@
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
 .trial__form {
   display: flex;
   margin: auto;
   flex-direction: row;
-  width: 75%;
-  background-color: #edc2a123;
+  width: 55%;
   margin-top: 2em;
   margin-bottom: 2em;
+  /* border-radius: 20px; */
   border-radius: 20px;
+  border: 5px;
+  border-style:outset;
+  border-color: #ed83cf;
+  background-color: #2A2323;
 }
 
 .form__div {
-  padding-top: 10px;
-  margin-right: 150px;
-  padding-left: 150px;
   display: flex;
   flex-direction: column;
-  width: 400px;
+  width: 500px;
   margin: auto;
 }
 
-
 .form_title {
-  font-size: 30pt;
-  margin: auto;
-  margin-left: 55px;
-  color: #4a4a4a;
-  font-family: 'Rhythm and Jazz', monospace;
-  font-weight: 400;
-  font-style: italic;
+  font-size: 32pt;
+  color: #DC6DBF;
+  font-family: 'Montserrat';
+  margin-right: 95px;
+  font-weight: 500;
+  padding: 20px 20 0px 0px;
 }
 
 .btn__reg {
-  display: flex;
   align-items: center;
   justify-content: center;
-  height: 45px;
-  border-radius: 25px;
-  margin: 20px;
-  margin-left: 440px;
-  font-family: 'Courier New', monospace;
-  font-size: 16px;
+  height: 55px;
+  border-radius: 45px;
+  margin: 30px;
+  font-family: 'Gill Sans', sans-serif;
+  font-size: 15px;
   text-transform: uppercase;
   text-align: center;
+  vertical-align: center;
   letter-spacing: 3px;
-  color: #524f4e;
-  background: white;
-  box-shadow: 0 8px 15px rgba(0, 0, 0, .1);
+  color: #ffffff;
+  background: #884a76;
+  box-shadow: 0 0px 0px rgba(0, 0, 0, .1);
   transition: .3s;
 }
 
 .btn__reg:hover {
   align-items: center;
-  background: #c4a991;
-  box-shadow: 0 15px 20px #967d6a;
+  background: #b8629f;
+  box-shadow: 0 5px 13px #a7598f;
   color: white;
   font-size: 15px;
-  transform: translateY(-7px);
+  transform: translateY(-1px);
 }
 
 .select_box {
   list-style: none;
   font-family: 'Courier New', monospace;
-  font-family: inherit;
   width: 100%;
   border: 0;
-  border-bottom: 2px solid #c3c3c3;
+  border-bottom: 2px solid #7D8195;
   outline: 0;
-  font-size: 1.3rem;
-  color: #60666d;
+  font-size: 1.2rem;
+  color: #7D8195;
   padding: 7px 0;
   background: transparent;
   transition: border-color 0.2s;
@@ -83,10 +74,10 @@
   font-family: inherit;
   width: 100%;
   border: 0;
-  border-bottom: 2px solid #c3c3c3;
+  border-bottom: 2px solid #7D8195;
   outline: 0;
   font-size: 1.3rem;
-  color: #60666d;
+  color: #7D8195;
   padding: 7px 0;
   background: transparent;
   transition: border-color 0.2s;
@@ -112,7 +103,7 @@
 }
 
 .form_input:focus {
-  border-image: linear-gradient(to right, #967d6a, #ffd7b8);
+  border-image: linear-gradient(to right, #b8629f, #e27dc3);
   border-image-slice: 1;
 }
 

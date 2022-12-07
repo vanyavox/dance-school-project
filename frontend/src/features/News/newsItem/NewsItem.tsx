@@ -31,11 +31,15 @@ function NewsItem({ oneNews, handleRemove, handleUpdate }: NewsPropsm): JSX.Elem
 
   return (
     <div id={String(oneNews.id)} className={style.news_item}>
-      <h4>{oneNews.news_type} {oneNews.title}</h4>
-      <img src={oneNews.image} alt="News_image" className="news_image" />
-      <p>{oneNews.description}</p>
-      <button className={style.btn_delete} type="button" onClick={() => handleRemove(oneNews)}>Удалить</button>
-      <button type="button" onClick={handleOpen}>Редактировать</button>
+      <div className={style.news}>
+        <h4>{oneNews.news_type} {oneNews.title}</h4>
+        <img src={oneNews.image} alt="News_image" className={style.img_news} />
+        <div className={style.news_info}>
+          <p>{oneNews.description}</p>
+          <button className={style.btn_delete} type="button" onClick={() => handleRemove(oneNews)}>Удалить</button>
+          <button className={style.btn_edit} type="button" onClick={handleOpen}>Редактировать</button>
+        </div>
+      </div>
 
       {active && (
         <div className={active ? 'modal active' : 'modal'} onClick={() => setActive(false)}>
@@ -50,7 +54,7 @@ function NewsItem({ oneNews, handleRemove, handleUpdate }: NewsPropsm): JSX.Elem
                 <br />
                 <input defaultValue={oneNews.news_type} {...register('news_type')} />
                 <br />
-                <button type="submit">Обновить</button>
+                <button type="submit" className={style.button_edit}>Обновить</button>
               </form>
             </div>
           </div>

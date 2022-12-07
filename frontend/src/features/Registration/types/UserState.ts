@@ -18,11 +18,11 @@ export interface User {
 export interface State {
    id: string,
    email: string,
-   name:string,
-   surname:string,
+   name: string,
+   surname: string,
    age: number,
-   phone:string,
-   role:string,
+   phone: string,
+   role: string,
    emailError?: string,
    loginError?: string,
    passwordError?: string,
@@ -34,6 +34,5 @@ export interface UserRegistration {
    email: string
    password: string
    passwordRepit: string
+   userPhone: string
 }
-
-

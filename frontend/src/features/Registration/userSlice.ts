@@ -42,7 +42,6 @@ const userSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(registration.fulfilled, (state, action) => {
-        
         if (action.payload.status === 'error login') {
           state.loginError = action.payload.message;
           state.emailError = '';
@@ -59,15 +58,18 @@ const userSlice = createSlice({
           state.loginError = action.payload.message;
           state.emailError = '';
         }
+        if (action.payload.status === 'error phone') {
+          state.emailError = action.payload.message;
+        }
         if (action.payload.user) {
           state.email = action.payload.user.email;
           state.name = action.payload.user.name;
+          state.phone = action.payload.user.phone;
           state.id = action.payload.user.id;
           state.authChecked = true;
           state.emailError = '';
           state.loginError = '';
           state.passwordError = '';
-          return;
         }
       })
       .addCase(registration.rejected, (state, action) => {
@@ -126,8 +128,7 @@ const userSlice = createSlice({
         if (!action.payload.isLoggedIn) {
           state = initialState;
           console.log(state);
-        }else{
-
+        } else {
           console.log(action.payload);
           state.role = action.payload.user.role;
           state.email = action.payload.user.email;
@@ -138,7 +139,6 @@ const userSlice = createSlice({
           state.id = action.payload.user.id;
           state.authChecked = action.payload.isLoggedIn;
         }
-        
       });
   },
 });

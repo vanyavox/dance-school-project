@@ -1,15 +1,15 @@
 .news_item {
-  width: 100%;
-  margin: auto;
-  font-size: 18pt;
+  width: 80%;
+  justify-content: center;
 }
 
-.news_item > img {
-  width: 100%;
+.news_item>img {
+  width: 70%;
   border-radius: 15px;
+  margin-top: 30px;
 }
 
-.news_item > button {
+.news_item>button {
   padding: 10px;
   margin: 10px;
   margin-left: 0px;
@@ -62,7 +62,7 @@
   margin-top: 10px;
 }
 
-.modal_form > button {
+.modal_form>button {
   width: 50px;
   padding: 5px;
 }
@@ -72,7 +72,7 @@ form textarea {
   width: 100%;
 }
 
-form > input {
+form>input {
   width: 99.1%;
 }
 
@@ -81,9 +81,55 @@ form {
 }
 
 .btn_delete {
-  background-color: #DC143C;
+  background-color: #954051;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  border-radius: 15px;
+  margin: 30px;
+  margin-right: 30px;
+  font-family: 'Gill Sans', sans-serif;
+  font-size: 13px;
+  text-transform: uppercase;
+  text-align: center;
+  vertical-align: center;
+  letter-spacing: 2px;
+  color: #ffffff;
+  box-shadow: 0 0px 0px rgba(0, 0, 0, .1);
+  transition: .3s;
 }
 
 .btn_delete:hover {
   background-color: #dc143c7e;
+}
+
+.btn_edit {
+  background-color: #7D8195;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  border-radius: 15px;
+  margin: 30px;
+  font-family: 'Gill Sans', sans-serif;
+  font-size: 13px;
+  text-transform: uppercase;
+  text-align: center;
+  vertical-align: center;
+  letter-spacing: 2px;
+  color: #ffffff;
+  box-shadow: 0 0px 0px rgba(0, 0, 0, .1);
+  transition: .3s;
+}
+
+.btn_edit:hover {
+  background-color: #5a5c6b;
+}
+
+h4 {
+  font-size: 23pt;
+  margin: auto;
+  color: #DC6DBF;
+  font-weight: 500;
+  padding: 50px 0 0px 30px;
+  font-family: 'Gill Sans', sans-serif;
 }

@@ -35,7 +35,7 @@ function NewsItem({ oneNews, handleRemove, handleUpdate }: NewsPropsm): JSX.Elem
       <img src={oneNews.image} alt="News_image" className="news_image" />
       <p>{oneNews.description}</p>
       <button className={style.btn_delete} type="button" onClick={() => handleRemove(oneNews)}>Удалить</button>
-      <button type="button" onClick={handleOpen}>Редактировать</button>
+      <button className={style.btn_edit} type="button" onClick={handleOpen}>Редактировать</button>
 
       {active && (
         <div className={active ? 'modal active' : 'modal'} onClick={() => setActive(false)}>

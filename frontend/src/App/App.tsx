@@ -19,12 +19,19 @@ import Contacts from '../features/Contacts/Contacts';
 import LessonForm from '../features/Lesson/Lesson';
 import AdminPanel from '../features/AdminPanel/AdminPanel';
 import { initAsyncRequest } from '../features/TrialForm/trialFormSlice';
+import { loadAsyncNews } from '../features/News/newsList/newsSlice';
+import { loadToutnament } from '../features/Tournament/tournamentSlice';
+import TournamentList from '../features/Tournament/TournamentList';
+import { addAsyncTeachers } from '../features/TeacherList/teacherSlice';
 
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
   useEffect(() => {
     dispatch(initAsyncRequest());
     dispatch(getUser());
+    dispatch(loadAsyncNews());
+    dispatch(loadToutnament());
+    dispatch(addAsyncTeachers());
   }, [dispatch]);
 
   return (
@@ -44,6 +51,7 @@ function App(): JSX.Element {
           <Route path="/contacts" element={<Contacts />} />
           <Route path="/lessons" element={<LessonForm />} />
           <Route path="/admin" element={<AdminPanel />} />
+          <Route path="/tournament" element={<TournamentList />} />
         </Route>
       </Routes>
       <Footer />

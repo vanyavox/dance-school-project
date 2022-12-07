@@ -36,4 +36,5 @@ export interface UserRegistration {
    email: string
    password: string
    passwordRepit: string
+   userPhone: string
 }

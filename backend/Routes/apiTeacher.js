@@ -8,5 +8,12 @@ router
       res.json(teachers)
     } catch (e) { console.log(e.message) }
   })
+  .get('/:id', async (req, res) => {
+    const { id } = req.params
+    try {
+      const teacher = await Teacher.findOne({ where: { id } })
+      res.json(teacher)
+    } catch (e) { console.log(e.message) }
+  })
 
 module.exports = router

@@ -60,13 +60,19 @@ const userSlice = createSlice({
           state.passwordError = action.payload.message;
           state.emailError = '';
         }
-        // if (action.payload.status === 'error empty') {
-        //   state.loginError = action.payload.message;
-        //   state.emailError = '';
-        // }
+
+        if (action.payload.status === 'error empty') {
+          state.loginError = action.payload.message;
+          state.emailError = '';
+        }
+        if (action.payload.status === 'error phone') {
+          state.emailError = action.payload.message;
+        }
+
         if (action.payload.user) {
           state.email = action.payload.user.email;
           state.name = action.payload.user.name;
+          state.phone = action.payload.user.phone;
           state.id = action.payload.user.id;
           state.authChecked = true;
           state.emailError = '';

@@ -6,7 +6,8 @@ function PageInfo(): JSX.Element {
     <div className={style.main__info}>
       <div className={style.info_page}>
         <div>
-          <h1>Клуб бальных танцев</h1>
+        <h3>Клуб бальных танцев</h3>
+          <h1>kakay-to school</h1>
           <ul className={style.info_list}>
             <li>Помогаем воспитывать характер и достигать своих целей</li>
             <li>Программы обучения для профессионалов и любителей от 2 до 16 лет</li>
@@ -14,7 +15,7 @@ function PageInfo(): JSX.Element {
             <li>Образовательная лицензия</li>
           </ul>
         </div>
-        <img className={style.img__info} src="ballroom-dancers-professional-dancing-couple-waltz-one-line-drawing-hand-drawn_648939-27.webp" alt="Ballet" />
+        <img className={style.img__info} src="Screenshot 2022-12-07 at 10.53.45 AM.png" alt="Ballet" />
       </div>
       <div className={style.buttons}>
         <button className={style.btn__trial} type="button">Записаться</button>

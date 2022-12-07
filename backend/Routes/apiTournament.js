@@ -1,4 +1,4 @@
-const { Tournament } = require('../db/models')
+const { Tournament, Tourlist } = require('../db/models')
 
 const router = require('express').Router()
 
@@ -43,6 +43,17 @@ router.get('/', async (req, res) => {
     }
     res.status(206).json({ message: 'Partial Content' })
   } catch (error) { res.status(500).json({ message: error.message }) }
+})
+
+router.post('/record', async (req, res) => {
+  const { student_id, tournament_id } = req.body
+  try {
+    const tourlist = await Tourlist.create({
+      student_id,
+      tournament_id
+    })
+    return res.status(201).json(tourlist)
+  } catch (error) { res.json({ message: error.message }) }
 })
 
 module.exports = router

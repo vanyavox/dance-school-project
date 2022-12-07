@@ -1,14 +1,32 @@
 import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 import ImageUploading, { ImageListType } from 'react-images-uploading';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
+import { useForm } from 'react-hook-form';
 import style from './Profile.module.css';
+import { RootState, useAppDispatch } from '../../store';
+import { update } from '../Registration/userSlice';
+import { User } from '../Registration/types/UserState';
 
 function Profile(): JSX.Element {
   const [images, setImages] = useState([]);
   const [show, setShow] = useState<boolean>(true);
+  const { email, name, surname, age, phone } = useSelector((state: RootState) => state.user);
+  const [nameUser, setUserName] = useState(name);
+  const [surnameUser, setSurnameUser] = useState(surname);
+  const [ageUser, setAgeUser] = useState(age);
+  const [emailUser, setEmailUser] = useState(email);
+  const [phoneUser, setPhonelUser] = useState(phone);
+  const { register, handleSubmit } = useForm();
+  const dispatch = useAppDispatch();
+
+  const onSubmit = (data: any): void => {
+    console.log(data);
+    dispatch(update(data));
+  };
 
   const onChange = (
     imageList: ImageListType,
@@ -80,21 +98,82 @@ function Profile(): JSX.Element {
           maxWidth: '100%',
         }}
       >
-        <TextField fullWidth label="Имя" id="name" />
-        &nbsp;
-        <TextField fullWidth label="Фамилия" id="surname" />
-        &nbsp;
-        <TextField fullWidth label="Возраст" id="age" />
-        &nbsp;
-        <TextField fullWidth label="email" id="email" type="email" />
-        &nbsp;
-        <TextField fullWidth label="Телефон" id="phone" type="phone" />
+        <form onSubmit={handleSubmit(onSubmit)}>
+
+          <TextField
+            value={nameUser || ''}
+            {...register('name')}
+            onChange={(event) => setUserName(event.target.value)}
+            autoComplete="given-name"
+            name="name"
+            defaultValue={name}
+            required
+            fullWidth
+            id="firstName"
+            label="Имя"
+            autoFocus
+          />
+          &nbsp;
+          <TextField
+            value={surnameUser || ''}
+            {...register('surname')}
+            onChange={(event) => setSurnameUser(event.target.value)}
+            autoComplete="given-surname"
+            name="surname"
+            required
+            fullWidth
+            id="secondName"
+            label="Фамилия"
+            autoFocus
+          />
+          &nbsp;
+          <TextField
+            value={ageUser || ''}
+            {...register('age')}
+            onChange={(event) => setAgeUser(Number(event.target.value))}
+            autoComplete="given-age"
+            name="age"
+            required
+            fullWidth
+            id="age"
+            label="Возраст"
+            autoFocus
+          />
+          &nbsp;
+          <TextField
+            value={emailUser || ''}
+            {...register('email')}
+            onChange={(event) => setEmailUser(event.target.value)}
+            autoComplete="given-email"
+            name="email"
+            required
+            fullWidth
+            id="email"
+            label="Email"
+            autoFocus
+          />
+          &nbsp;
+          <TextField
+            fullWidth
+            label="Телефон"
+            id="phone"
+            type="tel"
+            placeholder="+7 (xxx) xxx-xx-xx"
+            pattern="\+7\s?[\(]{0,1}9[0-9]{2}[\)]{0,1}\s?\d{3}[-]{0,1}\d{2}[-]{0,1}\d{2}"
+            value={phoneUser || ''}
+            {...register('phone')}
+            onChange={(event) => setPhonelUser(event.target.value)}
+          />
+
+          <Button
+            variant="contained"
+            type="submit"
+          >Сохранить изменения
+          </Button>
+        </form>
+
       </Box>
-      &nbsp;
-      <Button
-        variant="contained"
-      >Сохранить изменения
-      </Button>
+
     </div>
   );
 }

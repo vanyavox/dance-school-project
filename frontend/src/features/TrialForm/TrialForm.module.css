@@ -21,6 +21,8 @@
   padding-left: 150px;
   display: flex;
   flex-direction: column;
+  width: 400px;
+  margin: auto;
 }
 
 

@@ -14,11 +14,9 @@ module.exports = {
         type: Sequelize.TEXT
       },
       surname: {
-        allowNull: false,
         type: Sequelize.TEXT
       },
       age: {
-        allowNull: false,
         type: Sequelize.INTEGER
       },
       email: {
@@ -31,7 +29,6 @@ module.exports = {
         type: Sequelize.TEXT
       },
       phone: {
-        allowNull: false,
         type: Sequelize.TEXT
       },
       role: {

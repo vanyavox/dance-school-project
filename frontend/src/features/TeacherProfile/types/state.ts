@@ -16,6 +16,4 @@ export interface State {
 export type RequestId = NewRequest['id'];
 
 export type Action =
-  | { type: 'requests/addAsyncRequest'; payload: NewRequest[] }
-  | { type: 'requests/deleteAsyncRequest'; payload: number }
-  | { type: 'requests/changeAsyncRequest'; payload: number };
+  | { type: 'requests/addAsyncRequest'; payload: NewRequest[] };

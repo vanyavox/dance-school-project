@@ -1,9 +1,14 @@
 import { Avatar } from '@mui/material';
-import React from 'react';
-import { NavLink, Outlet } from 'react-router-dom';
+import React, { useCallback } from 'react';
+import { useSelector } from 'react-redux';
+import { NavLink, Outlet, useNavigate } from 'react-router-dom';
+import { RootState, useAppDispatch } from '../../store';
+import { logout } from '../Registration/userSlice';
 import style from './Header.module.css';
 
 function Header(): JSX.Element {
+  const dispatch = useAppDispatch();
+
   return (
     <>
       <nav className={style.header__main}>
@@ -19,7 +24,7 @@ function Header(): JSX.Element {
         <NavLink to="/">
           Направления
         </NavLink>
-        <NavLink to="/">
+        <NavLink to="/lessons">
           Расписание
         </NavLink>
         <div className={style.header__login}>
@@ -28,6 +33,9 @@ function Header(): JSX.Element {
           </NavLink>
           <NavLink to="/auth/registration">
             Зарегистрироваться
+          </NavLink>
+          <NavLink to="/" onClick={() => dispatch(logout())}>
+            Выйти
           </NavLink>
         </div>
         <NavLink to="/profile">

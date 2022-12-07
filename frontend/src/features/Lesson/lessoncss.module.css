@@ -1,3 +1,4 @@
+/*user*/
 .main__div{
     width: 100%;
     display: flex;
@@ -10,21 +11,22 @@
     margin: auto;
     justify-content: center;
     width: 80%;
-}
-
-.table__main{
-    border: 1px solid black;
+    min-width: 80%;
 }
 
 .table__header{
     display: flex;
     justify-content: space-around;
-    width: 70%;  
+    width: 70%; 
 }
 
 .table__line{
     display: flex;
     width: 100%;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.398);
+    padding-top:  10px;
+    padding-bottom:  10px;
+    
 }
 
 .table__week{
@@ -35,20 +37,68 @@
 }
 
 .table__img{
-    width: 80%;
-    height: 50%;
-    border-radius: 50%;
+    width: 50%;
+    border-radius: 100%;
 }
 
 .table__teachers{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     width: 30%;
+    border-right: 1px solid rgba(0, 0, 0, 0.398);
+    margin: auto;
+    
+}
+
+.about__teacher{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding-left: 20px;
+    width: 150px;
+    
+}
+.teacher__p{
+    margin-top: 5px ;
+    margin-bottom: 5px ;
 }
 
 .table__td{
-    width: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  width: 100%;
     overflow: hidden;
+    border-right: 1px solid rgba(0, 0, 0, 0.398);
+   
+   
+}
+.table__td:hover{
+    background-color: rgba(74, 161, 255, 0.253)
+}
+.button__teacher{
+    padding: 5px;
+    height: 30px;
 }
 
 
+@media(max-width: 640px) {
 
+}
+/*admin*/
+.table__day{
+    display: flex;
+}
+
+.table__label{
+    width: 150px;
+    height: 10px;
+}
+.table__input{
+width: 120px;
+}
+button{
+    cursor: pointer;
+}
 

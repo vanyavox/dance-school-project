@@ -25,7 +25,12 @@ function TeachersDiv({ teacher }: { teacher: Teacher }):JSX.Element {
     <div key={teacher.id} className={style.table__line}>
           <div className={style.table__teachers}>
               <img src={teacher.photo} alt="teacher_photo" className={style.table__img} />
-              <p>{teacher.name} {teacher.surname}, стаж: {teacher.experience} лет</p>
+              <div className={style.about__teacher}>
+              <p className={style.teacher__p}>{teacher.name} {teacher.surname} </p>
+              <p className={style.teacher__p}>Cтаж: {teacher.experience}</p>
+              <p className={style.teacher__p}> Направление: {teacher.direction}</p>
+              </div>
+              <button type="button" className={style.button__teacher}>Записаться</button>
           </div>
       {
           lessons.map((lesson) => teacher.id === lesson.teacher_id && (

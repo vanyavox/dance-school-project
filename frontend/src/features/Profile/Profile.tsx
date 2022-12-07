@@ -62,23 +62,23 @@ function Profile(): JSX.Element {
         <>
           <span><h2>Мой профиль</h2></span>
           &nbsp;
-          <div className="container">
-            <div>
+          <div className={style.container}>
+            <div className={style.item}>
               <Avatar
                 alt="avatar"
                 src={url || ''}
                 sx={{ width: 200, height: 200 }}
               />
             </div>
-            <div className="iformation">
+            <div className={style.list}>
               <h2>
-                <div>Имя: {name}</div>
-                <div>Фамилия: {surname}</div>
-                <div>Возраст: {age}</div>
-                <div>Email: {email}</div>
-                <div>Телефон: {phone}</div>
-                <div>Партнер по танцам: </div>
-                <div>Рейтинговые очки: </div>
+                <div className={style.item}>Имя: {name}</div>
+                <div className={style.item}>Фамилия: {surname}</div>
+                <div className={style.item}>Возраст: {age}</div>
+                <div className={style.item}>Email: {email}</div>
+                <div className={style.item}>Телефон: {phone}</div>
+                <div className={style.item}>Партнер по танцам: </div>
+                <div className={style.item}>Рейтинговые очки: </div>
               </h2>
             </div>
           </div>

@@ -13,6 +13,7 @@ export interface User {
    email: string
    phone: string
    role: string
+   image: string
    authChecked: boolean
 }
 export interface State {
@@ -23,6 +24,7 @@ export interface State {
    age: number,
    phone: string,
    role: string,
+   image: string,
    emailError?: string,
    loginError?: string,
    passwordError?: string,

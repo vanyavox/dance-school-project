@@ -46,6 +46,9 @@ module.exports = (sequelize, DataTypes) => {
     role: {
       type: DataTypes.TEXT
     },
+    image: {
+      type: DataTypes.TEXT
+    },
     partner_id: {
       type: DataTypes.INTEGER
     },

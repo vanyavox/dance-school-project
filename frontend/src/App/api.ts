@@ -31,6 +31,7 @@ export const updateprofile = async (user: User): Promise<User> => {
     method: 'PUT',
     body: JSON.stringify(user),
     headers: { 'Content-type': 'application/json' },
+    credentials: 'include'
   }));
   return res.json();
 };

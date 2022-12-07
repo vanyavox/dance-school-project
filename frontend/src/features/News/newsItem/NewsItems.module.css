@@ -119,6 +119,10 @@
   background-color: #5a5c6b;
 }
 
+.modal_form > form {
+  width: 100%;
+}
+
 form textarea {
   font-size: 16pt;
   width: 100%;

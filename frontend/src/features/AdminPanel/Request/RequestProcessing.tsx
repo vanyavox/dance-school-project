@@ -4,11 +4,7 @@ import { changeAsyncRequest, deleteAsyncRequest } from '../../TrialForm/trialFor
 import style from './Request.module.css';
 import Req from './types/Request';
 
-interface ReqProp {
-  req: Req;
-}
-
-function Request({ req }: ReqProp): JSX.Element {
+function Request({ req }: { req: Req }): JSX.Element {
   const dispatch = useAppDispatch();
 
   return (

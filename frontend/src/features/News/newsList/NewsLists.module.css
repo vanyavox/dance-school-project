@@ -98,6 +98,15 @@
   transition: .3s;
 }
 
+.modal_form > form {
+  width: 100%;
+}
+
+.btn_add {
+  background-color: #3CB371;
+  padding: 8px;
+}
+
 .button_add:hover {
   align-items: center;
   background: #7D8195;

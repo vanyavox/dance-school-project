@@ -1,0 +1,79 @@
+.teacher__card {
+  font-size: 14pt;
+  height: auto;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: left;
+  flex-grow: 1;
+  flex-basis: 0;
+  max-width: 30%;
+  width: 400px;
+}
+
+.teacher__card:hover {
+  -webkit-box-shadow: 1px 1px 8px 0px rgba(34, 60, 80, 0.2);
+  -moz-box-shadow: 1px 1px 8px 0px rgba(34, 60, 80, 0.2);
+  box-shadow: 1px 1px 8px 0px rgba(34, 60, 80, 0.2);
+}
+
+.teacher__card:nth-child(2n + 1) {
+  background-color: rgb(233, 232, 232);
+}
+
+.teacher__card > textarea {
+  width: 200px;
+}
+
+.teacher__card > img {
+  width: 50%;
+}
+
+.teacher__card > button {
+  display: block;
+  bottom: 10px;
+  text-align: center;
+  padding: 4px;
+  position: relative;
+  bottom: 0px;
+}
+
+.btn_teacher_delete {
+  background-color: #DC143C;
+  padding: 5px;
+  font-size: 14pt;
+}
+
+.btn_teacher_delete:hover {
+  background-color: #dc143ca9;
+}
+
+.teacher_edit {
+  max-width: 90%;
+}
+
+input {
+  width: 100%;
+}
+
+select {
+  width: 107%;
+}
+
+.teacher_edit_save {
+  padding: 4px;
+  background-color: #3CB371;
+}
+
+.teacher_edit_save:hover {
+  padding: 4px;
+  background-color: #3ed482;
+}
+
+.hiddenform {
+  /* visibility: hidden; */
+  height: 0px;
+  margin: 0;
+  padding: 0;
+}

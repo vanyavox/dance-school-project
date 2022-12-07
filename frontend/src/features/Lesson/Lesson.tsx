@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { RootState, useAppDispatch } from '../../store';
-import { addAsyncTeachers } from '../TeacherList/teacherSlice';
+import { initAsyncTeachers } from '../TeacherList/teacherSlice';
 import style from './lessoncss.module.css';
 import TeachersDiv from './Side_elements/TeachersDiv';
 
@@ -10,7 +10,7 @@ function LessonForm():JSX.Element {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-      dispatch(addAsyncTeachers());
+      dispatch(initAsyncTeachers());
   }, []);
 
   return (

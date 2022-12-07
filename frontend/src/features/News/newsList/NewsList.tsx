@@ -12,10 +12,6 @@ function NewsList(): JSX.Element {
   const { news } = useSelector((state: RootState) => state.news);
   const dispatch = useAppDispatch();
 
-  useEffect(() => {
-    dispatch(loadAsyncNews());
-  }, []);
-
   // delete news item
   const handleRemove = (newsToDelete: News): void => {
     dispatch(deleteNews(newsToDelete.id));

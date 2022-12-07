@@ -73,7 +73,7 @@ function LessonsDiv({ lesson, handleAdd, handleUpdate, teachId }: LessonPropsm):
                     <input className={style.table__input} defaultValue={lesson.sunday} {...register('sunday')} />
                   </div>
                 </div>
-                <button type="submit" onClick={() => setValue('Обновлено')}>{value}</button>
+                <button className={style.btn__trial} type="submit" onClick={() => setValue('Обновлено')}>{value}</button>
               </form>
             </div>
           </div>

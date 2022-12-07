@@ -1,5 +1,4 @@
 .teacher__card {
-  width: 32%;
   font-size: 14pt;
   height: auto;
   padding: 10px;
@@ -9,6 +8,7 @@
   align-items: left;
   flex-grow: 1;
   flex-basis: 0;
+  max-width: 30%;
 }
 
 .teacher__card:hover {
@@ -19,6 +19,10 @@
 
 .teacher__card:nth-child(2n + 1) {
   background-color: rgb(233, 232, 232);
+}
+
+.teacher__card > textarea {
+  width: 200px;
 }
 
 .teacher__card > img {

@@ -19,14 +19,14 @@ import Contacts from '../features/Contacts/Contacts';
 import LessonForm from '../features/Lesson/Lesson';
 import AdminPanel from '../features/AdminPanel/AdminPanel';
 import { initAsyncRequest } from '../features/TrialForm/trialFormSlice';
-import { addAsyncTeachers } from '../features/TeacherList/teacherSlice';
+import { initAsyncTeachers } from '../features/TeacherList/teacherSlice';
 
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
   useEffect(() => {
     dispatch(initAsyncRequest());
     dispatch(getUser());
-    dispatch(addAsyncTeachers());
+    dispatch(initAsyncTeachers());
   }, [dispatch]);
 
   return (

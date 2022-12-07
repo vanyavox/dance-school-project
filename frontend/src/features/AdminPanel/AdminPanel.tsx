@@ -7,6 +7,7 @@ import { NewRequest } from '../TrialForm/types/state';
 import style from './AdminPanel.module.css';
 import Request from './Request/RequestProcessing';
 import Req from './Request/types/Request';
+import TeacherAdd from './TeacherCard/TeacherAdd';
 import TeacherCard from './TeacherCard/TeacherCard';
 
 function AdminPanel(): JSX.Element {
@@ -108,6 +109,7 @@ function AdminPanel(): JSX.Element {
           </div>
         )}
         <h3>Управление преподавателями</h3>
+        <TeacherAdd />
         <div className={style.teachers_block}>
           {teachers.map((teacher) => (
             <TeacherCard key={teacher.id} teacher={teacher} />

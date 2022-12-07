@@ -7,6 +7,7 @@ import { NewRequest } from '../TrialForm/types/state';
 import style from './AdminPanel.module.css';
 import Request from './Request/RequestProcessing';
 import Req from './Request/types/Request';
+import TeacherCard from './TeacherCard/TeacherCard';
 
 function AdminPanel(): JSX.Element {
   const dispatch = useAppDispatch();
@@ -108,7 +109,9 @@ function AdminPanel(): JSX.Element {
         )}
         <h3>Управление преподавателями</h3>
         <div className={style.teachers_block}>
-          asadfas
+          {teachers.map((teacher) => (
+            <TeacherCard key={teacher.id} teacher={teacher} />
+          ))}
         </div>
       </div>
 

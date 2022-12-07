@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { NewTeacher, State, Teacher } from './types/state';
+import { NewTeacher, State, Teacher, TeacherId } from './types/state';
 
 const initialState: State = {
   teachers: [],
@@ -23,23 +23,39 @@ export const addAsyncTeachers = createAsyncThunk('teachers/addAsyncTeachers', (t
   .then((result) => result.json())
   .then((data) => data));
 
+export const changeAsyncTeacher = createAsyncThunk('teachers/changeAsyncTeacher', (teacher: Teacher) => fetch(`http://localhost:4000/api/teachers/teacher/${teacher.idd}`, {
+  method: 'Put',
+  body: JSON.stringify(teacher),
+  headers: { 'Content-type': 'application/json' },
+})
+  .then((result) => result.json())
+  .then((data) => data));
+
 const teacherSlice = createSlice({
   name: 'teachers',
   initialState,
   reducers: {
   },
   extraReducers: (builder) => {
-    builder.addCase(initAsyncTeachers.fulfilled, (state, action) => {
-      state.teachers = action.payload;
-    });
-    builder.addCase(deleteAsyncTeachers.fulfilled, (state, action) => {
-      state.teachers = state.teachers.filter((teacher) => teacher.id !== Number(action.payload));
-    });
-    builder.addCase(addAsyncTeachers.fulfilled, (state, action) => {
-      state.teachers.push(action.payload.newT);
-    });
+    builder
+      .addCase(initAsyncTeachers.fulfilled, (state, action) => {
+        state.teachers = action.payload;
+      })
+      .addCase(deleteAsyncTeachers.fulfilled, (state, action) => {
+        state.teachers = state.teachers.filter((teacher) => teacher.id !== Number(action.payload));
+      })
+      .addCase(addAsyncTeachers.fulfilled, (state, action) => {
+        state.teachers.push(action.payload.newT);
+      })
+      .addCase(changeAsyncTeacher.fulfilled, (state, action) => {
+        state.teachers = state.teachers.map((teacher) => {
+          if (teacher.id === action.payload.id) {
+            return action.payload;
+          }
+          return teacher;
+        });
+      });
   },
 });
 
 export default teacherSlice.reducer;
-// export const { addTeacher } = teacherSlice.actions;

@@ -9,6 +9,7 @@
   flex-grow: 1;
   flex-basis: 0;
   max-width: 30%;
+  width: 400px;
 }
 
 .teacher__card:hover {
@@ -46,4 +47,33 @@
 
 .btn_teacher_delete:hover {
   background-color: #dc143ca9;
+}
+
+.teacher_edit {
+  max-width: 90%;
+}
+
+input {
+  width: 100%;
+}
+
+select {
+  width: 107%;
+}
+
+.teacher_edit_save {
+  padding: 4px;
+  background-color: #3CB371;
+}
+
+.teacher_edit_save:hover {
+  padding: 4px;
+  background-color: #3ed482;
+}
+
+.hiddenform {
+  /* visibility: hidden; */
+  height: 0px;
+  margin: 0;
+  padding: 0;
 }

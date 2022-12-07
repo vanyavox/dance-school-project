@@ -38,8 +38,8 @@ router
       return res.status(200).json({ message: 'Преподаватель успешно добавлен!', newT: newTeacher })
     } catch (error) { res.status(500).json({ message: error.message }) }
   })
-  .put('/change/:id', async (req, res) => {
-    const { id } = req.params
+  .put('/teacher/:idd', async (req, res) => {
+    const { idd } = req.params
     const {
       name,
       surname,
@@ -50,7 +50,8 @@ router
     } = req.body
 
     try {
-      const changedTeacher = await Teacher.findOne({ where: { id: Number(id) } })
+      const changedTeacher = await Teacher.findOne({ where: { id: Number(idd) } })
+      console.log(changedTeacher)
       changedTeacher.name = name
       changedTeacher.surname = surname
       changedTeacher.direction = direction

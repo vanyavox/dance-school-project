@@ -1,5 +1,6 @@
 export interface Teacher {
-  id: number ;
+  id: number;
+  idd?: number;
   name: string;
   surname: string;
   direction: string;
@@ -24,6 +25,7 @@ export interface State {
 export type TeacherId = Teacher['id'];
 
 export type Action =
-  | { type: 'teachers/addAsyncTeachers'; payload: Teacher }
+  | { type: 'teachers/addAsyncTeachers'; payload: TeacherId }
   | { type: 'teachers/deleteAsyncTeachers'; payload: TeacherId }
-  | { type: 'teachers/initAsyncTeachers'; payload: Teacher[] };
+  | { type: 'teachers/initAsyncTeachers'; payload: Teacher[] }
+  | { type: 'teachers/changeAsyncTeachers'; payload: Teacher };

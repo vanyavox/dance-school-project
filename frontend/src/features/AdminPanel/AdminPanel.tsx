@@ -31,7 +31,7 @@ function AdminPanel(): JSX.Element {
 
   return (
     <div className={style.main__block}>
-      <button className={style.btn_add_new} type="button" onClick={toggleModal}>Добавить заявку</button>
+      <button className={style.btn_add_new} type="button" onClick={toggleModal}>Панель управления</button>
       {active && (
         <div className={active ? 'modal active' : 'modal'} onClick={() => setActive(false)}>
           <div className={active ? 'modal_content active' : 'modal_content'} onClick={(e) => e.stopPropagation()}>
@@ -66,6 +66,7 @@ function AdminPanel(): JSX.Element {
                   <button className={style.btn_add_new_save} type="submit">Сохранить</button>
                 </div>
               </form>
+          <TeacherAdd />
             </div>
           </div>
         </div>
@@ -108,8 +109,8 @@ function AdminPanel(): JSX.Element {
             </div>
           </div>
         )}
-        <h3>Управление преподавателями</h3>
-        <TeacherAdd />
+        <h3>Преподаватели</h3>
+
         <div className={style.teachers_block}>
           {teachers.map((teacher) => (
             <TeacherCard key={teacher.id} teacher={teacher} />

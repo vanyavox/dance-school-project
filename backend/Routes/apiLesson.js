@@ -1,5 +1,5 @@
 const { Lesson, Teacher } = require('../db/models')
-
+const { Student } = require('../db/models')
 const router = require('express').Router()
 
 router.get('/', async (req, res) => {
@@ -15,8 +15,13 @@ router.get('/', async (req, res) => {
 })
   .put('/:id', async (req, res) => {
     const { id } = req.params
+    const { user_id } = req.session
+    const admin = await Student.findOne({ where: { role: 'admin' } })
     const { monday, tuesday, wednesday, thursday, friday, saturday, sunday } = req.body
     try {
+      if (user_id !== Number(admin.student_id)) {
+        return res.status(404)
+      }
       const lessons = await Lesson.update({
         monday,
         tuesday,

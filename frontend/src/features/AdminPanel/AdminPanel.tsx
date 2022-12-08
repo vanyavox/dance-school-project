@@ -75,9 +75,9 @@ function AdminPanel(): JSX.Element {
                   <label htmlFor="lesson_type">Направление</label>
                   <br />
                   <select className={style.input__inf} {...register('lesson_type')} name="lesson_type">
-                    <option className={style.option__inf}value="Латина">Латина</option>
+                    <option className={style.option__inf} value="Латина">Латина</option>
                     <option className={style.option__inf} value="Стандарт">Стандарт</option>
-                    <option className={style.option__inf}value="Двоеборье">Двоеборье</option>
+                    <option className={style.option__inf} value="Двоеборье">Двоеборье</option>
                   </select>
                   <br />
                   <label htmlFor="date">Дата</label>
@@ -105,6 +105,7 @@ function AdminPanel(): JSX.Element {
         <h3>
           Заявки
           <button
+            type="button"
             onClick={() => setUnautorized(!unAutorized)}
             className={style.btn_unautorized}
           >
@@ -144,6 +145,7 @@ function AdminPanel(): JSX.Element {
         )}
         <h3>Преподаватели
           <button
+            type="button"
             className={style.btn_unautorized}
             onClick={toggleTeachersModal}
           >

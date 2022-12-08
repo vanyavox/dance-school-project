@@ -12,8 +12,7 @@ function Footer(): JSX.Element {
           <Link to="/teachers">Преподаватели</Link>
         </div>
         <div className={style.footer__block}>
-          <Link to="/">Групповые / Индивидуальные занятия</Link>
-          <Link to="/">Направления</Link>
+          <Link to="/directions">Направления</Link>
           <Link to="/">Соревнования</Link>
           <Link className={style.footer_link} to="/map">Карта сайта</Link>
         </div>

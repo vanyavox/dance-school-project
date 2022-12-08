@@ -24,6 +24,7 @@ import { loadToutnament } from '../features/Tournament/tournamentSlice';
 import TournamentList from '../features/Tournament/TournamentList';
 import { initAsyncTeachers } from '../features/TeacherList/teacherSlice';
 import { loadLessons } from '../features/Lesson/lessonSlice';
+import DanceDirections from '../features/DanceDirections/DanceDirections';
 
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
@@ -34,7 +35,7 @@ function App(): JSX.Element {
     dispatch(loadToutnament());
     dispatch(initAsyncTeachers());
     dispatch(loadLessons());
-  }, [dispatch]);
+  }, []);
 
   return (
     <>
@@ -54,6 +55,7 @@ function App(): JSX.Element {
           <Route path="/lessons" element={<LessonForm />} />
           <Route path="/admin" element={<AdminPanel />} />
           <Route path="/tournament" element={<TournamentList />} />
+          <Route path="/directions" element={<DanceDirections />} />
         </Route>
       </Routes>
       <Footer />

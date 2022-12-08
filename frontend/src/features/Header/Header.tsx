@@ -1,9 +1,9 @@
 import { Avatar } from '@mui/material';
 import Badge from '@mui/material/Badge';
 import { styled } from '@mui/material/styles';
-import React, { useCallback } from 'react';
+import React from 'react';
 import { useSelector } from 'react-redux';
-import { NavLink, Outlet, useNavigate } from 'react-router-dom';
+import { NavLink, Outlet } from 'react-router-dom';
 import { RootState, useAppDispatch } from '../../store';
 import { logout } from '../Registration/userSlice';
 import style from './Header.module.css';
@@ -47,30 +47,30 @@ function Header(): JSX.Element {
   return (
     <>
       <nav className={style.header__main}>
-      <NavLink className={style.header__logo} to="/">
+        <NavLink className={style.header__logo} to="/">
           K2
-      </NavLink>
+        </NavLink>
         <NavLink to="/news">
           Новости
         </NavLink>
         <NavLink to="/teachers">
           Преподаватели
         </NavLink>
-        <NavLink to="/">
+        <NavLink to="/directions">
           Направления
         </NavLink>
         <NavLink to="/lessons">
           Расписание
         </NavLink>
         {authChecked !== true ? (
-        <div className={style.header__login}>
-          <NavLink to="/auth/login">
-            Войти
-          </NavLink>
-          <NavLink to="/auth/registration">
-            Зарегистрироваться
-          </NavLink>
-        </div>
+          <div className={style.header__login}>
+            <NavLink to="/auth/login">
+              Войти
+            </NavLink>
+            <NavLink to="/auth/registration">
+              Зарегистрироваться
+            </NavLink>
+          </div>
         ) : (
           <NavLink to="/" onClick={() => dispatch(logout())}>
             Выйти

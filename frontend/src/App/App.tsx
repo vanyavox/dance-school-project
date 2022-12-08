@@ -39,24 +39,24 @@ function App(): JSX.Element {
 
   return (
     <>
+      <Header />
       <Routes>
-        <Route path="/" element={<Header />}>
-          <Route path="/" element={<Main />} />
-          <Route path="/teachers" element={<TeacherList />} />
-          <Route path="/news" element={<NewsList />} />
-          <Route path="/profile" element={<Profile />} />
-          <Route path="teachers/:id" element={<TeacherProfile />} />
-          <Route path="auth/login" element={<Login />} />
-          <Route path="auth/registration" element={<Registration />} />
-          <Route path="/trialform" element={<TrialForm />} />
-          <Route path="/map" element={<Map />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/contacts" element={<Contacts />} />
-          <Route path="/lessons" element={<LessonForm />} />
-          <Route path="/admin" element={<AdminPanel />} />
-          <Route path="/tournament" element={<TournamentList />} />
-          <Route path="/directions" element={<DanceDirections />} />
-        </Route>
+
+        <Route path="/" element={<Main />} />
+        <Route path="/teachers" element={<TeacherList />} />
+        <Route path="/news" element={<NewsList />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="teachers/:id" element={<TeacherProfile />} />
+        <Route path="auth/login" element={<Login />} />
+        <Route path="auth/registration" element={<Registration />} />
+        <Route path="/trialform" element={<TrialForm />} />
+        <Route path="/map" element={<Map />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/contacts" element={<Contacts />} />
+        <Route path="/lessons" element={<LessonForm />} />
+        <Route path="/admin" element={<AdminPanel />} />
+        <Route path="/tournament" element={<TournamentList />} />
+        <Route path="/directions" element={<DanceDirections />} />
       </Routes>
       <Footer />
     </>

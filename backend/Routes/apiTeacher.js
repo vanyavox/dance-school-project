@@ -1,6 +1,7 @@
 const router = require('express').Router()
-const { Teacher } = require('../db/models')
 const { Student } = require('../db/models')
+const { Teacher, Lesson } = require('../db/models')
+
 
 router
   .get('/', async (req, res) => {
@@ -35,7 +36,17 @@ router
         description,
         photo
       })
-
+      const newTimeTable = await Lesson.create({
+        teacher_id: newTeacher.id,
+        lesson_type: newTeacher.direction,
+        monday: '',
+        tuesday: '',
+        wednesday: '',
+        thursday: '',
+        friday: '',
+        saturday: '',
+        sunday: ''
+      })
       return res.status(200).json({ message: 'Преподаватель успешно добавлен!', newT: newTeacher })
     } catch (error) { res.status(500).json({ message: error.message }) }
   })

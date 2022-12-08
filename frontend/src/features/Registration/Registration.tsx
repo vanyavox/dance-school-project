@@ -62,115 +62,137 @@ function Registration(): JSX.Element {
 
   return (
     <div className={style.container}>
-    <ThemeProvider theme={theme}>
-      <Container component="main" maxWidth="xs">
-        <CssBaseline />
-        <Box
-          sx={{
-            marginTop: 8,
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-          }}
-        >
-          <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }} />
-          <Typography component="h1" variant="h5">
-            Sign up
-          </Typography>
-          <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
-            <Grid container spacing={2}>
-              <Grid item xs={12}>
-                <TextField
-                  value={userEmail}
-                  onChange={handleEmailChange}
-                  required
-                  fullWidth
-                  id="email"
-                  label="Email Address"
-                  name="email"
-                  autoComplete="email"
-                  helperText={loginError}
-                  error={!!loginError}
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  value={userName}
-                  onChange={(event) => setName(event.target.value)}
-                  autoComplete="given-name"
-                  name="name"
-                  required
-                  fullWidth
-                  id="firstName"
-                  label="Name"
-                  autoFocus
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  value={password}
-                  onChange={handlePasswordChange}
-                  required
-                  fullWidth
-                  name="password"
-                  label="Password"
-                  type="password"
-                  id="password"
-                  autoComplete="new-password"
-                  helperText={passwordError}
-                  error={!!passwordError}
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  value={passwordRepit}
-                  onChange={handlePasswordRepitChange}
-                  required
-                  fullWidth
-                  name="passwordRepit"
-                  label="Confirm Password"
-                  type="password"
-                  id="password"
-                  autoComplete="new-password"
-                  helperText={passwordError}
-                  error={!!passwordError}
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  value={userPhone}
-                  onChange={handlePhoneChange}
-                  autoComplete="given-phone"
-                  name="phone"
-                  required
-                  fullWidth
-                  id="phone"
-                  label="Phone"
-                  autoFocus
-                  helperText={emailError}
-                  error={!!emailError}
-                />
-              </Grid>
-            </Grid>
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              sx={{ mt: 3, mb: 2 }}
+      <ThemeProvider theme={theme}>
+        <Container component="main" maxWidth="xs" className={style.modal_form}>
+          <CssBaseline />
+          <Box
+            sx={{
+              marginTop: 3,
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+            }}
+          >
+            <div className={style.avatar_log}>
+              <h3>
+                <Avatar sx={{ m: 6, bgcolor: '#b8629f' }} />
+                sign in
+              </h3>
+            </div>
+            <Box
+              component="form"
+              noValidate
+              onSubmit={handleSubmit}
+              sx={{
+                mt: 2,
+                width: 300,
+              }}
             >
-              Sign Up
-            </Button>
-            <Grid container justifyContent="flex-end">
-              <Grid item>
-                <Link href="/auth/login" variant="body2">
-                  Уже зарегистрированы? Войти
-                </Link>
+              <Grid container spacing={2}>
+                <Grid item xs={12}>
+                  <TextField
+                    value={userEmail}
+                    onChange={handleEmailChange}
+                    multiline
+                    focused
+                    color="secondary"
+                    fullWidth
+                    id="Outlined secondary"
+                    variant="filled"
+                    label="Email Address"
+                    name="email"
+                    autoComplete="email"
+                    helperText={loginError}
+                    error={!!loginError}
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <TextField
+                    value={userName}
+                    onChange={(event) => setName(event.target.value)}
+                    focused
+                    color="secondary"
+                    id="Outlined secondary"
+                    variant="filled"
+                    autoComplete="given-name"
+                    name="name"
+                    fullWidth
+                    label="Name"
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <TextField
+                    value={password}
+                    onChange={handlePasswordChange}
+                    focused
+                    color="secondary"
+                    id="Outlined secondary"
+                    variant="filled"
+                    fullWidth
+                    name="password"
+                    label="Password"
+                    type="password"
+                    autoComplete="new-password"
+                    helperText={passwordError}
+                    error={!!passwordError}
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <TextField
+                    value={passwordRepit}
+                    onChange={handlePasswordRepitChange}
+                    focused
+                    color="secondary"
+                    id="Outlined secondary"
+                    variant="filled"
+                    fullWidth
+                    name="passwordRepit"
+                    label="Confirm Password"
+                    type="password"
+                    autoComplete="new-password"
+                    helperText={passwordError}
+                    error={!!passwordError}
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <TextField
+                    value={userPhone}
+                    onChange={handlePhoneChange}
+                    autoComplete="given-phone"
+                    name="phone"
+                    focused
+                    color="secondary"
+                    id="Outlined secondary"
+                    variant="filled"
+                    fullWidth
+                    label="Phone"
+                    autoFocus
+                    helperText={emailError}
+                    error={!!emailError}
+                  />
+                </Grid>
               </Grid>
-            </Grid>
+              <Button
+                type="submit"
+                fullWidth
+                variant="contained"
+                sx={{ mt: 3, mb: 2, bgcolor: '#b8629f' }}
+              >
+                Sign Up
+              </Button>
+              <Grid container justifyContent="center">
+                <Grid item>
+                  <Link href="/auth/login" variant="body2" color="secondary">
+                    Уже зарегистрированы?
+                    <br />
+                    Войти
+                  </Link>
+                </Grid>
+              </Grid>
+            </Box>
           </Box>
-        </Box>
-      </Container>
-    </ThemeProvider>
+        </Container>
+      </ThemeProvider>
     </div>
   );
 }

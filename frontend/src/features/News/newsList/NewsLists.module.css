@@ -1,5 +1,5 @@
 .news_list {
-  width: 50%;
+  width: 70%;
   margin: auto;
   font-size: 18pt;
 }
@@ -52,40 +52,12 @@
   border-color: #ffffff;
 }
 
-.news_button {
-  align-items: center;
-  justify-content: center;
-  padding: 10px;
-  height: 40px;
-  border-radius: 45px;
-  font-family: 'Gill Sans', sans-serif;
-  font-size: 15px;
-  text-transform: uppercase;
-  text-align: center;
-  vertical-align: center;
-  letter-spacing: 3px;
-  color: #ffffff;
-  background: #7D8195;
-  box-shadow: 0 0px 0px rgba(0, 0, 0, .1);
-  transition: .3s;
-  margin: auto;
-}
-
-.news_button:hover {
-  align-items: center;
-  background: #7D8195;
-  box-shadow: 0 5px 10px #646777;
-  color: white;
-  font-size: 15px;
-  transform: translateY(-1px);
-}
 
 .button_add {
   align-items: center;
   justify-content: center;
   height: 55px;
   border-radius: 45px;
-  margin: 30px;
   font-family: 'Gill Sans', sans-serif;
   font-size: 15px;
   text-transform: uppercase;
@@ -93,24 +65,34 @@
   vertical-align: center;
   letter-spacing: 3px;
   color: #ffffff;
-  background: #7D8195;
+  background: #884a76;
   box-shadow: 0 0px 0px rgba(0, 0, 0, .1);
   transition: .3s;
+  margin-right: 20px;
+  margin-top: 30px;
 }
 
 .modal_form > form {
   width: 100%;
 }
 
-.btn_add {
-  background-color: #3CB371;
-  padding: 8px;
+.input__news{
+  width: 100%;
+  border: 0;
+  border-bottom: 2px solid #7D8195;
+  outline: 0;
+  font-size: 1.3rem;
+  color: #edcece;
+  padding: 7px 0;
+  background: transparent;
+  transition: border-color 0.2s;
+  margin-bottom: 20px ;
 }
 
 .button_add:hover {
   align-items: center;
-  background: #7D8195;
-  box-shadow: 0 10px 15px #646777;
+  background: #b8629f;
+  box-shadow: 0 5px 13px #a7598f;
   color: white;
   font-size: 15px;
   transform: translateY(-1px);
@@ -122,4 +104,8 @@
   color: #7D8195;
   background: transparent;
   transition: border-color 0.2s;
+}
+.option__news{
+  background-color: #69445f;
+  color: #ffffff;
 }

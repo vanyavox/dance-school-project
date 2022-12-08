@@ -12,32 +12,30 @@
 }
 
 .requests_block {
-  border: 1px solid rgba(129, 129, 129, 0.205);
   width: 45%;
   padding: 10px;
-  background-color: #cecdcd33;
 }
 
 .request_head {
   font-size: 16pt;
   font-weight: 600;
-  border-bottom: 1px solid black;
   width: 100%;
+  color: white;
 }
 
 .modal {
   background-color: rgba(0, 0, 0, 0.403);
-  display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
-  opacity: 0;
-  pointer-events: none;
 }
 
 .modal_content {
   padding: 20px;
   border-radius: 10px;
   background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
 }
 
 .modal.active {
@@ -52,16 +50,16 @@
 .modal_form {
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
+  justify-content: stretch;
+  align-items: middle;
   flex-wrap: wrap;
-  background-color: #f0f0f048;
+  background-color: #2A2323;
+  color: white;
   border-radius: 15px;
   margin-top: 10px;
-}
-
-.modal_form > button {
-  width: 50px;
-  padding: 5px;
+  padding: 10px;
+  width: 90%;
+  margin: auto;
 }
 
 .btn_add {
@@ -70,8 +68,8 @@
 }
 
 form {
-  width: auto;
-  margin-bottom: auto;
+  width: 600px;
+  margin: auto;
 }
 
 .btn_add_new {
@@ -81,6 +79,11 @@ form {
 .btn_add_new_save {
   padding: 5px;
   background-color: #3CB371;
+}
+
+.btn_add_new_save:hover {
+  padding: 5px;
+  background-color: #3cb372c0;
 }
 
 .btn_unautorized {
@@ -96,12 +99,10 @@ h3 {
 .teachers_block {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: stretch;
   flex-wrap: wrap;
-  background-color: #cecdcd33;
   width: 91.3%;
   margin: auto;
   padding: 5px;
-  border: 1px solid rgba(129, 129, 129, 0.205);
 }

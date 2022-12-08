@@ -1,4 +1,10 @@
 .allText {
+  min-height: 30vh;
   margin:auto;
   width: 65%;
 }
+
+.YaMap {
+  margin-bottom: 50px;
+}
+

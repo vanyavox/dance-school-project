@@ -11,6 +11,7 @@ import Stack from '@mui/material/Stack';
 import MuiAlert, { AlertProps } from '@mui/material/Alert';
 import { useForm } from 'react-hook-form';
 import { Input } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 import style from './Profile.module.css';
 import { RootState, useAppDispatch } from '../../store';
 import { addAsyncAvatar, update } from '../Registration/userSlice';
@@ -32,6 +33,11 @@ function Profile(): JSX.Element {
   const [phoneUser, setPhonelUser] = useState(phone);
   const { register, handleSubmit } = useForm();
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+
+  const rotateBack = (): void => {
+    navigate(-1);
+  };
 
   const onSubmit = (data: any,): void => {
     dispatch(update(data));
@@ -196,6 +202,7 @@ function Profile(): JSX.Element {
           </>
         )
       }
+      <button onClick={rotateBack}>Назад</button>
     </div>
   );
 }

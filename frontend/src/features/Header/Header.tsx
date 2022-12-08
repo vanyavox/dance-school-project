@@ -45,62 +45,68 @@ function Header(): JSX.Element {
   const url = `http://localhost:4000/${image}`;
 
   return (
-    <div className={style.header}>
-      <nav className={style.header__main}>
-        <NavLink className={style.header__logo} to="/">
-          K2
-        </NavLink>
-        <NavLink to="/news">
-          Новости
-        </NavLink>
-        <NavLink to="/teachers">
-          Преподаватели
-        </NavLink>
+    <>
+      <div className={style.header}>
+        <nav className={style.header__main}>
+          <NavLink className={style.header__logo} to="/">
+            K2
+          </NavLink>
+          <NavLink to="/news">
+            Новости
+          </NavLink>
+          <NavLink to="/teachers">
+            Преподаватели
+          </NavLink>
         {authChecked === true && (
         <NavLink to="/tournament">
           Турниры
         </NavLink>
         )}
-        <NavLink to="/directions">
-          Направления
-        </NavLink>
-        <NavLink to="/lessons">
-          Расписание
-        </NavLink>
-       {authChecked === true && role === 'admin' && (
+          <NavLink to="/directions">
+            Направления
+          </NavLink>
+          <NavLink to="/lessons">
+            Расписание
+          </NavLink>
+           {authChecked === true && role === 'admin' && (
           <NavLink to="/admin">
           Admin panel
           </NavLink>
        )}
 
-        {authChecked !== true ? (
-          <div className={style.header__login}>
-            <NavLink to="/auth/login">
-              Войти
-            </NavLink>
-            <NavLink to="/auth/registration">
-              Зарегистрироваться
-            </NavLink>
-          </div>
-        ) : (
-          <NavLink to="/profile">
-            <StyledBadge
-              overlap="circular"
-              anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
-              variant="dot"
-            >
-              <Avatar
-                alt="My_profile"
-                src={url || ''}
-                sx={{ width: 70, height: 70 }}
-              />
-            </StyledBadge>
-          </NavLink>
-        )}
-      </nav>
+          {authChecked !== true ? (
+            <div className={style.header__login}>
+              <NavLink to="/auth/login">
+                Войти
+              </NavLink>
+              <NavLink to="/auth/registration">
+                Зарегистрироваться
+              </NavLink>
+            </div>
+          ) : (
+            <>
+              <NavLink to="/" onClick={() => dispatch(logout())}>
+                Выйти
+              </NavLink>
+              <NavLink to="/profile">
+                <StyledBadge
+                  overlap="circular"
+                  anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
+                  variant="dot"
+                >
+                  <Avatar
+                    alt="My_profile"
+                    src={url || ''}
+                    sx={{ width: 70, height: 70 }}
+                  />
+                </StyledBadge>
+              </NavLink>
+            </>
+          )}
+        </nav>
+      </div>
       <Outlet />
-    </div>
-
+    </>
   );
 }
 

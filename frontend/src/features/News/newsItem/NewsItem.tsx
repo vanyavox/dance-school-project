@@ -1,9 +1,16 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useSelector } from 'react-redux';
+import Snackbar from '@mui/material/Snackbar';
+import MuiAlert, { AlertProps } from '@mui/material/Alert';
 import { RootState } from '../../../store';
 import News from '../newsList/types/News';
 import style from './NewsItems.module.css';
+
+const Alert = React.forwardRef<HTMLDivElement, AlertProps>((
+  props,
+  ref,
+) => <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />);
 
 interface NewsPropsm {
   oneNews: News;
@@ -14,12 +21,20 @@ interface NewsPropsm {
 function NewsItem({ oneNews, handleRemove, handleUpdate }: NewsPropsm): JSX.Element {
   // modal dialog
   const [active, setActive] = useState(false);
+  const [open, setOpenModal] = useState<boolean>(false);
   const handleOpen = (): void => setActive(!active);
   const handleClose = (): void => setActive(false);
 
   const { authChecked, role } = useSelector((state: RootState) => state.user);
   // useform
   const { register, handleSubmit } = useForm<News>();
+
+  const handleCloseModal = (event?: React.SyntheticEvent | Event, reason?: string) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+    setOpenModal(false);
+  };
 
   function onSubmit(data: News): void {
     const value: News = {
@@ -29,6 +44,7 @@ function NewsItem({ oneNews, handleRemove, handleUpdate }: NewsPropsm): JSX.Elem
       description: data.description,
       news_type: data.news_type
     };
+    setOpenModal(true);
     handleUpdate(value);
     handleClose();
   }
@@ -39,13 +55,18 @@ function NewsItem({ oneNews, handleRemove, handleUpdate }: NewsPropsm): JSX.Elem
       <div className={style.news_item}>
         <img src={oneNews.image} alt="News_image" className={style.img_news} />
         <p className={style.description}>{oneNews.description}</p>
+        <Snackbar open={open} autoHideDuration={5000} onClose={handleCloseModal}>
+          <Alert onClose={handleCloseModal} severity="success" sx={{ width: '100%' }}>
+            Новость успешно отредактирована
+          </Alert>
+        </Snackbar>
       </div>
-          {authChecked && role === 'admin' && (
-            <>
-            <button className={style.button_edit} type="button" onClick={handleOpen}>Редактировать</button>
-            <button className={style.btn_delete} type="button" onClick={() => handleRemove(oneNews)}>Удалить</button>
-            </>
-          )}
+      {authChecked && role === 'admin' && (
+        <>
+          <button className={style.button_edit} type="button" onClick={handleOpen}>Редактировать</button>
+          <button className={style.btn_delete} type="button" onClick={() => handleRemove(oneNews)}>Удалить</button>
+        </>
+      )}
 
       {active && (
         <div className={active ? 'modal active' : 'modal'} onClick={() => setActive(false)}>

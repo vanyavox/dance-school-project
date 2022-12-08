@@ -2,13 +2,21 @@ import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import { Modal, Box, Button, Typography } from '@mui/material';
+import Snackbar from '@mui/material/Snackbar';
+import MuiAlert, { AlertProps } from '@mui/material/Alert';
 import Toornament from './types/Toornament';
 import style from './tournamentcss.module.css';
 import { RootState, useAppDispatch } from '../../store';
 import { addTourList, deleteToutnament, updateToutnament } from './tournamentSlice';
 import TourList from './types/tourList';
 
+const Alert = React.forwardRef<HTMLDivElement, AlertProps>((
+  props,
+  ref,
+) => <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />);
+
 function TournamentIt({ tournament }: { tournament: Toornament }): JSX.Element {
+  const [openModal, setOpenModal] = useState<boolean>(false);
   const dispatch = useAppDispatch();
   const { role, authChecked, name, id, surname } = useSelector((state: RootState) => state.user);
   const { register, handleSubmit } = useForm<Toornament>();
@@ -21,9 +29,17 @@ function TournamentIt({ tournament }: { tournament: Toornament }): JSX.Element {
 
   const handleUpdate = (tournamentUpdate: Toornament): void => {
     dispatch(updateToutnament(tournamentUpdate));
+    setOpenModal(true);
   };
   const handleAddTour = (tourAdd: TourList): void => {
     dispatch(addTourList(tourAdd));
+  };
+
+  const handleCloseModal = (event?: React.SyntheticEvent | Event, reason?: string) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+    setOpenModal(false);
   };
 
   function onSubmitAdmin(data: Toornament): void {
@@ -60,9 +76,9 @@ function TournamentIt({ tournament }: { tournament: Toornament }): JSX.Element {
   };
   const [open, setOpen] = useState(false);
   const [acept, setAcept] = useState(false);
-  const handleOpen = ():void => setOpen(true);
-  const handleClose = ():void => setOpen(false);
-  const hanleAcept = ():void => setAcept(true);
+  const handleOpen = (): void => setOpen(true);
+  const handleClose = (): void => setOpen(false);
+  const hanleAcept = (): void => setAcept(true);
 
   return (
     <div>
@@ -74,34 +90,34 @@ function TournamentIt({ tournament }: { tournament: Toornament }): JSX.Element {
 
       >
         <Box sx={stylemodal}>
-        <form className={style.modal__content} onSubmit={handleSubmit(onSubmitUser)}>
-          <h3>Подтвердите запись</h3>
-          <p className={style.tournament__p__modal}>Название турнира: {tournament.tour_name}</p>
-          <p className={style.tournament__p__modal}>Ваше ФИО: {name} {surname}</p>
-          <button className={style.tournament__button__modal} type="submit">Подтвердить</button>
-        </form>
+          <form className={style.modal__content} onSubmit={handleSubmit(onSubmitUser)}>
+            <h3>Подтвердите запись</h3>
+            <p className={style.tournament__p__modal}>Название турнира: {tournament.tour_name}</p>
+            <p className={style.tournament__p__modal}>Ваше ФИО: {name} {surname}</p>
+            <button className={style.tournament__button__modal} type="submit">Подтвердить</button>
+          </form>
         </Box>
       </Modal>
-    <div className={style.tournament__line}>
-      {!activeAdmin && (
-        <>
-        <p className={style.tournament__p}>{tournament.date}</p>
-        <p className={style.tournament__p}>{tournament.tour_name}</p>
-        <p className={style.tournament__p}>{tournament.place}</p>
-        <p className={style.tournament__p}> {tournament.points}</p>
-        </>
-      )}
-      { authChecked === true && role === 'student' && (
-        <button type="button" className={!acept ? style.tournament__button : style.tournament__button_h} onClick={handleOpen}>Записаться на турнир</button>
-      )}
-      {role === 'admin' && authChecked === true && activeAdmin === false && (
+      <div className={style.tournament__line}>
+        {!activeAdmin && (
+          <>
+            <p className={style.tournament__p}>{tournament.date}</p>
+            <p className={style.tournament__p}>{tournament.tour_name}</p>
+            <p className={style.tournament__p}>{tournament.place}</p>
+            <p className={style.tournament__p}> {tournament.points}</p>
+          </>
+        )}
+        {authChecked === true && role === 'student' && (
+          <button type="button" className={!acept ? style.tournament__button : style.tournament__button_h} onClick={handleOpen}>Записаться на турнир</button>
+        )}
+        {role === 'admin' && authChecked === true && activeAdmin === false && (
           <>
             <button type="button" className={style.tournament__button} onClick={handleOpenAdmin}>Редактировать</button>
             <button type="button" className={style.tournament__button} onClick={() => dispatch(deleteToutnament(tournament.id))}>Удалить</button>
           </>
         )}
         {activeAdmin && (
-        <form onSubmit={handleSubmit(onSubmitAdmin)}>
+          <form onSubmit={handleSubmit(onSubmitAdmin)}>
             <label className={style.tournament__label}>Дата</label>
             <input type="date" {...register('date')} defaultValue={tournament.date} className={style.tournament__input} required />
             <label className={style.tournament__label}>Соревнование</label>
@@ -109,11 +125,16 @@ function TournamentIt({ tournament }: { tournament: Toornament }): JSX.Element {
             <label className={style.tournament__label}>Место проведения</label>
             <input {...register('place')} defaultValue={tournament.place} className={style.tournament__input} type="text" required />
             <label className={style.tournament__label}>Очки</label>
-            <input {...register('points')} defaultValue={tournament.points} className={style.tournament__input} type="number" required />
+            <input {...register('points')} defaultValue={tournament.points} minLength={1} maxLength={3} className={style.tournament__input} type="text" required />
             <button type="submit" className={style.tournament__button}>Сохранить</button>
-        </form>
-)}
-    </div>
+          </form>
+        )}
+      </div>
+      <Snackbar open={openModal} autoHideDuration={5000} onClose={handleCloseModal}>
+        <Alert onClose={handleCloseModal} severity="success" sx={{ width: '100%' }}>
+          Турнир успешно изменён!
+        </Alert>
+      </Snackbar>
     </div>
   );
 }

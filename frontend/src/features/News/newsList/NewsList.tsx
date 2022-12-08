@@ -2,16 +2,31 @@ import React, { ChangeEvent, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useSelector } from 'react-redux';
 import { Modal, Box } from '@mui/material';
+import Snackbar from '@mui/material/Snackbar';
+import MuiAlert, { AlertProps } from '@mui/material/Alert';
 import { RootState, useAppDispatch } from '../../../store';
 import NewsItem from '../newsItem/NewsItem';
 import { deleteNews, loadAsyncNews, updateNews, addNews } from './newsSlice';
 import style from './NewsLists.module.css';
 import News from './types/News';
 
+const Alert = React.forwardRef<HTMLDivElement, AlertProps>((
+  props,
+  ref,
+) => <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />);
+
 function NewsList(): JSX.Element {
+  const [openModal, setOpenModal] = useState<boolean>(false);
   const { news } = useSelector((state: RootState) => state.news);
   const { authChecked, role } = useSelector((state: RootState) => state.user);
   const dispatch = useAppDispatch();
+
+  const handleCloseModal = (event?: React.SyntheticEvent | Event, reason?: string) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+    setOpenModal(false);
+  };
 
   // delete news item
   const handleRemove = (newsToDelete: News): void => {
@@ -23,6 +38,7 @@ function NewsList(): JSX.Element {
   };
   // add news item
   const handleAdd = (newsToAdd: News): void => {
+    setOpenModal(true);
     dispatch(addNews(newsToAdd));
   };
   // modal dialog
@@ -41,7 +57,7 @@ function NewsList(): JSX.Element {
     <div className={style.news_list}>
       <h1>Новости</h1>
       {role === 'admin' &&
-      (<button type="button" onClick={handleOpen} className={style.button_add}>Добавить  Новость / Анонс</button>)}
+        (<button type="button" onClick={handleOpen} className={style.button_add}>Добавить  Новость / Анонс</button>)}
 
       {active && (
         <div className={active ? 'modal active' : 'modal'} onClick={() => setActive(false)}>
@@ -51,7 +67,7 @@ function NewsList(): JSX.Element {
                 <input className={style.input__news} {...register('title')} placeholder="Название" required />
                 <textarea className={style.input__news} rows={10} {...register('description')} placeholder="Описание" required />
                 <input className={style.input__news} {...register('image')} placeholder="Ссылка на картинку" required />
-                <select className={style.input__news} {...register('news_type')} placeholder="Тип события: Новость/ Анонс Турнира" required >
+                <select className={style.input__news} {...register('news_type')} placeholder="Тип события: Новость/ Анонс Турнира" required>
                   <option className={style.option__news}>Новость</option>
                   <option className={style.option__news}>Турнир</option>
                 </select>
@@ -61,6 +77,11 @@ function NewsList(): JSX.Element {
           </div>
         </div>
       )}
+      <Snackbar open={openModal} autoHideDuration={5000} onClose={handleCloseModal}>
+        <Alert onClose={handleCloseModal} severity="success" sx={{ width: '100%' }}>
+          Новость успешно добавлена
+        </Alert>
+      </Snackbar>
       <div>
         {news.map((oneNews) => (
           <NewsItem

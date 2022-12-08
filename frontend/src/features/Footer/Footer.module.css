@@ -8,7 +8,7 @@
   align-items: center;
   height: auto;
   font-family: 'Gill Sans', sans-serif;
-  /* font-size: 14px; */
+  
 }
 
 .footer {
@@ -16,6 +16,15 @@
   justify-content: center;
   flex-direction: column;
   box-shadow: 0 -2px 20px 1px rgb(0,0,0,0.4);
+  
+  /* vertical-align:middle;
+  margin: none;
+  position: relative;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: auto; */
+  
 }
 
 .footer__block>a,

@@ -14,6 +14,7 @@ function AdminPanel(): JSX.Element {
   const dispatch = useAppDispatch();
   const [active, setActive] = useState<boolean>(false);
   const [unAutorized, setUnautorized] = useState<boolean>(true);
+  const [teachersModal, setTeachersModal] = useState<boolean>(false);
   const { requests } = useSelector((state: RootState) => state.requests);
   const { teachers } = useSelector((state: RootState) => state.teachers);
 
@@ -29,9 +30,16 @@ function AdminPanel(): JSX.Element {
     handleAdd(data);
   };
 
+  const toggleTeachersModal = (): void => setTeachersModal(!teachersModal);
+
   return (
     <div className={style.main__block}>
-      <button className={style.btn_add_new} type="button" onClick={toggleModal}>Панель управления</button>
+      <button className={style.btn_add_new} type="button" onClick={toggleModal}>
+        {active ?
+          (<>Скрыть панель управления</>)
+          :
+          (<>Показать панель управления</>)}
+      </button>
       {active && (
         <div className={active ? 'modal active' : 'modal'} onClick={() => setActive(false)}>
           <div className={active ? 'modal_content active' : 'modal_content'} onClick={(e) => e.stopPropagation()}>
@@ -66,20 +74,23 @@ function AdminPanel(): JSX.Element {
                   <button className={style.btn_add_new_save} type="submit">Сохранить</button>
                 </div>
               </form>
-          <TeacherAdd />
+              <TeacherAdd />
             </div>
           </div>
         </div>
       )}
       <div>
         <h3>
-          Неавторизованные заявки
-          <button
-            onClick={() => setUnautorized(!unAutorized)}
-            className={style.btn_unautorized}
-          >
-            Показать / Скрыть
-          </button>
+          Заявки
+        <button
+          onClick={() => setUnautorized(!unAutorized)}
+          className={style.btn_unautorized}
+        >
+          {unAutorized ?
+            (<>Скрыть</>)
+            :
+            (<>Показать</>)}
+        </button>
         </h3>
         {unAutorized && (
           <div className={style.requests}>
@@ -109,15 +120,25 @@ function AdminPanel(): JSX.Element {
             </div>
           </div>
         )}
-        <h3>Преподаватели</h3>
-
-        <div className={style.teachers_block}>
-          {teachers.map((teacher) => (
-            <TeacherCard key={teacher.id} teacher={teacher} />
-          ))}
-        </div>
+        <h3>Преподаватели
+        <button
+          className={style.btn_unautorized}
+          onClick={toggleTeachersModal}
+        >
+          {teachersModal ?
+            (<>Скрыть</>)
+            :
+            (<>Показать</>)}
+        </button>
+        </h3>
+        {teachersModal && (
+          <div className={style.teachers_block}>
+            {teachers.map((teacher) => (
+              <TeacherCard key={teacher.id} teacher={teacher} />
+            ))}
+          </div>
+        )}
       </div>
-
     </div>
 
   );

@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useSelector } from 'react-redux';
+import Snackbar from '@mui/material/Snackbar';
+import MuiAlert, { AlertProps } from '@mui/material/Alert';
 import { RootState, useAppDispatch } from '../../store';
 import { addAsyncRequest } from '../TrialForm/trialFormSlice';
 import { NewRequest } from '../TrialForm/types/state';
@@ -10,10 +12,17 @@ import Req from './Request/types/Request';
 import TeacherAdd from './TeacherCard/TeacherAdd';
 import TeacherCard from './TeacherCard/TeacherCard';
 
+const Alert = React.forwardRef<HTMLDivElement, AlertProps>((
+  props,
+  ref,
+) => <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />);
+
 function AdminPanel(): JSX.Element {
   const dispatch = useAppDispatch();
   const [active, setActive] = useState<boolean>(false);
   const [unAutorized, setUnautorized] = useState<boolean>(true);
+  const [open, setOpen] = useState<boolean>(false);
+
   const [teachersModal, setTeachersModal] = useState<boolean>(false);
   const { requests } = useSelector((state: RootState) => state.requests);
   const { teachers } = useSelector((state: RootState) => state.teachers);
@@ -26,11 +35,19 @@ function AdminPanel(): JSX.Element {
 
   const { register, handleSubmit } = useForm<NewRequest>();
 
+  const toggleTeachersModal = (): void => setTeachersModal(!teachersModal);
+
   const onSubmit = (data: NewRequest): void => {
     handleAdd(data);
+    setOpen(true);
   };
 
-  const toggleTeachersModal = (): void => setTeachersModal(!teachersModal);
+  const handleClose = (event?: React.SyntheticEvent | Event, reason?: string) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+    setOpen(false);
+  };
 
   return (
     <div className={style.main__block}>
@@ -49,11 +66,11 @@ function AdminPanel(): JSX.Element {
                   <h3>Информация о танцоре</h3>
                   <label htmlFor="name">Имя</label>
                   <br />
-                  <input {...register('name')} name="name" type="text" placeholder="Имя" />
+                  <input {...register('name')} name="name" minLength={2} type="text" placeholder="Имя" required />
                   <br />
                   <label htmlFor="phone">Номер телефона</label>
                   <br />
-                  <input {...register('phone')} type="tel" name="phone" list="tel-list" placeholder="+7 (XXX) XXX-XX-XX" pattern="\+7\s?[\(]{0,1}9[0-9]{2}[\)]{0,1}\s?\d{3}[-]{0,1}\d{2}[-]{0,1}\d{2}" />
+                  <input {...register('phone')} type="tel" name="phone" list="tel-list" placeholder="+7 (XXX) XXX-XX-XX" pattern="\+7\s?[\(]{0,1}9[0-9]{2}[\)]{0,1}\s?\d{3}[-]{0,1}\d{2}[-]{0,1}\d{2}" required />
                   <br />
                   <label htmlFor="lesson_type">Направление</label>
                   <br />
@@ -65,13 +82,18 @@ function AdminPanel(): JSX.Element {
                   <br />
                   <label htmlFor="date">Дата</label>
                   <br />
-                  <input {...register('date')} name="date" type="date" placeholder="Ваше имя" />
+                  <input {...register('date')} name="date" type="date" placeholder="Ваше имя" required />
                   <br />
                   <label htmlFor="time">Время</label>
                   <br />
-                  <input {...register('time')} name="time" type="time" placeholder="Ваше имя" />
+                  <input {...register('time')} name="time" type="time" placeholder="Ваше имя" required />
                   <br />
                   <button className={style.btn_add_new_save} type="submit">Сохранить</button>
+                  <Snackbar open={open} autoHideDuration={5000} onClose={handleClose}>
+                    <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
+                      Заявка успешно добавлена!
+                    </Alert>
+                  </Snackbar>
                 </div>
               </form>
               <TeacherAdd />
@@ -82,15 +104,15 @@ function AdminPanel(): JSX.Element {
       <div>
         <h3>
           Заявки
-        <button
-          onClick={() => setUnautorized(!unAutorized)}
-          className={style.btn_unautorized}
-        >
-          {unAutorized ?
-            (<>Скрыть</>)
-            :
-            (<>Показать</>)}
-        </button>
+          <button
+            onClick={() => setUnautorized(!unAutorized)}
+            className={style.btn_unautorized}
+          >
+            {unAutorized ?
+              (<>Скрыть</>)
+              :
+              (<>Показать</>)}
+          </button>
         </h3>
         {unAutorized && (
           <div className={style.requests}>
@@ -121,15 +143,15 @@ function AdminPanel(): JSX.Element {
           </div>
         )}
         <h3>Преподаватели
-        <button
-          className={style.btn_unautorized}
-          onClick={toggleTeachersModal}
-        >
-          {teachersModal ?
-            (<>Скрыть</>)
-            :
-            (<>Показать</>)}
-        </button>
+          <button
+            className={style.btn_unautorized}
+            onClick={toggleTeachersModal}
+          >
+            {teachersModal ?
+              (<>Скрыть</>)
+              :
+              (<>Показать</>)}
+          </button>
         </h3>
         {teachersModal && (
           <div className={style.teachers_block}>

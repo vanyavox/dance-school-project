@@ -1,0 +1,19 @@
+.main__text {
+  width: 80%;
+  margin: auto;
+  text-align: justify;
+  padding: 10px;
+}
+
+.text_title {
+  color: #DC6DBF;
+  font-size: 20pt;
+}
+
+.directions_img {
+  float: right;
+  max-width: 500px;
+  border-radius: 10px;
+  margin-left: 20px;
+  margin-top: 7px;
+}

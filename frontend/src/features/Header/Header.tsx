@@ -56,6 +56,9 @@ function Header(): JSX.Element {
         <NavLink to="/teachers">
           Преподаватели
         </NavLink>
+        <NavLink to="/tournament">
+          Турниры
+        </NavLink>
         <NavLink to="/directions">
           Направления
         </NavLink>

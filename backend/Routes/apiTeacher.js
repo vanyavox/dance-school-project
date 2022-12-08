@@ -2,7 +2,6 @@ const router = require('express').Router()
 const { Student } = require('../db/models')
 const { Teacher, Lesson } = require('../db/models')
 
-
 router
   .get('/', async (req, res) => {
     try {

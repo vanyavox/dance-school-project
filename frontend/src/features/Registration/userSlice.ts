@@ -20,6 +20,7 @@ export const addAsyncAvatar = createAsyncThunk('users/user/profile/avatar', (fil
 })
   .then((result) => result.json())
   .then((data) => data));
+  // state
 
 export const initialState: State = {
   id: '',
@@ -104,7 +105,7 @@ const userSlice = createSlice({
           state.age = action.payload.user.age;
           state.phone = action.payload.user.phone;
           state.id = action.payload.user.id;
-          state.image = `/upload/${action.payload.user.image}`
+          state.image = `/upload/${action.payload.user.image}`;
           state.authChecked = true;
           state.emailError = '';
           state.loginError = '';
@@ -144,7 +145,7 @@ const userSlice = createSlice({
           state.age = action.payload.user.age;
           state.phone = action.payload.user.phone;
           state.id = action.payload.user.id;
-          state.image = `/upload/${action.payload.user.image}`
+          state.image = `/upload/${action.payload.user.image}`;
           state.authChecked = action.payload.isLoggedIn;
         }
       })

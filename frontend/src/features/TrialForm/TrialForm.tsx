@@ -1,21 +1,37 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import Snackbar from '@mui/material/Snackbar';
+import MuiAlert, { AlertProps } from '@mui/material/Alert';
 import { useAppDispatch } from '../../store';
 import { addAsyncRequest } from './trialFormSlice';
 import { NewRequest } from './types/state';
 import style from './TrialForm.module.css';
 
+const Alert = React.forwardRef<HTMLDivElement, AlertProps>((
+  props,
+  ref,
+) => <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />);
+
 function TrialForm(): JSX.Element {
   const dispatch = useAppDispatch();
+  const [open, setOpen] = useState(false);
 
   const handleAdd = (trialUser: NewRequest): void => {
     dispatch(addAsyncRequest(trialUser));
+    setOpen(true)
   };
 
   const { register, handleSubmit } = useForm<NewRequest>();
 
   const onSubmit = (data: NewRequest): void => {
     handleAdd(data);
+  };
+  const handleClose = (event?: React.SyntheticEvent | Event, reason?: string) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+
+    setOpen(false);
   };
 
   return (
@@ -36,6 +52,11 @@ function TrialForm(): JSX.Element {
         </div>
         <button className={style.btn__reg} type="submit">Записаться</button>
       </form>
+      <Snackbar open={open} autoHideDuration={5000} onClose={handleClose}>
+        <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
+          Спасибо за заявку! Перезвоним в ближайшее время
+        </Alert>
+      </Snackbar>
     </div>
   );
 }

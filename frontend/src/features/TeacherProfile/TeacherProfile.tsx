@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { useSelector } from 'react-redux';
 import { RootState, useAppDispatch } from '../../store';
@@ -24,13 +24,16 @@ function TeacherProfile(): JSX.Element {
   const [active, setActive] = useState(false);
   const { register, handleSubmit } = useForm<NewRequest>();
 
+  const navigate = useNavigate();
+
   const onSubmit = (trialUser: NewRequest): void => {
     dispatch(addAsyncRequest(trialUser));
     setActive(true);
     setTimeout(() => {
+      navigate('/');
       setModal((prev: boolean) => !prev);
       setActive(false);
-    }, 3000);
+    }, 5000);
   };
 
   const [modal, setModal] = useState(true);
@@ -62,7 +65,7 @@ function TeacherProfile(): JSX.Element {
         <form onSubmit={handleSubmit(onSubmit)} className={style.modal_form}>
           <div className={style.form__div}>
             <label htmlFor="name">Ваше имя</label>
-            <input {...register('name')} name="name" type="text" placeholder="Ваше имя" value="user" />
+            <input {...register('name')} name="name" type="text" placeholder="Ваше имя" value={user.name} />
             <label htmlFor="phone">Телефон для связи</label>
             <input {...register('phone')} type="tel" name="phone" list="tel-list" placeholder="+7 (XXX) XXX-XX-XX" pattern="\+7\s?[\(]{0,1}9[0-9]{2}[\)]{0,1}\s?\d{3}[-]{0,1}\d{2}[-]{0,1}\d{2}" value={phone} />
             <label htmlFor="lesson_type">Направление</label>

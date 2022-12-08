@@ -6,3 +6,11 @@
   width: 409px;
 }
 
+.btn_add_new_save {
+  background-color: #3CB371;
+  padding: 4px;
+}
+
+.btn_add_new_save:hover {
+  background-color: #3cb372a9;
+}

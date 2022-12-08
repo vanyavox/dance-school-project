@@ -15,7 +15,7 @@ function PageInfo(): JSX.Element {
             <li>Образовательная лицензия</li>
           </ul>
         </div>
-        <img className={style.img__info} src="Screenshot 2022-12-07 at 10.53.45 AM.png" alt="Ballet" />
+        <img className={style.img__info} src="dancers-main.jpg" alt="dancers" />
       </div>
       <div className={style.buttons}>
         <button className={style.btn__trial} type="button">Записаться</button>

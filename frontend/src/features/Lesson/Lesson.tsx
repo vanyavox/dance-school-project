@@ -20,8 +20,7 @@ function LessonForm(): JSX.Element {
   }, []);
 
   return (
-    <>
-      <div className={style.main__div}>
+    <div className={style.main__div}>
         <h1>Расписание</h1>
         <div className={style.form__div}>
           <div className={style.table__main}>
@@ -41,10 +40,9 @@ function LessonForm(): JSX.Element {
               <TeachersDiv key={teacher.id} teacher={teacher} />
             ))}
           </div>
+          <button className={style.btn__trial_b} onClick={rotateBack}>Назад</button>
         </div>
-      </div>
-      <button onClick={rotateBack}>Назад</button>
-    </>
+    </div>
   );
 }
 export default LessonForm;

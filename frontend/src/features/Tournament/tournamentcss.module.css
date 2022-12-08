@@ -9,7 +9,8 @@
     justify-items: center;
     flex-direction: column;
     width: 70%; 
-    color: #9b9b9b;   
+    color: #9b9b9b;
+    min-height: 80vh;   
 }
 
 .tournament__head{
@@ -17,7 +18,6 @@
     align-self: center;
     font-size: 43pt;
     color:#b8629f;
-    font-family: 'Courier New', monospace;
 }
 
 .tournament__line{
@@ -32,7 +32,7 @@
 
 .tournament__p{
     display: flex;
-    justify-content: center;
+    
     align-items: center;
     width: 25%;
     text-align: center;
@@ -59,7 +59,7 @@
     background: #884a76;
     box-shadow: 0 0px 0px rgba(0, 0, 0, .1);
     transition: .3s;
-    margin: auto;
+    margin: 5px;
     margin-top: 10px;
     margin-bottom: 10px;
 }
@@ -88,8 +88,26 @@
     justify-content: center;
     height: 55px;
     border-radius: 45px;
-    margin: 30px;
-    font-family: 'Courier New', monospace;
+    font-family: 'Gill Sans', sans-serif;
+    font-size: 15px;
+    text-transform: uppercase;
+    text-align: center;
+    vertical-align: center;
+    letter-spacing: 3px;
+    color: #ffffff;
+    background: #af86af;
+    box-shadow: 0 0px 0px rgba(0, 0, 0, .1);
+    transition: .3s;
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.tournament__button_h{
+    align-items: center;
+    justify-content: center;
+    height: 55px;
+    border-radius: 45px;
+    font-family: 'Gill Sans', sans-serif;
     font-size: 15px;
     text-transform: uppercase;
     text-align: center;
@@ -99,9 +117,8 @@
     background: #884a76;
     box-shadow: 0 0px 0px rgba(0, 0, 0, .1);
     transition: .3s;
-    margin: auto;
-    margin-top: 10px;
-    margin-bottom: 10px;
+    visibility: hidden;
+    
 }
 
 .tournament__button__modal:hover{

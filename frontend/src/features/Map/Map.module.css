@@ -3,6 +3,7 @@ li > a {
 }
 
 .allMap {
+  min-height: 80vh;
   margin: auto;
   width: 80%;
 }

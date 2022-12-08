@@ -14,7 +14,7 @@ import { Input } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import style from './Profile.module.css';
 import { RootState, useAppDispatch } from '../../store';
-import { addAsyncAvatar, update } from '../Registration/userSlice';
+import { addAsyncAvatar, logout, update } from '../Registration/userSlice';
 
 const Alert = React.forwardRef<HTMLDivElement, AlertProps>((
   props,
@@ -63,14 +63,14 @@ function Profile(): JSX.Element {
         <>
           <span><h2>Мой профиль</h2></span>
           &nbsp;
+          <div className={style.item}>
+            <Avatar
+              alt="avatar"
+              src={url || ''}
+              sx={{ width: 200, height: 200 }}
+            />
+          </div>
           <div className={style.container}>
-            <div className={style.item}>
-              <Avatar
-                alt="avatar"
-                src={url || ''}
-                sx={{ width: 200, height: 200 }}
-              />
-            </div>
             <div className={style.list}>
               <h2>
                 <div className={style.item}>Имя: {name}</div>
@@ -84,7 +84,16 @@ function Profile(): JSX.Element {
             </div>
           </div>
           <Fab color="secondary" aria-label="edit">
-            <EditIcon type="button" onClick={() => setShow((p) => !p)} />
+            <EditIcon
+              type="button"
+              onClick={() => setShow((p) => !p)}
+            />
+            {/* <Button
+              variant="contained"
+              type="submit"
+              onClick={() => dispatch(logout())}
+            >Назад
+            </Button> */}
           </Fab>
 
         </>

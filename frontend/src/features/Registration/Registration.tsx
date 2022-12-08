@@ -75,7 +75,7 @@ function Registration(): JSX.Element {
           >
             <div className={style.avatar_log}>
               <h3>
-                <Avatar sx={{ m: 5, bgcolor: '#b8629f' }} />
+                <Avatar sx={{ m: 6, bgcolor: '#b8629f' }} />
                 sign in
               </h3>
             </div>

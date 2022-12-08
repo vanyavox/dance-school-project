@@ -103,13 +103,13 @@ function TournamentIt({ tournament }: { tournament: Toornament }): JSX.Element {
         {activeAdmin && (
         <form onSubmit={handleSubmit(onSubmitAdmin)}>
             <label className={style.tournament__label}>Дата</label>
-            <input type="date" {...register('date')} defaultValue={tournament.date} className={style.tournament__input} />
+            <input type="date" {...register('date')} defaultValue={tournament.date} className={style.tournament__input} required />
             <label className={style.tournament__label}>Соревнование</label>
-            <input {...register('tour_name')} defaultValue={tournament.tour_name} className={style.tournament__input} />
+            <input {...register('tour_name')} defaultValue={tournament.tour_name} className={style.tournament__input} type="text" required />
             <label className={style.tournament__label}>Место проведения</label>
-            <input {...register('place')} defaultValue={tournament.place} className={style.tournament__input} />
+            <input {...register('place')} defaultValue={tournament.place} className={style.tournament__input} type="text" required />
             <label className={style.tournament__label}>Очки</label>
-            <input {...register('points')} defaultValue={tournament.points} className={style.tournament__input} />
+            <input {...register('points')} defaultValue={tournament.points} className={style.tournament__input} type="number" required />
             <button type="submit" className={style.tournament__button}>Сохранить</button>
         </form>
 )}

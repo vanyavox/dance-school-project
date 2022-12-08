@@ -81,8 +81,8 @@ function TeachersDiv({ teacher }: { teacher: Teacher }):JSX.Element {
                   <h3>Подтвердите запись</h3>
                   <input className={style.table__input_mod} {...register('name')} value={fio} />
                   <input className={style.table__input_mod} {...register('phone')} value={phone} type="tel" />
-                  <input className={style.table__input_d} {...register('date')} type="date" />
-                  <select className={style.table__input_mod} {...register('time')}>
+                  <input className={style.table__input_d} {...register('date')} type="date" required />
+                  <select className={style.table__input_mod} {...register('time')} required>
                   {
                     lessons.map((lesson) => teacher.id === lesson.teacher_id &&
                    (

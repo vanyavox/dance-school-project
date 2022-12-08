@@ -1,9 +1,4 @@
 
-* {
-    font-family: 'Courier New', monospace;
-    font-size: 15px;
-  }
-
 /*user*/
 .main__div{
     width: 100%;
@@ -141,6 +136,14 @@ h1{
     transition: .3s;
     margin-top: 10%;
     margin-left: 75%;
+}
+.btn__trial_b:hover {
+    align-items: center;
+    background: #b8629f;
+    box-shadow: 0 5px 13px #a7598f;
+    color: white;
+    font-size: 15px;
+    transform: translateY(-1px);
 }
 
 /*admin*/

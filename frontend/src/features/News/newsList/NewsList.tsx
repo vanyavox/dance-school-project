@@ -40,28 +40,27 @@ function NewsList(): JSX.Element {
   return (
     <div className={style.news_list}>
       {role === 'admin' &&
-      (<button type="button" onClick={handleOpen} className={style.news_button}>Добавить  Новость / Анонс</button>)}
+      (<button type="button" onClick={handleOpen} className={style.button_add}>Добавить  Новость / Анонс</button>)}
 
       {active && (
         <div className={active ? 'modal active' : 'modal'} onClick={() => setActive(false)}>
           <div className={active ? 'modal_content active' : 'modal_content'} onClick={(e) => e.stopPropagation()}>
             <div className={style.modal_form}>
               <form onSubmit={handleSubmit(onSubmit)}>
-                <input {...register('title')} placeholder="Название" />
-                <br />
-                <textarea rows={10} {...register('description')} placeholder="Описание" />
-                <br />
-                <input {...register('image')} placeholder="Ссылка на картинку" />
-                <br />
-                <input {...register('news_type')} placeholder="Тип события: Новость/ Анонс Турнира" />
-                <br />
+                <input className={style.input__news} {...register('title')} placeholder="Название" required />
+                <textarea className={style.input__news} rows={10} {...register('description')} placeholder="Описание" required />
+                <input className={style.input__news} {...register('image')} placeholder="Ссылка на картинку" required />
+                <select className={style.input__news} {...register('news_type')} placeholder="Тип события: Новость/ Анонс Турнира" required >
+                  <option className={style.option__news}>Новость</option>
+                  <option className={style.option__news}>Турнир</option>
+                </select>
                 <button className={style.button_add} type="submit">Добавить</button>
               </form>
             </div>
           </div>
         </div>
       )}
-      <ul>
+      <div>
         {news.map((oneNews) => (
           <NewsItem
             key={oneNews.id}
@@ -70,7 +69,7 @@ function NewsList(): JSX.Element {
             handleUpdate={handleUpdate}
           />
         ))}
-      </ul>
+      </div>
     </div>
   );
 }

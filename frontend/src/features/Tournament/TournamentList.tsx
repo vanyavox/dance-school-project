@@ -37,6 +37,8 @@ function TournamentList(): JSX.Element {
             <input {...register('place')} type="text" className={style.tournament__input} placeholder="Место турнира" />
             <p className={style.tournament__p}>Дата проведения</p>
             <input {...register('date')} type="date" className={style.tournament__input} placeholder="Введите дату" />
+            <p className={style.tournament__p}>Очки</p>
+            <input {...register('date')} className={style.tournament__input} placeholder="Введите очки" />
             <button type="submit" className={style.tournament__button}>Сохранить</button>
             </form>
              )}

@@ -75,23 +75,25 @@ function Header(): JSX.Element {
             </NavLink>
           </div>
         ) : (
+          <>
           <NavLink to="/" onClick={() => dispatch(logout())}>
             Выйти
           </NavLink>
+          <NavLink to="/profile">
+            <StyledBadge
+              overlap="circular"
+              anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
+              variant="dot"
+            >
+              <Avatar
+                alt="My_profile"
+                src={url || ''}
+                sx={{ width: 70, height: 70 }}
+              />
+            </StyledBadge>
+          </NavLink>
+          </>
         )}
-        <NavLink to="/profile">
-          <StyledBadge
-            overlap="circular"
-            anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
-            variant="dot"
-          >
-            <Avatar
-              alt="My_profile"
-              src={url || ''}
-              sx={{ width: 70, height: 70 }}
-            />
-          </StyledBadge>
-        </NavLink>
       </nav>
       <Outlet />
     </div>

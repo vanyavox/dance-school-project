@@ -44,6 +44,7 @@ function TournamentIt({ tournament }: { tournament: Toornament }): JSX.Element {
     };
     handleClose();
     handleAddTour(value);
+    hanleAcept();
   }
   // modal
   const stylemodal = {
@@ -53,13 +54,15 @@ function TournamentIt({ tournament }: { tournament: Toornament }): JSX.Element {
     transform: 'translate(-50%, -50%)',
     width: 500,
     height: 250,
-    bgcolor: '#884a7655',
+    bgcolor: '#884a76df',
     padding: 'px',
     p: 4,
   };
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
+  const [acept, setAcept] = useState(false);
   const handleOpen = ():void => setOpen(true);
   const handleClose = ():void => setOpen(false);
+  const hanleAcept = ():void => setAcept(true);
 
   return (
     <div>
@@ -89,7 +92,7 @@ function TournamentIt({ tournament }: { tournament: Toornament }): JSX.Element {
         </>
       )}
       { authChecked === true && role === 'student' && (
-        <button type="button" className={style.tournament__button} onClick={handleOpen}>Записаться на турнир</button>
+        <button type="button" className={!acept ? style.tournament__button : style.tournament__button_h} onClick={handleOpen}>Записаться на турнир</button>
       )}
       {role === 'admin' && authChecked === true && activeAdmin === false && (
           <>
@@ -100,13 +103,13 @@ function TournamentIt({ tournament }: { tournament: Toornament }): JSX.Element {
         {activeAdmin && (
         <form onSubmit={handleSubmit(onSubmitAdmin)}>
             <label className={style.tournament__label}>Дата</label>
-            <input type="date" {...register('date')} defaultValue={tournament.date} className={style.tournament__input} />
+            <input type="date" {...register('date')} defaultValue={tournament.date} className={style.tournament__input} required />
             <label className={style.tournament__label}>Соревнование</label>
-            <input {...register('tour_name')} defaultValue={tournament.tour_name} className={style.tournament__input} />
+            <input {...register('tour_name')} defaultValue={tournament.tour_name} className={style.tournament__input} type="text" required />
             <label className={style.tournament__label}>Место проведения</label>
-            <input {...register('place')} defaultValue={tournament.place} className={style.tournament__input} />
+            <input {...register('place')} defaultValue={tournament.place} className={style.tournament__input} type="text" required />
             <label className={style.tournament__label}>Очки</label>
-            <input {...register('points')} defaultValue={tournament.points} className={style.tournament__input} />
+            <input {...register('points')} defaultValue={tournament.points} className={style.tournament__input} type="number" required />
             <button type="submit" className={style.tournament__button}>Сохранить</button>
         </form>
 )}

@@ -20,7 +20,6 @@ export const addAsyncAvatar = createAsyncThunk('users/user/profile/avatar', (fil
 })
   .then((result) => result.json())
   .then((data) => data));
-  // state
 
 export const initialState: State = {
   id: '',

@@ -12,7 +12,10 @@ function Contacts():JSX.Element {
       <p>dance_school@mail.com</p>
 
       </div>
+      <div className={style.YaMap}>
       <YandexMaps />
+      </div>
+
     </div>
   );
 }

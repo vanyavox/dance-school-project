@@ -61,7 +61,7 @@ export default function Login(): JSX.Element {
           >
             <div className={style.avatar_log}>
               <h3>
-                <Avatar sx={{ m: 6, bgcolor: 'secondary.main' }} />
+                <Avatar sx={{ m: 6, bgcolor: '#b8629f' }} />
                 sign in
               </h3>
             </div>
@@ -103,15 +103,16 @@ export default function Login(): JSX.Element {
                 type="submit"
                 fullWidth
                 variant="contained"
-                sx={{ mt: 3, mb: 2 }}
-                color="secondary"
+                sx={{ mt: 3, mb: 2, bgcolor: '#b8629f' }}
               >
                 Войти
               </Button>
-              <Grid container>
+              <Grid container justifyContent="center">
                 <Grid item>
                   <Link href="/auth/registration" variant="body2" color="secondary">
-                    Если нет аккаута, зарегистрируйтесь
+                    Ещё не зарегестрированы?
+                    <br />
+                    Зарегистрируйтесь
                   </Link>
                 </Grid>
               </Grid>

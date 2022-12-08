@@ -8,9 +8,6 @@ router.put('/', async (req, res) => {
   const { name, surname, age, phone, email } = req.body
   const student = await Student.findOne({ where: { id: user_id } })
   try {
-    if (user_id !== Number(student.student_id)) {
-      return res.status(404)
-    }
     if (!name.trim() || !surname.trim() || !age.trim() || !phone.trim() || !email.trim()) {
       return res.status(404).json({ status: 'error', message: 'Все поля нужно заполнить' })
     }

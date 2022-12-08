@@ -45,7 +45,7 @@ function Header(): JSX.Element {
   const url = `http://localhost:4000/${image}`;
 
   return (
-    <>
+    <div className={style.header}>
       <nav className={style.header__main}>
         <NavLink className={style.header__logo} to="/">
           K2
@@ -88,11 +88,10 @@ function Header(): JSX.Element {
               sx={{ width: 70, height: 70 }}
             />
           </StyledBadge>
-
         </NavLink>
       </nav>
       <Outlet />
-    </>
+    </div>
 
   );
 }

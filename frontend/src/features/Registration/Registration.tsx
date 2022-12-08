@@ -13,6 +13,7 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { RootState, useAppDispatch } from '../../store';
 import { clearEmailError, clearLoginError, clearPasswordError, registration } from './userSlice';
+import style from './Registration.module.css';
 
 const theme = createTheme();
 
@@ -60,6 +61,7 @@ function Registration(): JSX.Element {
   }, [dispatch]);
 
   return (
+    <div className={style.container}>
     <ThemeProvider theme={theme}>
       <Container component="main" maxWidth="xs">
         <CssBaseline />
@@ -169,6 +171,7 @@ function Registration(): JSX.Element {
         </Box>
       </Container>
     </ThemeProvider>
+    </div>
   );
 }
 export default Registration;

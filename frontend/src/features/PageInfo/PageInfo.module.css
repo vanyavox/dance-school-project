@@ -42,16 +42,16 @@ h3 {
   color: #DC6DBF;
   font-weight: 500;
   padding: 50px 0 0px 30px;
-  font-family: 'Gill Sans', sans-serif;
+    font-family: 'Impact', 'fantasy';
 }
 
 h1 {
-  font-size: 43pt;
+  font-size: 40pt;
   margin: auto;
   color: #DC6DBF;
   font-weight: 500;
   padding: 20px 0 30px 80px;
-  font-family: 'Gill Sans', sans-serif;
+    font-family: 'Impact', 'fantasy';
 }
 
 ul {
@@ -60,7 +60,7 @@ ul {
 
 .info_list {
   list-style: none;
-  font-family: 'Gill Sans', sans-serif;
+    font-family: 'Luminari', 'fantasy';
 }
 
 .info_list li {

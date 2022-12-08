@@ -16,6 +16,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import * as api from '../../App/api';
 import { useAppDispatch, RootState } from '../../store';
 import { clearEmailError, clearPasswordError, login } from '../Registration/userSlice';
+import style from './Login.module.css';
 
 const theme = createTheme();
 
@@ -46,67 +47,69 @@ export default function Login(): JSX.Element {
   }, [dispatch]);
 
   return (
-    <ThemeProvider theme={theme}>
-      <Container component="main" maxWidth="xs">
-        <CssBaseline />
-        <Box
-          sx={{
-            marginTop: 8,
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-          }}
-        >
-          <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }} />
-          <Typography component="h1" variant="h5">
-            Sign in
-          </Typography>
-          <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
-            <TextField
-              value={userEmail}
-              onChange={handleEmailChange}
-              required
-              fullWidth
-              id="email"
-              label="Email Address"
-              name="email"
-              autoComplete="email"
-              helperText={emailError}
-              error={!!emailError}
-            />
+    <div className={style.container}>
+      <ThemeProvider theme={theme}>
+        <Container component="main" maxWidth="xs">
+          <CssBaseline />
+          <Box
+            sx={{
+              marginTop: 8,
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+            }}
+          >
+            <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }} />
+            <Typography component="h1" variant="h5">
+              Sign in
+            </Typography>
+            <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+              <TextField
+                value={userEmail}
+                onChange={handleEmailChange}
+                required
+                fullWidth
+                id="email"
+                label="Email Address"
+                name="email"
+                autoComplete="email"
+                helperText={emailError}
+                error={!!emailError}
+              />
 
-            <TextField
-              value={password}
-              onChange={handlePasswordChange}
-              margin="normal"
-              required
-              fullWidth
-              name="password"
-              label="Password"
-              type="password"
-              id="password"
-              autoComplete="current-password"
-              helperText={passwordError}
-              error={!!passwordError}
-            />
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              sx={{ mt: 3, mb: 2 }}
-            >
-              Войти
-            </Button>
-            <Grid container>
-              <Grid item>
-                <Link href="/auth/registration" variant="body2">
-                  Если нет аккаута, зарегистрируйтесь
-                </Link>
+              <TextField
+                value={password}
+                onChange={handlePasswordChange}
+                margin="normal"
+                required
+                fullWidth
+                name="password"
+                label="Password"
+                type="password"
+                id="password"
+                autoComplete="current-password"
+                helperText={passwordError}
+                error={!!passwordError}
+              />
+              <Button
+                type="submit"
+                fullWidth
+                variant="contained"
+                sx={{ mt: 3, mb: 2 }}
+              >
+                Войти
+              </Button>
+              <Grid container>
+                <Grid item>
+                  <Link href="/auth/registration" variant="body2">
+                    Если нет аккаута, зарегистрируйтесь
+                  </Link>
+                </Grid>
               </Grid>
-            </Grid>
+            </Box>
           </Box>
-        </Box>
-      </Container>
-    </ThemeProvider>
+        </Container>
+      </ThemeProvider>
+    </div>
   );
 }

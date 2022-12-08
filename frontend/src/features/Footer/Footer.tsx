@@ -24,16 +24,16 @@ function Footer(): JSX.Element {
             <br />
             &copy; Школа танцев
           </p>
-        </div>
-      </div>
-      <div className={style.footer__socials}>
-        <div className={style.social__icons}>
-          <a href="http://vk.com">
-            <img width="32" src="/vk.png" alt="vk" />
-          </a>
-          <a href="http://telegram.com">
-            <img width="24" src="/telegram.png" alt="telegram" />
-          </a>
+          <div className={style.footer__socials}>
+            <div className={style.social__icons}>
+              <a href="http://vk.com">
+                <img width="32" src="/vk.png" alt="vk" />
+              </a>
+              <a href="http://telegram.com">
+                <img width="24" src="/telegram.png" alt="telegram" />
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </div>

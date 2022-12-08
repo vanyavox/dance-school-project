@@ -16,7 +16,7 @@ function Footer(): JSX.Element {
           <Link to="/">Соревнования</Link>
           <Link className={style.footer_link} to="/map">Карта сайта</Link>
         </div>
-        <div className={style.footer__block_end}>
+        <div className={style.footer__block}>
           <p>
             +7 (932) 300-00-93
             <br />
@@ -24,6 +24,8 @@ function Footer(): JSX.Element {
             <br />
             &copy; Школа танцев
           </p>
+        </div>
+      </div>
           <div className={style.footer__socials}>
             <div className={style.social__icons}>
               <a href="http://vk.com">
@@ -34,8 +36,6 @@ function Footer(): JSX.Element {
               </a>
             </div>
           </div>
-        </div>
-      </div>
     </div>
   );
 }

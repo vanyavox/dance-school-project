@@ -1,5 +1,5 @@
 .header{
-  background-color: #3D3131;
+  background-color: #3d3131;
 }
 
 .header__main {
@@ -11,6 +11,7 @@
   align-items: center;
   height: auto;
   font-size: 16pt;
+  box-shadow: 0 2px 20px 1px rgba(0,0,0,0.4);
 }
 
 .header__logo {
@@ -24,4 +25,9 @@
 
 a {
   color: white;
+  
+}
+
+a:hover {
+  transform: scale(1.1);
 }

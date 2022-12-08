@@ -39,45 +39,39 @@ function LessonsDiv({ lesson, handleAdd, handleUpdate, teachId }: LessonPropsm):
     <div key={lesson.id} className={style.table__week}>
 
       {role === 'admin' ? (
-        <div>
+        <form onSubmit={handleSubmit(onSubmit)} className={style.table__admin}>
           <div>
-            <div>
-              <form onSubmit={handleSubmit(onSubmit)}>
-                <div>
-                  <div className={style.table__day}>
-                    <p className={style.table__label}>Понедельник</p>
-                    <input className={style.table__input} defaultValue={lesson.monday} {...register('monday')} />
-                  </div>
-                  <div className={style.table__day}>
-                    <p className={style.table__label}>Вторник</p>
-                    <input className={style.table__input} defaultValue={lesson.tuesday} {...register('tuesday')} />
-                  </div>
-                  <div className={style.table__day}>
-                    <p className={style.table__label}>Среда</p>
-                    <input className={style.table__input} defaultValue={lesson.wednesday} {...register('wednesday')} />
-                  </div>
-                  <div className={style.table__day}>
-                    <p className={style.table__label}>Четверг</p>
-                    <input className={style.table__input} defaultValue={lesson.thursday} {...register('thursday')} />
-                  </div>
-                  <div className={style.table__day}>
-                    <p className={style.table__label}>Пятница</p>
-                    <input className={style.table__input} defaultValue={lesson.friday} {...register('friday')} />
-                  </div>
-                  <div className={style.table__day}>
-                    <p className={style.table__label}>Суббота</p>
-                    <input className={style.table__input} defaultValue={lesson.saturday} {...register('saturday')} />
-                  </div>
-                  <div className={style.table__day}>
-                    <p className={style.table__label}>Воскресенье</p>
-                    <input className={style.table__input} defaultValue={lesson.sunday} {...register('sunday')} />
-                  </div>
-                </div>
-                <button className={style.btn__trial} type="submit" onClick={() => setValue('Обновлено')}>{value}</button>
-              </form>
+            <div className={style.table__day}>
+              <p className={style.table__label}>Понедельник</p>
+              <input className={style.table__input} defaultValue={lesson.monday} {...register('monday')} />
+            </div>
+            <div className={style.table__day}>
+              <p className={style.table__label}>Вторник</p>
+              <input className={style.table__input} defaultValue={lesson.tuesday} {...register('tuesday')} />
+            </div>
+            <div className={style.table__day}>
+              <p className={style.table__label}>Среда</p>
+              <input className={style.table__input} defaultValue={lesson.wednesday} {...register('wednesday')} />
+            </div>
+            <div className={style.table__day}>
+              <p className={style.table__label}>Четверг</p>
+              <input className={style.table__input} defaultValue={lesson.thursday} {...register('thursday')} />
+            </div>
+            <div className={style.table__day}>
+              <p className={style.table__label}>Пятница</p>
+              <input className={style.table__input} defaultValue={lesson.friday} {...register('friday')} />
+            </div>
+            <div className={style.table__day}>
+              <p className={style.table__label}>Суббота</p>
+              <input className={style.table__input} defaultValue={lesson.saturday} {...register('saturday')} />
+            </div>
+            <div className={style.table__day}>
+              <p className={style.table__label}>Воскресенье</p>
+              <input className={style.table__input} defaultValue={lesson.sunday} {...register('sunday')} />
             </div>
           </div>
-        </div>
+          <button className={style.btn__trial} type="submit" onClick={() => setValue('Обновлено')}>{value}</button>
+        </form>
       ) : (
         <>
           <p className={style.table__td}>{lesson.monday}</p>

@@ -3,6 +3,7 @@
     font-family: 'Courier New', monospace;
     font-size: 15px;
   }
+
 /*user*/
 .main__div{
     width: 100%;
@@ -14,6 +15,7 @@
 h1{
     font-family: 'Courier New', monospace;
 }
+
 .form__div{
     font-family: 'Courier New', monospace;
     display: flex;
@@ -34,8 +36,7 @@ h1{
     width: 100%;
     border-bottom: 1px solid #9b9b9b;;
     padding-top:  10px;
-    padding-bottom:  10px;
-    
+    padding-bottom:  10px; 
 }
 
 .table__week{
@@ -48,7 +49,6 @@ h1{
 .table__img{
     width: 50%;
     border-radius: 100%;
-    
 }
 
 .table__teachers{
@@ -56,6 +56,7 @@ h1{
     flex-wrap: wrap;
     justify-content: center;
     width: 30%;
+    padding: 0;
     border-right: 1px solid #9b9b9b;
     border-left: 1px solid #9b9b9b;;
     margin: auto;
@@ -69,10 +70,14 @@ h1{
     padding-left: 20px;
     width: 150px;
 }
+
 .teacher__p{
+    margin: 0;
+    padding: 0;
     margin-top: 5px ;
     margin-bottom: 5px ;
     font-size: 20px;
+    color: #9b9b9b;
 }
 
 .table__td{
@@ -84,8 +89,9 @@ h1{
     border-right: 1px solid #9b9b9b;
     color: #9b9b9b;
     padding: 5px;
-    padding-left: 10px ;
+   
 }
+
 .table__td:hover{
     background-color: #b862a02b;
     box-shadow: 0 5px 13px #b862a02b;
@@ -96,7 +102,6 @@ h1{
     justify-content: center;
     height: 55px;
     border-radius: 45px;
-    margin: 30px;
     font-family: 'Gill Sans', sans-serif;
     font-size: 15px;
     text-transform: uppercase;
@@ -107,60 +112,96 @@ h1{
     background: #884a76;
     box-shadow: 0 0px 0px rgba(0, 0, 0, .1);
     transition: .3s;
-  }
-  
-  .btn__trial:hover {
+}
+
+.btn__trial:hover {
     align-items: center;
     background: #b8629f;
     box-shadow: 0 5px 13px #a7598f;
     color: white;
     font-size: 15px;
     transform: translateY(-1px);
-  }
+}
 
 /*admin*/
 .table__day{
     display: flex;
-    
+    height: 50px;
 }
 
 .table__label{
-    width: 150px;
+    width: 50%;
     height: 10px;
    color: #9b9b9b;
+   padding: 0;
 }
 .table__input{
-width: 120px;
-font-family: inherit;
-width: 100%;
-border: 0;
-border-bottom: 2px solid #7D8195;
-outline: 0;
-font-size: 1.3rem;
-color: #7D8195;
-padding: 7px 0;
-background: transparent;
-transition: border-color 0.2s;
+    font-family: inherit;
+    width: 70%;
+    border: 0;
+    border-bottom: 2px solid #7D8195;
+    outline: 0;
+    font-size: 1.3rem;
+    color: #7D8195;
+    padding: 7px 0;
+    background: transparent;
+    transition: border-color 0.2s;
+    margin: 0;
 }
+.table__input_d{
+    font-family: inherit;
+    width: 70%;
+    height: 30px;
+    border: 0;
+    border-bottom: 2px solid #7D8195;
+    outline: 0;
+    color: #7D8195;
+    padding: 15px 0;
+    background: transparent;
+    transition: border-color 0.2s;
+    font-size: 20px;
+}
+
 button{
     cursor: pointer;
 }
+.modal__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 50%;
+    padding: 0;
+    margin: 0;
+    font-family: 'Courier New', monospace;
+}
 
 @media(max-width: 640px) {
+    .table__line{
+        flex-direction: column;
+    }
+
     .table__label{
-        width: 30%;
-        margin-left: auto;
+        width: 50%;
+        margin-left: 0;
+        font-size: 15px;
+        padding-left: 20px ;
     }
 
     .table__input{
         width: 40%;
     }
+    .table__input_d{
+        width: 40%;
+    }
+
     .btn__trial {
         width: 120px;
         font-size: 10px;
         margin: auto;
         padding: 5px;
     }
+
     .btn__trial:hover {
         font-size: 12px;
     }
@@ -169,5 +210,31 @@ button{
         margin-bottom: 5px ;
         font-size: 15px;
     }
+
+    .table__teachers{
+        font-size: 15px;
+        width: 100%;
+    }
+    
+    .table__td{
+        font-size: 15px;
+    }
+    .table__week{
+        width: 100%;
+    }
+
+    .table__td:last-child{
+        border-right: 0;
+    }
+
+    .table__header{
+        width: 100%;
+    }
+
+    .table__week{
+        border-left: 1px solid #9b9b9b;
+        border-right: 1px solid #9b9b9b;
+    }
+   
 }
 

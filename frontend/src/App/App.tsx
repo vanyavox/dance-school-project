@@ -23,6 +23,7 @@ import { loadAsyncNews } from '../features/News/newsList/newsSlice';
 import { loadToutnament } from '../features/Tournament/tournamentSlice';
 import TournamentList from '../features/Tournament/TournamentList';
 import { initAsyncTeachers } from '../features/TeacherList/teacherSlice';
+import { loadLessons } from '../features/Lesson/lessonSlice';
 import DanceDirections from '../features/DanceDirections/DanceDirections';
 
 function App(): JSX.Element {
@@ -33,6 +34,7 @@ function App(): JSX.Element {
     dispatch(loadAsyncNews());
     dispatch(loadToutnament());
     dispatch(initAsyncTeachers());
+    dispatch(loadLessons());
   }, []);
 
   return (

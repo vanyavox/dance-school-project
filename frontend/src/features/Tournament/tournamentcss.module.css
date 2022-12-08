@@ -9,7 +9,8 @@
     justify-items: center;
     flex-direction: column;
     width: 70%; 
-    color: #9b9b9b;   
+    color: #9b9b9b;
+    min-height: 80vh;   
 }
 
 .tournament__head{

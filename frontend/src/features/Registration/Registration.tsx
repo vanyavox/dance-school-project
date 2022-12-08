@@ -75,11 +75,19 @@ function Registration(): JSX.Element {
           >
             <div className={style.avatar_log}>
               <h3>
-                <Avatar sx={{ m: 6, bgcolor: '#b8629f' }} />
+                <Avatar sx={{ m: 5, bgcolor: '#b8629f' }} />
                 sign in
               </h3>
             </div>
-            <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
+            <Box
+              component="form"
+              noValidate
+              onSubmit={handleSubmit}
+              sx={{
+                mt: 2,
+                width: 300,
+              }}
+            >
               <Grid container spacing={2}>
                 <Grid item xs={12}>
                   <TextField

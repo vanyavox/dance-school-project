@@ -45,6 +45,7 @@ function Profile(): JSX.Element {
 
     setOpen(false);
   };
+  console.log('test')
 
   const handleChangleFile = (event: any): void => {
     setImages(event.target.value);

@@ -1,5 +1,8 @@
-.header__main {
+.header{
   background-color: #3D3131;
+}
+
+.header__main {
   padding: 24px;
   color: white;
   display: flex;

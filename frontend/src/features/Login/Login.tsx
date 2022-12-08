@@ -10,6 +10,9 @@ import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
+import { IconButton, InputAdornment } from '@mui/material';
+import Visibility from '@mui/icons-material/Visibility';
+import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
@@ -23,6 +26,7 @@ const theme = createTheme();
 export default function Login(): JSX.Element {
   const [userEmail, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const { emailError, passwordError, email } = useSelector((state: RootState) => state.user);
@@ -85,19 +89,24 @@ export default function Login(): JSX.Element {
               <TextField
                 value={password}
                 onChange={handlePasswordChange}
-                margin="normal"
+                focused
+                color="secondary"
+                id="Outlined secondary"
+                variant="filled"
                 fullWidth
                 name="password"
                 label="Password"
-                type="password"
-                id="Outlined secondary"
-                multiline
-                focused
-                color="secondary"
-                autoComplete="current-password"
+                type={showPassword ? 'text' : 'password'}
+                autoComplete="new-password"
                 helperText={passwordError}
                 error={!!passwordError}
-                variant="filled"
+                InputProps={{
+                  endAdornment: <InputAdornment position="end">
+                    <IconButton onClick={() => setShowPassword((prev) => !prev)}>
+                      {showPassword ? <VisibilityOff /> : <Visibility />}
+                    </IconButton>
+                  </InputAdornment>
+                }}
               />
               <Button
                 type="submit"

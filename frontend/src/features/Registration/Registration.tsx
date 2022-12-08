@@ -11,6 +11,9 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { IconButton, InputAdornment } from '@mui/material';
+import Visibility from '@mui/icons-material/Visibility';
+import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import { RootState, useAppDispatch } from '../../store';
 import { clearEmailError, clearLoginError, clearPasswordError, registration } from './userSlice';
 import style from './Registration.module.css';
@@ -26,6 +29,8 @@ function Registration(): JSX.Element {
   const [password, setPassword] = useState('');
   const [passwordRepit, setRepitPassword] = useState('');
   const [userPhone, setPhone] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
+  const [showRepitPassword, setShowRepitPassword] = useState(false);
   const { emailError, passwordError, name, loginError, authChecked } = useSelector((state: RootState) => state.user);
   console.log(name, authChecked);
 
@@ -131,10 +136,17 @@ function Registration(): JSX.Element {
                     fullWidth
                     name="password"
                     label="Password"
-                    type="password"
+                    type={showPassword ? 'text' : 'password'}
                     autoComplete="new-password"
                     helperText={passwordError}
                     error={!!passwordError}
+                    InputProps={{
+                      endAdornment: <InputAdornment position="end">
+                        <IconButton onClick={() => setShowPassword((prev) => !prev)}>
+                          {showPassword ? <VisibilityOff /> : <Visibility />}
+                        </IconButton>
+                      </InputAdornment>
+                    }}
                   />
                 </Grid>
                 <Grid item xs={12}>
@@ -148,10 +160,17 @@ function Registration(): JSX.Element {
                     fullWidth
                     name="passwordRepit"
                     label="Confirm Password"
-                    type="password"
+                    type={showRepitPassword ? 'text' : 'password'}
                     autoComplete="new-password"
                     helperText={passwordError}
                     error={!!passwordError}
+                    InputProps={{
+                      endAdornment: <InputAdornment position="end">
+                        <IconButton onClick={() => setShowRepitPassword((prev) => !prev)}>
+                          {showRepitPassword ? <VisibilityOff /> : <Visibility />}
+                        </IconButton>
+                      </InputAdornment>
+                    }}
                   />
                 </Grid>
                 <Grid item xs={12}>

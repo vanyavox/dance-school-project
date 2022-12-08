@@ -79,7 +79,15 @@ function Registration(): JSX.Element {
                 sign in
               </h3>
             </div>
-            <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
+            <Box
+              component="form"
+              noValidate
+              onSubmit={handleSubmit}
+              sx={{
+                mt: 2,
+                width: 300,
+              }}
+            >
               <Grid container spacing={2}>
                 <Grid item xs={12}>
                   <TextField

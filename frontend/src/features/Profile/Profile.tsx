@@ -14,7 +14,7 @@ import { Input } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import style from './Profile.module.css';
 import { RootState, useAppDispatch } from '../../store';
-import { addAsyncAvatar, update } from '../Registration/userSlice';
+import { addAsyncAvatar, logout, update } from '../Registration/userSlice';
 
 const Alert = React.forwardRef<HTMLDivElement, AlertProps>((
   props,
@@ -63,14 +63,14 @@ function Profile(): JSX.Element {
         <>
           <span><h2>Мой профиль</h2></span>
           &nbsp;
+          <div className={style.item}>
+            <Avatar
+              alt="avatar"
+              src={url || ''}
+              sx={{ width: 200, height: 200 }}
+            />
+          </div>
           <div className={style.container}>
-            <div className={style.item}>
-              <Avatar
-                alt="avatar"
-                src={url || ''}
-                sx={{ width: 200, height: 200 }}
-              />
-            </div>
             <div className={style.list}>
               <h2>
                 <div className={style.item}>Имя: {name}</div>
@@ -84,7 +84,10 @@ function Profile(): JSX.Element {
             </div>
           </div>
           <Fab color="secondary" aria-label="edit">
-            <EditIcon type="button" onClick={() => setShow((p) => !p)} />
+            <EditIcon
+              type="button"
+              onClick={() => setShow((p) => !p)}
+            />
           </Fab>
 
         </>
@@ -92,11 +95,13 @@ function Profile(): JSX.Element {
       {
         show && (
           <>
-            <Avatar
-              alt="avatar"
-              src={url || ''}
-              sx={{ width: 200, height: 200 }}
-            />
+            <div className={style.item}>
+              <Avatar
+                alt="avatar"
+                src={url || ''}
+                sx={{ width: 200, height: 200 }}
+              />
+            </div>
             <Input
               value=""
               name="avatar"
@@ -106,8 +111,10 @@ function Profile(): JSX.Element {
             />
             <br />
             <Box
+              component="form"
               sx={{
-                width: 500,
+                width: 700,
+                mt: 2,
                 maxWidth: '100%',
               }}
             >
@@ -118,12 +125,16 @@ function Profile(): JSX.Element {
                   {...register('name')}
                   onChange={(event) => setUserName(event.target.value)}
                   name="name"
-                  defaultValue={name}
                   required
+                  defaultValue={name}
                   fullWidth
-                  id="firstName"
+                  id="Outlined secondary"
                   label="Имя"
                   autoFocus
+                  multiline
+                  focused
+                  color="secondary"
+                  placeholder="name"
                 />
                 &nbsp;
                 <TextField
@@ -133,9 +144,13 @@ function Profile(): JSX.Element {
                   name="surname"
                   required
                   fullWidth
-                  id="secondName"
+                  id="Outlined secondary"
                   label="Фамилия"
                   autoFocus
+                  multiline
+                  focused
+                  color="secondary"
+                  placeholder="surname"
                 />
                 &nbsp;
                 <TextField
@@ -145,9 +160,13 @@ function Profile(): JSX.Element {
                   name="age"
                   required
                   fullWidth
-                  id="age"
+                  id="Outlined secondary"
                   label="Возраст"
                   autoFocus
+                  multiline
+                  focused
+                  color="secondary"
+                  placeholder="age"
                 />
                 &nbsp;
                 <TextField
@@ -157,9 +176,12 @@ function Profile(): JSX.Element {
                   name="email"
                   required
                   fullWidth
-                  id="email"
+                  id="Outlined secondary"
                   label="Email"
-
+                  multiline
+                  focused
+                  color="secondary"
+                  placeholder="email"
                 />
                 &nbsp;
                 <TextField
@@ -173,17 +195,23 @@ function Profile(): JSX.Element {
                   value={phoneUser || ''}
                   {...register('phone')}
                   onChange={(event) => setPhonelUser(event.target.value)}
+                  multiline
+                  focused
+                  color="secondary"
                 />
                 &nbsp;
                 <Button
                   variant="contained"
                   type="submit"
-                >Сохранить изменения
+                  sx={{ mt: 3, mb: 2, bgcolor: '#b8629f' }}
+                >
+                  Сохранить изменения
                 </Button>
                 &nbsp;
                 <Button
                   variant="contained"
                   type="submit"
+                  sx={{ mt: 3, mb: 2, bgcolor: '#b8629f' }}
                   onClick={() => setShow((p) => !p)}
                 >Назад
                 </Button>

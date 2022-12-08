@@ -53,7 +53,7 @@ export default function Login(): JSX.Element {
           <CssBaseline />
           <Box
             sx={{
-              marginTop: 2,
+              marginTop: 3,
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'center',
@@ -65,7 +65,7 @@ export default function Login(): JSX.Element {
                 sign in
               </h3>
             </div>
-            <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+            <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1, width: 300 }}>
               <TextField
                 value={userEmail}
                 onChange={handleEmailChange}

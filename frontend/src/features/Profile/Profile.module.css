@@ -6,6 +6,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-color: #3D3131;
 }
 
 .container {
@@ -21,3 +22,4 @@
 .item{
   margin-top: 18px;
 }
+

@@ -1,5 +1,4 @@
 const { News } = require('../db/models')
-const { Student } = require('../db/models')
 const router = require('express').Router()
 
 router.get('/news', async (req, res) => {
@@ -23,25 +22,15 @@ router.get('/news', async (req, res) => {
     res.status(201).json(news)
   } catch (error) { res.json({ message: error.message }) }
 }).delete('/news/:id', async (req, res) => {
-  const { user_id } = req.session
-  const admin = await Student.findOne({ where: { role: 'admin' } })
   try {
-    if (user_id !== Number(admin.student_id)) {
-      return res.status(404)
-    }
     const { id } = req.params
     const newsDestoy = await News.destroy({ where: { id } })
     res.status(202).json(newsDestoy)
   } catch (error) { res.status(500).json({ message: error.message }) }
 }).put('/news/:id', async (req, res) => {
-  const { user_id } = req.session
-  const admin = await Student.findOne({ where: { role: 'admin' } })
   const { id } = req.params
   const { title, description, news_type, image } = req.body
   try {
-    if (user_id !== Number(admin.student_id)) {
-      return res.status(404)
-    }
     if (title && description && news_type && image) {
       const news = await News.update({
         title,

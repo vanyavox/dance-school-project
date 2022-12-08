@@ -1,6 +1,5 @@
 const { Request } = require('../db/models')
 const fetch = require('node-fetch')
-const { Student } = require('../db/models')
 const router = require('express').Router()
 
 router
@@ -38,12 +37,7 @@ router
     res.status(200).json({ message: 'Произошла запись', newreq: newRequest })
   })
   .delete('/:id', async (req, res) => {
-    const { user_id } = req.session
-    const admin = await Student.findOne({ where: { role: 'admin' } })
     try {
-      if (user_id !== Number(admin.student_id)) {
-        return res.status(404)
-      }
       const { id } = req.params
       const reqDestoy = await Request.destroy({ where: { id } })
       if (reqDestoy) {
@@ -52,8 +46,6 @@ router
     } catch (error) { res.status(500).json({ message: error.message }) }
   })
   .put('/change/:id', async (req, res) => {
-    const { user_id } = req.session
-    const admin = await Student.findOne({ where: { role: 'admin' } })
     let newStatus
     const { id } = req.params
     const { status } = req.body
@@ -63,9 +55,6 @@ router
       newStatus = 'Обработана'
     }
     try {
-      if (user_id !== Number(admin.student_id)) {
-        return res.status(404)
-      }
       const request = await Request.findOne({ where: { id: Number(id) } })
       request.status = newStatus
       request.save()

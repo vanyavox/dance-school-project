@@ -1,4 +1,5 @@
 const { Request } = require('../db/models')
+const fetch = require('node-fetch')
 
 const router = require('express').Router()
 
@@ -29,6 +30,11 @@ router
       date,
       time
     })
+    const token = '5583708421:AAFrblNqy0U4SI6Vy2vPyPzcTXIYZ1yHW7A'
+    const chatId = '-876189864'
+    const text = `Новая заявка: Имя:${name} Телефон: ${phone} Направление: ${lesson_type} Дата: ${date} Время: ${time}`
+    console.log(text)
+    const response = await fetch(`https://api.telegram.org/bot${token}/sendMessage?chat_id=${chatId}@DanceSchool&parse_mode=HTML&text=${text}`)
     res.status(200).json({ message: 'Произошла запись', newreq: newRequest })
   })
   .delete('/:id', async (req, res) => {

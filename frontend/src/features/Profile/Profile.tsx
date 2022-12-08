@@ -33,11 +33,6 @@ function Profile(): JSX.Element {
   const [phoneUser, setPhonelUser] = useState(phone);
   const { register, handleSubmit } = useForm();
   const dispatch = useAppDispatch();
-  const navigate = useNavigate();
-
-  const rotateBack = (): void => {
-    navigate(-1);
-  };
 
   const onSubmit = (data: any,): void => {
     dispatch(update(data));
@@ -202,7 +197,6 @@ function Profile(): JSX.Element {
           </>
         )
       }
-      <button onClick={rotateBack}>Назад</button>
     </div>
   );
 }

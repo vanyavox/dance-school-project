@@ -1,5 +1,10 @@
 .about {
-  min-height: 100vh;
+  min-height: 75vh;
   margin: auto;
   width: 80%;
+}
+
+.about_p{
+  color:#edcece;
+  text-align: justify;
 }

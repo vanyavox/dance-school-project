@@ -3,6 +3,7 @@
   margin: auto;
   text-align: justify;
   padding: 10px;
+  height: 75vh;
 }
 
 .text_title {
@@ -16,4 +17,8 @@
   border-radius: 10px;
   margin-left: 20px;
   margin-top: 7px;
+}
+.descript__text{
+  color:#edcece;
+  
 }

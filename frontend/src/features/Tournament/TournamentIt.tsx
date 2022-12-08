@@ -109,7 +109,7 @@ function TournamentIt({ tournament }: { tournament: Toornament }): JSX.Element {
             <label className={style.tournament__label}>Место проведения</label>
             <input {...register('place')} defaultValue={tournament.place} className={style.tournament__input} type="text" required />
             <label className={style.tournament__label}>Очки</label>
-            <input {...register('points')} defaultValue={tournament.points} className={style.tournament__input} type="number" required />
+            <input {...register('points')} defaultValue={tournament.points} minLength={1} maxLength={3} className={style.tournament__input} type="text" required />
             <button type="submit" className={style.tournament__button}>Сохранить</button>
         </form>
 )}

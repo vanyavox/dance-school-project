@@ -11,7 +11,6 @@ function MainPage(): JSX.Element {
       <SwiperList />
       <BasicModal />
       <PageInfo />
-      <YandexMaps />
       <TrialForm />
     </div>
   );

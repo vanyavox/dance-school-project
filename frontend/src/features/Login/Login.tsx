@@ -49,60 +49,70 @@ export default function Login(): JSX.Element {
   return (
     <div className={style.container}>
       <ThemeProvider theme={theme}>
-        <Container component="main" maxWidth="xs">
+        <Container component="main" maxWidth="xs" className={style.modal_form}>
           <CssBaseline />
           <Box
             sx={{
-              marginTop: 8,
+              marginTop: 2,
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'center',
             }}
           >
-            <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }} />
-            <Typography component="h1" variant="h5">
-              Sign in
-            </Typography>
+            <div className={style.avatar_log}>
+              <h3>
+                <Avatar sx={{ m: 6, bgcolor: '#b8629f' }} />
+                sign in
+              </h3>
+            </div>
             <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
               <TextField
                 value={userEmail}
                 onChange={handleEmailChange}
-                required
                 fullWidth
-                id="email"
+                id="Outlined secondary"
                 label="Email Address"
                 name="email"
                 autoComplete="email"
+                multiline
+                focused
+                color="secondary"
                 helperText={emailError}
                 error={!!emailError}
+                variant="filled"
               />
 
               <TextField
                 value={password}
                 onChange={handlePasswordChange}
                 margin="normal"
-                required
                 fullWidth
                 name="password"
                 label="Password"
                 type="password"
-                id="password"
+                id="Outlined secondary"
+                multiline
+                focused
+                color="secondary"
                 autoComplete="current-password"
                 helperText={passwordError}
                 error={!!passwordError}
+                variant="filled"
               />
               <Button
                 type="submit"
                 fullWidth
                 variant="contained"
-                sx={{ mt: 3, mb: 2 }}
+                sx={{ mt: 3, mb: 2, bgcolor: '#b8629f' }}
               >
                 Войти
               </Button>
-              <Grid container>
+              <Grid container justifyContent="center">
                 <Grid item>
-                  <Link href="/auth/registration" variant="body2">
-                    Если нет аккаута, зарегистрируйтесь
+                  <Link href="/auth/registration" variant="body2" color="secondary">
+                    Ещё не зарегестрированы?
+                    <br />
+                    Зарегистрируйтесь
                   </Link>
                 </Grid>
               </Grid>

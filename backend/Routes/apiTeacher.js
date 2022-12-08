@@ -1,5 +1,7 @@
 const router = require('express').Router()
+const { Student } = require('../db/models')
 const { Teacher, Lesson } = require('../db/models')
+
 
 router
   .get('/', async (req, res) => {
@@ -49,6 +51,8 @@ router
     } catch (error) { res.status(500).json({ message: error.message }) }
   })
   .put('/teacher/:idd', async (req, res) => {
+    const { user_id } = req.session
+    const admin = await Student.findOne({ where: { role: 'admin' } })
     const { idd } = req.params
     const {
       name,
@@ -60,6 +64,9 @@ router
     } = req.body
 
     try {
+      if (user_id !== Number(admin.student_id)) {
+        return res.status(404)
+      }
       const changedTeacher = await Teacher.findOne({ where: { id: Number(idd) } })
       console.log(changedTeacher)
       changedTeacher.name = name
@@ -73,7 +80,12 @@ router
     } catch (error) { res.status(500).json({ message: error.message }) }
   })
   .delete('/:id', async (req, res) => {
+    const { user_id } = req.session
+    const admin = await Student.findOne({ where: { role: 'admin' } })
     try {
+      if (user_id !== Number(admin.student_id)) {
+        return res.status(404)
+      }
       const { id } = req.params
       const teacherDestoy = await Teacher.destroy({ where: { id } })
       if (teacherDestoy) {

@@ -1,13 +1,21 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useForm } from 'react-hook-form';
+import Snackbar from '@mui/material/Snackbar';
+import MuiAlert, { AlertProps } from '@mui/material/Alert';
 import { RootState, useAppDispatch } from '../../store';
 import Tournament from './TournamentIt';
 import style from './tournamentcss.module.css';
 import Toornament from './types/Toornament';
 import { addToutnament } from './tournamentSlice';
 
+const Alert = React.forwardRef<HTMLDivElement, AlertProps>((
+  props,
+  ref,
+) => <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />);
+
 function TournamentList(): JSX.Element {
+  const [open, setOpen] = useState<boolean>(false);
   const { tournaments } = useSelector((state: RootState) => state.toutnament);
   const dispatch = useAppDispatch();
   const { role, authChecked } = useSelector((state: RootState) => state.user);
@@ -16,9 +24,17 @@ function TournamentList(): JSX.Element {
   const onSubmit = (data: Toornament): void => {
     dispatch(addToutnament(data));
     handleOpen();
+    setOpen(true);
   };
   const [active, setActive] = useState(false);
   const handleOpen = (): void => setActive(!active);
+
+  const handleCloseModal = (event?: React.SyntheticEvent | Event, reason?: string) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+    setOpen(false);
+  };
 
   return (
     <div className={style.toutnament__list}>
@@ -42,6 +58,11 @@ function TournamentList(): JSX.Element {
                   <button type="submit" className={style.tournament__button}>Сохранить</button>
                 </form>
               )}
+            <Snackbar open={open} autoHideDuration={5000} onClose={handleCloseModal}>
+              <Alert onClose={handleCloseModal} severity="success" sx={{ width: '100%' }}>
+                Турнир успешно добавлен!
+              </Alert>
+            </Snackbar>
           </div>
         )}
         <div className={style.tournament__line}>

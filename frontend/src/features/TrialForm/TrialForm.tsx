@@ -39,16 +39,16 @@ function TrialForm(): JSX.Element {
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className={style.form__div}>
           <h1 className={style.form_title}>Форма для записи</h1>
-          <input {...register('name')} minLength={2} name="name" type="text" placeholder="Ваше имя" className={style.form_input} required />
-          <input {...register('phone')} type="tel" name="phone" list="tel-list" placeholder="+7 (XXX) XXX-XX-XX" pattern="\+7\s?[\(]{0,1}9[0-9]{2}[\)]{0,1}\s?\d{3}[-]{0,1}\d{2}[-]{0,1}\d{2}" className={style.form_input} required />
+          <input {...register('name')} minLength={2} maxLength={15} name="name" type="text" placeholder="Ваше имя" className={style.form_input} required />
+          <input {...register('phone')} type="tel" name="phone" list="tel-list" placeholder="+7" defaultValue="+7" pattern="^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$" className={style.form_input} required />
           <select {...register('lesson_type')} name="lesson_type" className={style.select_box} required>
             <option className={style.select_box__option} value="Выберите направление:">Выберите направление:</option>
             <option className={style.select_box__option} value="Латина">Латина</option>
             <option className={style.select_box__option} value="Стандарт">Стандарт</option>
             <option className={style.select_box__option} value="Двоеборье">Двоеборье</option>
           </select>
-          <input {...register('date')} name="date" type="date" placeholder="Ваше имя" className={style.form_input} required />
-          <input {...register('time')} name="time" type="time" placeholder="Ваше имя" className={style.form_input} required />
+          <input {...register('date')} name="date" type="date" minLength={2} placeholder="Дата" className={style.form_input} required />
+          <input {...register('time')} name="time" type="time" placeholder="Время" className={style.form_input} required />
         </div>
         <button className={style.btn__reg} type="submit">Записаться</button>
       </form>

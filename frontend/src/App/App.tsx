@@ -33,7 +33,7 @@ function App(): JSX.Element {
     dispatch(loadAsyncNews());
     dispatch(loadToutnament());
     dispatch(initAsyncTeachers());
-  }, [dispatch]);
+  }, []);
 
   return (
     <>

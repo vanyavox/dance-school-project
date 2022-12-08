@@ -15,7 +15,7 @@ import { NewRequest } from '../../TrialForm/types/state';
 function TeachersDiv({ teacher }: { teacher: Teacher }):JSX.Element {
   const { lessons } = useSelector((state:RootState) => state.lessons);
   const dispatch = useAppDispatch();
-  const { name, id, phone } = useSelector((state: RootState) => state.user);
+  const { name, id, phone, authChecked, role, surname } = useSelector((state: RootState) => state.user);
   const { register, handleSubmit } = useForm<NewRequest>();
 
   const handleUpdate = (newsToUpdate: Lesson): void => {
@@ -51,13 +51,14 @@ function TeachersDiv({ teacher }: { teacher: Teacher }):JSX.Element {
       transform: 'translate(-50%, -50%)',
       width: 500,
       height: 300,
-      bgcolor: '#884a7655',
+      bgcolor: '#884a76df',
       padding: 'px',
       p: 4,
     };
     const [open, setOpen] = React.useState(false);
     const handleOpen = ():void => setOpen(true);
     const handleClose = ():void => setOpen(false);
+    const fio = `${name} ${surname}`;
   return (
     <div key={teacher.id} className={style.table__line}>
           <div className={style.table__teachers}>
@@ -67,7 +68,8 @@ function TeachersDiv({ teacher }: { teacher: Teacher }):JSX.Element {
               <p className={style.teacher__p}>Cтаж: {teacher.experience}</p>
               <p className={style.teacher__p}> Направление: {teacher.direction}</p>
               </div>
-              <button type="button" className={style.btn__trial} onClick={() => handleOpen()}>Записаться</button>
+              {authChecked && role === 'student' && (<button type="button" className={style.btn__trial} onClick={() => handleOpen()}>Записаться</button>)}
+
               <Modal
                 open={open}
                 onClose={handleClose}
@@ -77,28 +79,28 @@ function TeachersDiv({ teacher }: { teacher: Teacher }):JSX.Element {
                 <Box sx={stylemodal}>
                 <form className={style.modal__content} onSubmit={handleSubmit(onSubmitReqest)}>
                   <h3>Подтвердите запись</h3>
-                  <input className={style.table__input} {...register('name')} defaultValue={name} />
-                  <input className={style.table__input} {...register('phone')} defaultValue={phone} type="tel" />
+                  <input className={style.table__input_mod} {...register('name')} value={fio} />
+                  <input className={style.table__input_mod} {...register('phone')} value={phone} type="tel" />
                   <input className={style.table__input_d} {...register('date')} type="date" />
-                  <select className={style.table__input} {...register('time')}>
+                  <select className={style.table__input_mod} {...register('time')}>
                   {
                     lessons.map((lesson) => teacher.id === lesson.teacher_id &&
                    (
                     <>
-                      <option>{lesson.monday} </option>
-                      <option>{lesson.tuesday} </option>
-                      <option>{lesson.wednesday} </option>
-                      <option>{lesson.thursday} </option>
-                      <option>{lesson.friday} </option>
-                      <option>{lesson.saturday} </option>
-                      <option>{lesson.sunday} </option>
+                      <option className={style.table__option_mod}>{lesson.monday} </option>
+                      <option className={style.table__option_mod}>{lesson.tuesday} </option>
+                      <option className={style.table__option_mod}>{lesson.wednesday} </option>
+                      <option className={style.table__option_mod}>{lesson.thursday} </option>
+                      <option className={style.table__option_mod}>{lesson.friday} </option>
+                      <option className={style.table__option_mod}>{lesson.saturday} </option>
+                      <option className={style.table__option_mod}>{lesson.sunday} </option>
                     </>
                   )
                   )
 }
                   </select>
 
-                  <button className={style.btn__trial} type="submit">Подтвердить</button>
+                  <button className={style.btn__trial_mod} type="submit">Подтвердить</button>
                 </form>
                 </Box>
               </Modal>

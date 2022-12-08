@@ -31,6 +31,7 @@ function TeacherCard({ teacher }: { teacher: Teacher }): JSX.Element {
       <div><b>Стаж:</b> {teacher.experience}</div>
       <div><b>Описание:</b> {teacher.description}</div>
       <button
+      className={style.teacher_edit_save}
         onClick={toggleModal}
       >Редактировать профиль
       </button>
@@ -43,35 +44,35 @@ function TeacherCard({ teacher }: { teacher: Teacher }): JSX.Element {
       {edit && (
         <form className={style.teacher_edit} onSubmit={handleSubmit(onSubmit)}>
           <div>
-            <h3>Редактирование</h3>
+            <h3 className={style.h3__teach}>Редактирование</h3>
             <input className={style.hiddenform} {...register('idd')} name="idd" type="number" value={teacher.id} style={{visibility: 'hidden'}}/>
             <label htmlFor="name">Имя</label>
             <br />
-            <input defaultValue={teacher.name} {...register('name')} name="name" type="text" placeholder="Имя" />
+            <input className={style.input__teach} defaultValue={teacher.name} {...register('name')} name="name" type="text" placeholder="Имя" />
             <br />
             <label htmlFor="surname">Фамилия</label>
             <br />
-            <input defaultValue={teacher.surname} {...register('surname')} type="text" name="surname" placeholder="Фамилия" />
+            <input className={style.input__teach} defaultValue={teacher.surname} {...register('surname')} type="text" name="surname" placeholder="Фамилия" />
             <br />
             <label htmlFor="direction">Направление</label>
             <br />
-            <select defaultValue={teacher.direction} {...register('direction')} name="direction">
-              <option value="Латина">Латина</option>
-              <option value="Стандарт">Стандарт</option>
-              <option value="Двоеборье">Двоеборье</option>
+            <select className={style.input__teach} defaultValue={teacher.direction} {...register('direction')} name="direction">
+              <option className={style.option__teach} value="Латина">Латина</option>
+              <option className={style.option__teach} value="Стандарт">Стандарт</option>
+              <option className={style.option__teach} value="Двоеборье">Двоеборье</option>
             </select>
             <br />
             <label htmlFor="experience">Опыт работы</label>
             <br />
-            <input defaultValue={teacher.experience} {...register('experience')} name="experience" type="text" placeholder="Опыт работы" />
+            <input className={style.input__teach} defaultValue={teacher.experience} {...register('experience')} name="experience" type="text" placeholder="Опыт работы" />
             <br />
             <label htmlFor="time">Описание</label>
             <br />
-            <textarea defaultValue={teacher.description} rows={10} {...register('description')} className={style.teacher_area} name="description" placeholder="Описание" />
+            <textarea className={style.input__teach} defaultValue={teacher.description} rows={10} {...register('description')} name="description" placeholder="Описание" />
             <br />
             <label htmlFor="time">Фото</label>
             <br />
-            <input defaultValue={teacher.photo} {...register('photo')} name="photo" type="text" placeholder="Фото" />
+            <input className={style.input__teach} defaultValue={teacher.photo} {...register('photo')} name="photo" type="text" placeholder="Фото" />
             <br />
             <button className={style.teacher_edit_save} type="submit">Сохранить изменения</button>
           </div>

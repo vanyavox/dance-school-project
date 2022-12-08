@@ -40,7 +40,7 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
 function Header(): JSX.Element {
   const dispatch = useAppDispatch();
 
-  const { authChecked } = useSelector((state: RootState) => state.user);
+  const { authChecked, role } = useSelector((state: RootState) => state.user);
   const { image } = useSelector((state: RootState) => state.user);
   const url = `http://localhost:4000/${image}`;
 
@@ -56,15 +56,23 @@ function Header(): JSX.Element {
         <NavLink to="/teachers">
           Преподаватели
         </NavLink>
+        {authChecked === true && (
         <NavLink to="/tournament">
           Турниры
         </NavLink>
+        )}
         <NavLink to="/directions">
           Направления
         </NavLink>
         <NavLink to="/lessons">
           Расписание
         </NavLink>
+       {authChecked === true && role === 'admin' && (
+          <NavLink to="/admin">
+          Admin panel
+          </NavLink>
+       )}
+
         {authChecked !== true ? (
           <div className={style.header__login}>
             <NavLink to="/auth/login">
@@ -75,10 +83,6 @@ function Header(): JSX.Element {
             </NavLink>
           </div>
         ) : (
-          <>
-          <NavLink to="/" onClick={() => dispatch(logout())}>
-            Выйти
-          </NavLink>
           <NavLink to="/profile">
             <StyledBadge
               overlap="circular"
@@ -92,7 +96,6 @@ function Header(): JSX.Element {
               />
             </StyledBadge>
           </NavLink>
-          </>
         )}
       </nav>
       <Outlet />

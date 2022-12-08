@@ -61,32 +61,32 @@ function AdminPanel(): JSX.Element {
         <div className={active ? 'modal active' : 'modal'} onClick={() => setActive(false)}>
           <div className={active ? 'modal_content active' : 'modal_content'} onClick={(e) => e.stopPropagation()}>
             <div className={style.modal_form}>
-              <form onSubmit={handleSubmit(onSubmit)}>
+              <form onSubmit={handleSubmit(onSubmit)} className={style.modal_form__f}>
                 <div className={style.form__div}>
                   <h3>Информация о танцоре</h3>
                   <label htmlFor="name">Имя</label>
                   <br />
-                  <input {...register('name')} name="name" minLength={2} type="text" placeholder="Имя" required />
+                  <input className={style.input__inf} {...register('name')} name="name" minLength={2} type="text" placeholder="Имя" required />
                   <br />
                   <label htmlFor="phone">Номер телефона</label>
                   <br />
-                  <input {...register('phone')} type="tel" name="phone" list="tel-list" placeholder="+7 (XXX) XXX-XX-XX" pattern="\+7\s?[\(]{0,1}9[0-9]{2}[\)]{0,1}\s?\d{3}[-]{0,1}\d{2}[-]{0,1}\d{2}" required />
+                  <input className={style.input__inf} {...register('phone')} type="tel" name="phone" list="tel-list" placeholder="+7 (XXX) XXX-XX-XX" pattern="\+7\s?[\(]{0,1}9[0-9]{2}[\)]{0,1}\s?\d{3}[-]{0,1}\d{2}[-]{0,1}\d{2}" required />
                   <br />
                   <label htmlFor="lesson_type">Направление</label>
                   <br />
-                  <select {...register('lesson_type')} name="lesson_type">
-                    <option value="Латина">Латина</option>
-                    <option value="Стандарт">Стандарт</option>
-                    <option value="Двоеборье">Двоеборье</option>
+                  <select className={style.input__inf} {...register('lesson_type')} name="lesson_type">
+                    <option className={style.option__inf}value="Латина">Латина</option>
+                    <option className={style.option__inf} value="Стандарт">Стандарт</option>
+                    <option className={style.option__inf}value="Двоеборье">Двоеборье</option>
                   </select>
                   <br />
                   <label htmlFor="date">Дата</label>
                   <br />
-                  <input {...register('date')} name="date" type="date" placeholder="Ваше имя" required />
+                  <input className={style.input__inf} {...register('date')} name="date" type="date" placeholder="Ваше имя" required />
                   <br />
                   <label htmlFor="time">Время</label>
                   <br />
-                  <input {...register('time')} name="time" type="time" placeholder="Ваше имя" required />
+                  <input className={style.input__inf} {...register('time')} name="time" type="time" placeholder="Ваше имя" required />
                   <br />
                   <button className={style.btn_add_new_save} type="submit">Сохранить</button>
                   <Snackbar open={open} autoHideDuration={5000} onClose={handleClose}>

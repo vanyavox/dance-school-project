@@ -10,7 +10,7 @@ import Profile from '../features/Profile/Profile';
 import TeacherProfile from '../features/TeacherProfile/TeacherProfile';
 import Login from '../features/Login/Login';
 import Registration from '../features/Registration/Registration';
-import { useAppDispatch } from '../store';
+import { RootState, useAppDispatch } from '../store';
 import { getUser } from '../features/Registration/userSlice';
 import TrialForm from '../features/TrialForm/TrialForm';
 import Map from '../features/Map/Map';
@@ -25,6 +25,7 @@ import TournamentList from '../features/Tournament/TournamentList';
 import { initAsyncTeachers } from '../features/TeacherList/teacherSlice';
 import { loadLessons } from '../features/Lesson/lessonSlice';
 import DanceDirections from '../features/DanceDirections/DanceDirections';
+import { useSelector } from 'react-redux';
 
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
@@ -36,6 +37,7 @@ function App(): JSX.Element {
     dispatch(initAsyncTeachers());
     dispatch(loadLessons());
   }, []);
+  const { authChecked, role } = useSelector((state: RootState) => state.user);
 
   return (
     <>
@@ -53,7 +55,9 @@ function App(): JSX.Element {
           <Route path="/about" element={<About />} />
           <Route path="/contacts" element={<Contacts />} />
           <Route path="/lessons" element={<LessonForm />} />
+          {authChecked === true && role === 'admin' && (
           <Route path="/admin" element={<AdminPanel />} />
+          )}
           <Route path="/tournament" element={<TournamentList />} />
           <Route path="/directions" element={<DanceDirections />} />
         </Route>

@@ -39,6 +39,7 @@ function NewsList(): JSX.Element {
 
   return (
     <div className={style.news_list}>
+      <h1>Новости</h1>
       {role === 'admin' &&
       (<button type="button" onClick={handleOpen} className={style.button_add}>Добавить  Новость / Анонс</button>)}
 

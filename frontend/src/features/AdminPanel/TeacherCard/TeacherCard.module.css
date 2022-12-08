@@ -28,23 +28,27 @@
   width: 50%;
 }
 
-.teacher__card > button {
-  display: block;
-  bottom: 10px;
-  text-align: center;
-  padding: 4px;
-  position: relative;
-  bottom: 0px;
-}
+
 
 .btn_teacher_delete {
-  background-color: #DC143C;
-  padding: 5px;
-  font-size: 14pt;
+  height: 55px;
+  border-radius: 45px;
+  font-size: 15px;
+  color: #ffffff;
+  background: #a42e34;
+  box-shadow: 0 0px 0px rgba(0, 0, 0, .1);
+  transition: .3s;
+  margin-right: 20px;
+  margin-top: 30px;
 }
 
 .btn_teacher_delete:hover {
-  background-color: #dc143ca9;
+  align-items: center;
+  background: #d22831;
+  box-shadow: 0 5px 13px #d22831;
+  color: white;
+  font-size: 15px;
+  transform: translateY(-1px);
 }
 
 .teacher_edit {
@@ -60,13 +64,24 @@ select {
 }
 
 .teacher_edit_save {
-  padding: 4px;
-  background-color: #3CB371;
+  height: 55px;
+  border-radius: 45px;
+  font-size: 15px;
+  color: #ffffff;
+  background: #582d4c;
+  box-shadow: 0 0px 0px rgba(0, 0, 0, .1);
+  transition: .3s;
+  margin-right: 20px;
+  margin-top: 30px;
 }
 
 .teacher_edit_save:hover {
-  padding: 4px;
-  background-color: #3ed482;
+  align-items: center;
+  background: #bd459b;
+  box-shadow: 0 5px 13px #ff00b3;
+  color: white;
+  font-size: 15px;
+  transform: translateY(-1px);
 }
 
 .hiddenform {
@@ -74,4 +89,24 @@ select {
   height: 0px;
   margin: 0;
   padding: 0;
+}
+
+.input__teach{
+  width: 200%;
+  border: 0;
+  border-bottom: 2px solid #7D8195;
+  outline: 0;
+  font-size: 1.3rem;
+  color: #edcece;
+  padding: 7px 0;
+  background: transparent;
+  transition: border-color 0.2s;
+  margin-bottom: 20px ;
+}
+.option__teach{
+  background-color: #69445f;
+  color: #ffffff;
+}
+.h3__teach{
+  color: #ffffff;
 }

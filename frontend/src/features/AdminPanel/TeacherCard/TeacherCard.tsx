@@ -19,6 +19,7 @@ function TeacherCard({ teacher }: { teacher: Teacher }): JSX.Element {
 
   const onSubmit = (data: Teacher): void => {
     handleAdd(data);
+    toggleModal();
   };
 
   return (

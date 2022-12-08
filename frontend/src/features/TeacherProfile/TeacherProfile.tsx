@@ -12,7 +12,7 @@ function TeacherProfile(): JSX.Element {
 
   const [teacher, setTeacher] = useState({ name: '', photo: '', surname: '', direction: '', experience: '', description: '' });
 
-  const { name, phone } = useSelector((state: RootState) => state.user);
+  const { phone } = useSelector((state: RootState) => state.user);
   const user = useSelector((state: RootState) => state.user);
 
   const { id } = useParams();
@@ -30,7 +30,7 @@ function TeacherProfile(): JSX.Element {
     setTimeout(() => {
       setModal((prev: boolean) => !prev);
       setActive(false);
-    }, 2000);
+    }, 3000);
   };
 
   const [modal, setModal] = useState(true);
@@ -77,7 +77,7 @@ function TeacherProfile(): JSX.Element {
             <input {...register('time')} name="time" type="time" placeholder="Ваше имя" />
           </div>
           <button className={style.btn__reg} type="submit">Записаться</button>
-          {active && <div>Hello</div>}
+          {active && <div>Спасибо! Наш Специалист свяжется с Вами в ближайшее время</div>}
           <br />
           <button className={style.btn__reg} onClick={toogle} type="button">Назад</button>
         </form>

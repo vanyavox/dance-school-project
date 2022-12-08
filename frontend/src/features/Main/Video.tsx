@@ -1,6 +1,5 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
 import Modal from '@mui/material/Modal';
 import style1 from './video.module.css';
 
@@ -30,10 +29,9 @@ export default function BasicModal() {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box sx={style}>
-          <iframe width="560" height="315" src="https://www.youtube.com/embed/mZ-W4lS2rpc" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" />
-
-        </Box>
+      <Box className={style1.video_container}>
+        <iframe width="860" height="415" src="https://www.youtube.com/embed/2p2nengW0OQ" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+      </Box>
       </Modal>
     </div>
   );

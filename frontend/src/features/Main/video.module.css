@@ -27,7 +27,13 @@
 
 
 .video__div{
-
   display: flex;
   justify-content: center;
 }
+
+.video_container{
+  position: relative;
+  display: flex;
+  justify-content: center; 
+  top: 15vw;
+ } 

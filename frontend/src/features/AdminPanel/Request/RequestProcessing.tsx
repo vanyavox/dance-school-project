@@ -15,9 +15,9 @@ function Request({ req }: { req: Req }): JSX.Element {
       <div><strong>Направление:</strong> {req.lesson_type}</div>
       <div><strong>Номер телефона:</strong> {req.phone}</div>
       <div>
-        <select defaultValue={req.status}>
-          <option value="Обрабатывается">Обрабатывается</option>
-          <option value="Обработана">Обработана</option>
+        <select className={style.select__req} defaultValue={req.status}>
+          <option className={style.option__req} value="Обрабатывается">Обрабатывается</option>
+          <option className={style.option__req} value="Обработана">Обработана</option>
         </select>
         <button type="button" onClick={() => dispatch(changeAsyncRequest(req))} className={style.btn_change}>Изменить статус</button>
         <button type="button" onClick={() => dispatch(deleteAsyncRequest(req.id))} className={style.btn_delete}>Удалить заявку</button>

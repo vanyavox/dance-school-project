@@ -69,7 +69,7 @@
 
 form {
   width: 600px;
-  margin: auto;
+  
 }
 
 .btn_add_new {
@@ -77,13 +77,24 @@ form {
 }
 
 .btn_add_new_save {
-  padding: 5px;
-  background-color: #3CB371;
+  height: 55px;
+  border-radius: 45px;
+  font-size: 15px;
+  color: #ffffff;
+  background: #884a76;
+  box-shadow: 0 0px 0px rgba(0, 0, 0, .1);
+  transition: .3s;
+  margin-right: 20px;
+  margin-top: 30px;
 }
 
 .btn_add_new_save:hover {
-  padding: 5px;
-  background-color: #3cb372c0;
+  align-items: center;
+  background: #b8629f;
+  box-shadow: 0 5px 13px #a7598f;
+  color: white;
+  font-size: 15px;
+  transform: translateY(-1px);
 }
 
 .btn_unautorized {
@@ -105,4 +116,26 @@ h3 {
   width: 91.3%;
   margin: auto;
   padding: 5px;
+}
+.input__inf{
+  width: 100%;
+  border: 0;
+  border-bottom: 2px solid #7D8195;
+  outline: 0;
+  font-size: 1.3rem;
+  color: #edcece;
+  padding: 7px 0;
+  background: transparent;
+  transition: border-color 0.2s;
+  margin-bottom: 20px ;
+}
+.option__inf{
+  background-color: #69445f;
+  color: #ffffff;
+}
+.modal_form__f{
+  margin: 0;
+  margin-top: 30px;
+  padding-right: 20px;
+  padding-left: 20px;
 }

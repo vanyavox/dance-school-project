@@ -49,11 +49,11 @@ function AdminPanel(): JSX.Element {
                   <h3>Информация о танцоре</h3>
                   <label htmlFor="name">Имя</label>
                   <br />
-                  <input {...register('name')} name="name" type="text" placeholder="Имя" />
+                  <input {...register('name')} name="name" minLength={2} type="text" placeholder="Имя" required />
                   <br />
                   <label htmlFor="phone">Номер телефона</label>
                   <br />
-                  <input {...register('phone')} type="tel" name="phone" list="tel-list" placeholder="+7 (XXX) XXX-XX-XX" pattern="\+7\s?[\(]{0,1}9[0-9]{2}[\)]{0,1}\s?\d{3}[-]{0,1}\d{2}[-]{0,1}\d{2}" />
+                  <input {...register('phone')} type="tel" name="phone" list="tel-list" placeholder="+7 (XXX) XXX-XX-XX" pattern="\+7\s?[\(]{0,1}9[0-9]{2}[\)]{0,1}\s?\d{3}[-]{0,1}\d{2}[-]{0,1}\d{2}" required />
                   <br />
                   <label htmlFor="lesson_type">Направление</label>
                   <br />
@@ -65,11 +65,11 @@ function AdminPanel(): JSX.Element {
                   <br />
                   <label htmlFor="date">Дата</label>
                   <br />
-                  <input {...register('date')} name="date" type="date" placeholder="Ваше имя" />
+                  <input {...register('date')} name="date" type="date" placeholder="Ваше имя" required />
                   <br />
                   <label htmlFor="time">Время</label>
                   <br />
-                  <input {...register('time')} name="time" type="time" placeholder="Ваше имя" />
+                  <input {...register('time')} name="time" type="time" placeholder="Ваше имя" required />
                   <br />
                   <button className={style.btn_add_new_save} type="submit">Сохранить</button>
                 </div>
@@ -82,15 +82,15 @@ function AdminPanel(): JSX.Element {
       <div>
         <h3>
           Заявки
-        <button
-          onClick={() => setUnautorized(!unAutorized)}
-          className={style.btn_unautorized}
-        >
-          {unAutorized ?
-            (<>Скрыть</>)
-            :
-            (<>Показать</>)}
-        </button>
+          <button
+            onClick={() => setUnautorized(!unAutorized)}
+            className={style.btn_unautorized}
+          >
+            {unAutorized ?
+              (<>Скрыть</>)
+              :
+              (<>Показать</>)}
+          </button>
         </h3>
         {unAutorized && (
           <div className={style.requests}>
@@ -121,15 +121,15 @@ function AdminPanel(): JSX.Element {
           </div>
         )}
         <h3>Преподаватели
-        <button
-          className={style.btn_unautorized}
-          onClick={toggleTeachersModal}
-        >
-          {teachersModal ?
-            (<>Скрыть</>)
-            :
-            (<>Показать</>)}
-        </button>
+          <button
+            className={style.btn_unautorized}
+            onClick={toggleTeachersModal}
+          >
+            {teachersModal ?
+              (<>Скрыть</>)
+              :
+              (<>Показать</>)}
+          </button>
         </h3>
         {teachersModal && (
           <div className={style.teachers_block}>

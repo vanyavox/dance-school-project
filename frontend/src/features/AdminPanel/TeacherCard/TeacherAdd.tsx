@@ -14,7 +14,6 @@ function TeacherAdd(): JSX.Element {
   };
   const handleAdd = (newTeach: NewTeacher): void => {
     dispatch(addAsyncTeachers(newTeach));
-    
   };
   return (
     <div className={style.teacher_add}>
@@ -23,11 +22,11 @@ function TeacherAdd(): JSX.Element {
           <h3>Добавить преподавателя</h3>
           <label htmlFor="name">Имя</label>
           <br />
-          <input {...register('name')} name="name" type="text" placeholder="Имя" />
+          <input {...register('name')} minLength={2} name="name" type="text" placeholder="Имя" required />
           <br />
           <label htmlFor="surname">Фамилия</label>
           <br />
-          <input {...register('surname')} type="text" name="surname" placeholder="Фамилия" />
+          <input {...register('surname')} minLength={2} type="text" name="surname" placeholder="Фамилия" required />
           <br />
           <label htmlFor="direction">Направление</label>
           <br />
@@ -39,15 +38,15 @@ function TeacherAdd(): JSX.Element {
           <br />
           <label htmlFor="experience">Опыт работы</label>
           <br />
-          <input {...register('experience')} name="experience" type="text" placeholder="Опыт работы" />
+          <input {...register('experience')} name="experience" minLength={1} type="text" placeholder="Опыт работы" required />
           <br />
           <label htmlFor="time">Описание</label>
           <br />
-          <textarea rows={10} {...register('description')} className={style.teacher_area} name="description" placeholder="Описание" />
+          <textarea rows={10} {...register('description')} className={style.teacher_area} name="description" placeholder="Описание" required />
           <br />
           <label htmlFor="time">Фото</label>
           <br />
-          <input {...register('photo')} name="photo" type="text" placeholder="Фото" />
+          <input {...register('photo')} name="photo" type="text" placeholder="Фото" required />
           <br />
           <button type="submit">Добавить</button>
         </div>

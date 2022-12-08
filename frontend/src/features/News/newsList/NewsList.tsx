@@ -80,7 +80,7 @@ function NewsList(): JSX.Element {
         <Alert onClose={handleCloseModal} severity="success" sx={{ width: '100%' }}>
           Новость успешно добавлена
         </Alert>
-      </Snackbar>;
+      </Snackbar>
       <div>
         {news.map((oneNews) => (
           <NewsItem

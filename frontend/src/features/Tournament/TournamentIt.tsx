@@ -134,7 +134,7 @@ function TournamentIt({ tournament }: { tournament: Toornament }): JSX.Element {
         <Alert onClose={handleCloseModal} severity="success" sx={{ width: '100%' }}>
           Турнир успешно изменён!
         </Alert>
-      </Snackbar>;
+      </Snackbar>
     </div>
   );
 }

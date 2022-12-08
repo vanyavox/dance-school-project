@@ -42,7 +42,10 @@ function TeacherProfile(): JSX.Element {
   return (
     modal ? (
       <>
-        <div className={style.teacher__links}>Школа Танцев/Преподаватели/{teacher.name}</div>
+        <div className={style.teacher__links}>
+          <a href="/">Школа Танцев</a>
+        /
+        <a href="/teachers">Преподаватели</a>/{teacher.name}</div>
         <div className={style.teacher__info}>
           <div className={style.profile__left}>
             <img src={teacher.photo} alt="teacher" />

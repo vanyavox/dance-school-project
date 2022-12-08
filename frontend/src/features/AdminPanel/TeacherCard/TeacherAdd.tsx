@@ -1,11 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import Snackbar from '@mui/material/Snackbar';
+import MuiAlert, { AlertProps } from '@mui/material/Alert';
 import { useAppDispatch } from '../../../store';
 import { addAsyncTeachers } from '../../TeacherList/teacherSlice';
 import { NewTeacher } from '../../TeacherList/types/state';
 import style from './TeacherAdd.module.css';
 
+const Alert = React.forwardRef<HTMLDivElement, AlertProps>((
+  props,
+  ref,
+) => <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />);
+
 function TeacherAdd(): JSX.Element {
+  const [open, setOpen] = useState<boolean>(false);
   const { register, handleSubmit } = useForm<NewTeacher>();
   const dispatch = useAppDispatch();
 
@@ -14,6 +22,14 @@ function TeacherAdd(): JSX.Element {
   };
   const handleAdd = (newTeach: NewTeacher): void => {
     dispatch(addAsyncTeachers(newTeach));
+    setOpen(true);
+  };
+
+  const handleClose = (event?: React.SyntheticEvent | Event, reason?: string) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+    setOpen(false);
   };
   return (
     <div className={style.teacher_add}>
@@ -48,8 +64,13 @@ function TeacherAdd(): JSX.Element {
           <br />
           <input {...register('photo')} name="photo" type="text" placeholder="Фото" required />
           <br />
-          <button type="submit">Добавить</button>
+          <button className={style.btn_add_new_save} type="submit">Добавить</button>
         </div>
+        <Snackbar open={open} autoHideDuration={5000} onClose={handleClose}>
+          <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
+            Преподаватель успешно добавлен!
+          </Alert>
+        </Snackbar>
       </form>
     </div>
   );

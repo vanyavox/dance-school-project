@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useSelector } from 'react-redux';
+import Snackbar from '@mui/material/Snackbar';
+import MuiAlert, { AlertProps } from '@mui/material/Alert';
 import { RootState, useAppDispatch } from '../../store';
 import { addAsyncRequest } from '../TrialForm/trialFormSlice';
 import { NewRequest } from '../TrialForm/types/state';
@@ -10,10 +12,17 @@ import Req from './Request/types/Request';
 import TeacherAdd from './TeacherCard/TeacherAdd';
 import TeacherCard from './TeacherCard/TeacherCard';
 
+const Alert = React.forwardRef<HTMLDivElement, AlertProps>((
+  props,
+  ref,
+) => <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />);
+
 function AdminPanel(): JSX.Element {
   const dispatch = useAppDispatch();
   const [active, setActive] = useState<boolean>(false);
   const [unAutorized, setUnautorized] = useState<boolean>(true);
+  const [open, setOpen] = useState<boolean>(false);
+
   const [teachersModal, setTeachersModal] = useState<boolean>(false);
   const { requests } = useSelector((state: RootState) => state.requests);
   const { teachers } = useSelector((state: RootState) => state.teachers);
@@ -26,11 +35,19 @@ function AdminPanel(): JSX.Element {
 
   const { register, handleSubmit } = useForm<NewRequest>();
 
+  const toggleTeachersModal = (): void => setTeachersModal(!teachersModal);
+
   const onSubmit = (data: NewRequest): void => {
     handleAdd(data);
+    setOpen(true);
   };
 
-  const toggleTeachersModal = (): void => setTeachersModal(!teachersModal);
+  const handleClose = (event?: React.SyntheticEvent | Event, reason?: string) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+    setOpen(false);
+  };
 
   return (
     <div className={style.main__block}>
@@ -72,6 +89,11 @@ function AdminPanel(): JSX.Element {
                   <input {...register('time')} name="time" type="time" placeholder="Ваше имя" required />
                   <br />
                   <button className={style.btn_add_new_save} type="submit">Сохранить</button>
+                  <Snackbar open={open} autoHideDuration={5000} onClose={handleClose}>
+                    <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
+                      Заявка успешно добавлена!
+                    </Alert>
+                  </Snackbar>
                 </div>
               </form>
               <TeacherAdd />

@@ -10,16 +10,14 @@
   flex-basis: 0;
   max-width: 30%;
   width: 400px;
+  background-color: #995486;
+  border-radius: 10px;
 }
 
 .teacher__card:hover {
   -webkit-box-shadow: 1px 1px 8px 0px rgba(34, 60, 80, 0.2);
   -moz-box-shadow: 1px 1px 8px 0px rgba(34, 60, 80, 0.2);
   box-shadow: 1px 1px 8px 0px rgba(34, 60, 80, 0.2);
-}
-
-.teacher__card:nth-child(2n + 1) {
-  background-color: rgb(233, 232, 232);
 }
 
 .teacher__card > textarea {

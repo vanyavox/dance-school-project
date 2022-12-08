@@ -14,6 +14,7 @@ function TeacherAdd(): JSX.Element {
   };
   const handleAdd = (newTeach: NewTeacher): void => {
     dispatch(addAsyncTeachers(newTeach));
+    
   };
   return (
     <div className={style.teacher_add}>

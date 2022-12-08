@@ -50,11 +50,11 @@
 }
 
 .teacher_edit {
-  max-width: 90%;
+  width: 200px;
 }
 
 input {
-  width: 100%;
+  width: 408px;
 }
 
 select {

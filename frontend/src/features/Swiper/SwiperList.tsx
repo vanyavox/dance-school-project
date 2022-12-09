@@ -15,7 +15,7 @@ function SwiperList(): JSX.Element {
         spaceBetween={10}
         centeredSlides
         autoplay={{
-          delay: 10500,
+          delay: 9000,
           disableOnInteraction: false
         }}
         pagination={{

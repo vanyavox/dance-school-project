@@ -55,9 +55,9 @@ function App(): JSX.Element {
         <Route path="/about" element={<About />} />
         <Route path="/contacts" element={<Contacts />} />
         <Route path="/lessons" element={<LessonForm />} />
-       {authChecked === true && role === 'admin' && (
+        {authChecked === true && role === 'admin' && (
           <Route path="/admin" element={<AdminPanel />} />
-          )}
+        )}
         <Route path="/tournament" element={<TournamentList />} />
         <Route path="/directions" element={<DanceDirections />} />
       </Routes>

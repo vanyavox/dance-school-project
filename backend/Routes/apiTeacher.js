@@ -37,13 +37,13 @@ router
       const newTimeTable = await Lesson.create({
         teacher_id: newTeacher.id,
         lesson_type: newTeacher.direction,
-        monday: '',
-        tuesday: '',
-        wednesday: '',
-        thursday: '',
-        friday: '',
-        saturday: '',
-        sunday: ''
+        monday: '10-40',
+        tuesday: '15-40',
+        wednesday: '10-40',
+        thursday: '18-40',
+        friday: '19-40',
+        saturday: '20-40',
+        sunday: '21-40'
       })
       return res.status(200).json({ message: 'Преподаватель успешно добавлен!', newT: newTeacher })
     } catch (error) { res.status(500).json({ message: error.message }) }

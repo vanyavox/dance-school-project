@@ -12,7 +12,7 @@ module.exports = {
         thursday: '18-40',
         friday: '19-40',
         saturday: '20-40',
-        sunday: '21:40',
+        sunday: '21-40',
         lesson_type: 'any',
         createdAt: new Date(),
         updatedAt: new Date()
@@ -25,7 +25,7 @@ module.exports = {
         thursday: '18-40',
         friday: '19-40',
         saturday: '20-40',
-        sunday: '21:40',
+        sunday: '21-40',
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -37,7 +37,7 @@ module.exports = {
         thursday: '18-40',
         friday: '19-40',
         saturday: '20-40',
-        sunday: '21:40',
+        sunday: '21-40',
         lesson_type: 'any',
         createdAt: new Date(),
         updatedAt: new Date()

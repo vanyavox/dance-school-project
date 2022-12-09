@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
+import Button, { ButtonProps } from '@mui/material/Button';
+import { purple } from '@mui/material/colors';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Snackbar from '@mui/material/Snackbar';
 import EditIcon from '@mui/icons-material/Edit';
+import { styled } from '@mui/material/styles';
 import Fab from '@mui/material/Fab';
 import Stack from '@mui/material/Stack';
 import MuiAlert, { AlertProps } from '@mui/material/Alert';
@@ -14,12 +16,20 @@ import { Input } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import style from './Profile.module.css';
 import { RootState, useAppDispatch } from '../../store';
-import { addAsyncAvatar, logout, update } from '../Registration/userSlice';
+import { addAsyncAvatar, update } from '../Registration/userSlice';
 
 const Alert = React.forwardRef<HTMLDivElement, AlertProps>((
   props,
   ref,
 ) => <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />);
+
+const ColorButton = styled(Button)<ButtonProps>(({ theme }) => ({
+  color: theme.palette.getContrastText(purple[500]),
+  backgroundColor: purple[500],
+  '&:hover': {
+    backgroundColor: purple[700],
+  },
+}));
 
 function Profile(): JSX.Element {
   const [images, setImages] = useState([]);
@@ -45,7 +55,7 @@ function Profile(): JSX.Element {
 
     setOpen(false);
   };
-  console.log('test')
+  console.log('test');
 
   const handleChangleFile = (event: any): void => {
     setImages(event.target.value);
@@ -63,15 +73,15 @@ function Profile(): JSX.Element {
       {!show && (
         <>
           <span><h2>Мой профиль</h2></span>
-          &nbsp;
-          <div className={style.item}>
-            <Avatar
-              alt="avatar"
-              src={url || ''}
-              sx={{ width: 200, height: 200 }}
-            />
-          </div>
           <div className={style.container}>
+            &nbsp;
+            <div className={style.item}>
+              <Avatar
+                alt="avatar"
+                src={url || ''}
+                sx={{ width: 200, height: 200 }}
+              />
+            </div>
             <div className={style.list}>
               <h2>
                 <div className={style.item}>Имя: {name}</div>
@@ -84,25 +94,21 @@ function Profile(): JSX.Element {
               </h2>
             </div>
           </div>
+          &nbsp;
           <Fab color="secondary" aria-label="edit">
-            <EditIcon
-              type="button"
-              onClick={() => setShow((p) => !p)}
-            />
+            <EditIcon type="button" onClick={() => setShow((p) => !p)} />
           </Fab>
 
         </>
       )}
       {
         show && (
-          <>
-            <div className={style.item}>
-              <Avatar
-                alt="avatar"
-                src={url || ''}
-                sx={{ width: 200, height: 200 }}
-              />
-            </div>
+          <div className={style.editprofile}>
+            <Avatar
+              alt="avatar"
+              src={url || ''}
+              sx={{ width: 200, height: 200 }}
+            />
             <Input
               value=""
               name="avatar"
@@ -111,14 +117,7 @@ function Profile(): JSX.Element {
               required
             />
             <br />
-            <Box
-              component="form"
-              sx={{
-                width: 700,
-                mt: 2,
-                maxWidth: '100%',
-              }}
-            >
+            <Box>
               <form onSubmit={handleSubmit(onSubmit)}>
 
                 <TextField
@@ -126,16 +125,12 @@ function Profile(): JSX.Element {
                   {...register('name')}
                   onChange={(event) => setUserName(event.target.value)}
                   name="name"
-                  required
                   defaultValue={name}
-                  fullWidth
-                  id="Outlined secondary"
+                  required
+                  id="firstName"
                   label="Имя"
                   autoFocus
-                  multiline
-                  focused
-                  color="secondary"
-                  placeholder="name"
+                  sx={{ width: 300 }}
                 />
                 &nbsp;
                 <TextField
@@ -144,14 +139,10 @@ function Profile(): JSX.Element {
                   onChange={(event) => setSurnameUser(event.target.value)}
                   name="surname"
                   required
-                  fullWidth
-                  id="Outlined secondary"
+                  sx={{ width: 300 }}
+                  id="secondName"
                   label="Фамилия"
                   autoFocus
-                  multiline
-                  focused
-                  color="secondary"
-                  placeholder="surname"
                 />
                 &nbsp;
                 <TextField
@@ -160,14 +151,10 @@ function Profile(): JSX.Element {
                   onChange={(event) => setAgeUser(Number(event.target.value))}
                   name="age"
                   required
-                  fullWidth
-                  id="Outlined secondary"
+                  sx={{ width: 300 }}
+                  id="age"
                   label="Возраст"
                   autoFocus
-                  multiline
-                  focused
-                  color="secondary"
-                  placeholder="age"
                 />
                 &nbsp;
                 <TextField
@@ -176,17 +163,14 @@ function Profile(): JSX.Element {
                   onChange={(event) => setEmailUser(event.target.value)}
                   name="email"
                   required
-                  fullWidth
-                  id="Outlined secondary"
+                  sx={{ width: 300 }}
+                  id="email"
                   label="Email"
-                  multiline
-                  focused
-                  color="secondary"
-                  placeholder="email"
+
                 />
                 &nbsp;
                 <TextField
-                  fullWidth
+                  sx={{ width: 300 }}
                   label="Телефон"
                   required
                   id="phone"
@@ -196,26 +180,20 @@ function Profile(): JSX.Element {
                   value={phoneUser || ''}
                   {...register('phone')}
                   onChange={(event) => setPhonelUser(event.target.value)}
-                  multiline
-                  focused
-                  color="secondary"
                 />
                 &nbsp;
-                <Button
+                <ColorButton
                   variant="contained"
                   type="submit"
-                  sx={{ mt: 3, mb: 2, bgcolor: '#b8629f' }}
-                >
-                  Сохранить изменения
-                </Button>
+                >Сохранить изменения
+                </ColorButton>
                 &nbsp;
-                <Button
+                <ColorButton
                   variant="contained"
                   type="submit"
-                  sx={{ mt: 3, mb: 2, bgcolor: '#b8629f' }}
                   onClick={() => setShow((p) => !p)}
                 >Назад
-                </Button>
+                </ColorButton>
               </form>
               <Snackbar open={open} autoHideDuration={5000} onClose={handleClose}>
                 <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
@@ -223,7 +201,7 @@ function Profile(): JSX.Element {
                 </Alert>
               </Snackbar>
             </Box>
-          </>
+          </div>
         )
       }
     </div>

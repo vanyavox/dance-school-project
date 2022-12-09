@@ -1,5 +1,6 @@
 .profile {
-  width: 100%;
+  width: 100vw;
+  height: auto;
   padding: 40px;
   display: flex;
   flex-direction: column;
@@ -18,7 +19,7 @@
   border-style: outset;
   border-color: #c89b9b;
   width: 600px;
-  height: auto;
+  height: 40vh;
   margin: 0 -40px;
 }
 

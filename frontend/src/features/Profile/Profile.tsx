@@ -35,12 +35,13 @@ function Profile(): JSX.Element {
   const [images, setImages] = useState([]);
   const [show, setShow] = useState(false);
   const [open, setOpen] = useState(false);
-  const { email, name, surname, age, phone, image } = useSelector((state: RootState) => state.user);
+  const { email, name, surname, age, phone, image, partner_id, user_points } = useSelector((state: RootState) => state.user);
   const [nameUser, setUserName] = useState(name);
   const [surnameUser, setSurnameUser] = useState(surname);
   const [ageUser, setAgeUser] = useState(age);
   const [emailUser, setEmailUser] = useState(email);
   const [phoneUser, setPhonelUser] = useState(phone);
+  const [partner, setPartner] = useState(partner_id);
   const { register, handleSubmit } = useForm();
   const dispatch = useAppDispatch();
 
@@ -89,8 +90,8 @@ function Profile(): JSX.Element {
                 <div className={style.item}>Возраст: {age}</div>
                 <div className={style.item}>Email: {email}</div>
                 <div className={style.item}>Телефон: {phone}</div>
-                <div className={style.item}>Партнер по танцам: </div>
-                <div className={style.item}>Рейтинговые очки: </div>
+                <div className={style.item}>Партнер по танцам: {partner_id}</div>
+                <div className={style.item}>Рейтинговые очки: {user_points}</div>
               </h2>
             </div>
           </div>
@@ -180,6 +181,18 @@ function Profile(): JSX.Element {
                   value={phoneUser || ''}
                   {...register('phone')}
                   onChange={(event) => setPhonelUser(event.target.value)}
+                />
+                &nbsp;
+                <TextField
+                  sx={{ width: 300 }}
+                  label="Партнер по танцам"
+                  required
+                  id="partner"
+                  type="text"
+                  placeholder="Имя партнера по танцам"
+                  value={partner || ''}
+                  {...register('partner_id')}
+                  onChange={(event) => setPartner(event.target.value)}
                 />
                 &nbsp;
                 <ColorButton

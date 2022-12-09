@@ -30,6 +30,8 @@ export const initialState: State = {
   phone: '',
   role: '',
   image: '',
+  partner_id: 'нет',
+  user_points: '0',
   emailError: '',
   loginError: '',
   passwordError: '',
@@ -104,6 +106,8 @@ const userSlice = createSlice({
           state.age = action.payload.user.age;
           state.phone = action.payload.user.phone;
           state.id = action.payload.user.id;
+          state.partner_id = action.payload.user.partner_id;
+          state.user_points = action.payload.user.user_points;
           state.image = `/upload/${action.payload.user.image}`;
           state.authChecked = true;
           state.emailError = '';
@@ -121,6 +125,9 @@ const userSlice = createSlice({
           state.phone = '';
           state.role = '';
           state.image = '';
+          state.age = 0;
+          state.partner_id = '';
+          state.user_points = '';
         }
       })
       .addCase(update.fulfilled, (state, action) => {
@@ -130,6 +137,7 @@ const userSlice = createSlice({
           state.surname = action.payload.surname;
           state.age = action.payload.age;
           state.phone = action.payload.phone;
+          state.partner_id = action.payload.partner_id;
         }
       })
       .addCase(getUser.fulfilled, (state, action) => {
@@ -144,6 +152,8 @@ const userSlice = createSlice({
           state.age = action.payload.user.age;
           state.phone = action.payload.user.phone;
           state.id = action.payload.user.id;
+          state.partner_id = action.payload.user.partner_id;
+          state.user_points = action.payload.user.user_points;
           state.image = `/upload/${action.payload.user.image}`;
           state.authChecked = action.payload.isLoggedIn;
         }

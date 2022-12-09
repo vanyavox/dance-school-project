@@ -5,7 +5,8 @@ const path = require('path')
 router.put('/', async (req, res) => {
   const { user_id } = req.session
 
-  const { name, surname, age, phone, email } = req.body
+  const { name, surname, age, phone, email, partner_id } = req.body
+  console.log(partner_id)
   const student = await Student.findOne({ where: { id: user_id } })
   try {
     if (!name.trim() || !surname.trim() || !age.trim() || !phone.trim() || !email.trim()) {
@@ -16,6 +17,7 @@ router.put('/', async (req, res) => {
     student.age = age
     student.phone = phone
     student.email = email
+    student.partner_id = partner_id
     student.save()
     return res.status(202).json(student)
   } catch (error) { res.status(500).json({ message: error.message }) }

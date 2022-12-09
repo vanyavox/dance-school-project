@@ -50,7 +50,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.TEXT
     },
     partner_id: {
-      type: DataTypes.INTEGER
+      type: DataTypes.TEXT
     },
     user_points: {
       type: DataTypes.INTEGER

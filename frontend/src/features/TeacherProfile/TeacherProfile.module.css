@@ -23,6 +23,7 @@
 .profile__name {
   font-weight: 600;
   font-size: 20pt;
+  color: #edcece;
 }
 
 button {
@@ -68,7 +69,8 @@ button:hover {
   justify-content: center;
   align-items: center;
   width: 65%;
-  background-color: #e9e9e92d;
+  /* margin-top: 5vh; */
+  height: 75vh;
 }
 
 .form__div {
@@ -82,4 +84,29 @@ button:hover {
 .btn__reg {
   padding: 15px;
   margin: 10px;
+}
+.profile__p{
+  color:#edcece;
+  padding: 10px;
+  text-align: justify;
+}
+.input__teach{
+  width: 100%;
+  border: 0;
+  border-bottom: 2px solid #7D8195;
+  outline: 0;
+  font-size: 1.3rem;
+  color: #edcece;
+  padding: 7px 0;
+  background: transparent;
+  transition: border-color 0.2s;
+  margin-bottom: 20px ;
+}
+.option__teach{
+  background-color: #69445f;
+  color: #ffffff;
+}
+.label__teach{
+  color:#f9e8e8;
+  font-size: 20px;
 }

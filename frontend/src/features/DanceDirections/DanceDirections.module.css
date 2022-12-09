@@ -3,6 +3,7 @@
   margin: auto;
   text-align: justify;
   padding: 10px;
+  height: 75vh;
   color: #DCBCBC;
   font-size: 16pt;
 }
@@ -18,4 +19,8 @@
   border-radius: 10px;
   margin-left: 20px;
   margin-top: 7px;
+}
+.descript__text{
+  color:#edcece;
+  
 }

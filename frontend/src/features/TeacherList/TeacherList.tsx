@@ -13,6 +13,7 @@ function TeacherList(): JSX.Element {
         <a href="/">Школа Танцев</a>
         /Преподаватели
       </div>
+      <h1>Преподаватели</h1>
       <div className={style.content__body}>
         {teachers.map((teacher) => (
           <Teacher key={teacher.id} teacher={teacher} />

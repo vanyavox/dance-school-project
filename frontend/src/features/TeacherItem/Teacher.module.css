@@ -9,6 +9,7 @@
   justify-content: center;
   align-items: center;
   margin-top: 10px;
+  background-color:#6a315a ;
 }
 
 .teacher__card > img {
@@ -21,6 +22,7 @@
   font-weight: 600;
   margin-top: 0px;
   margin-bottom: 0px;
+  color: white;
 }
 
 .teacher__direction {
@@ -28,6 +30,7 @@
   font-weight: 400;
   margin-top: 0px;
   margin-bottom: 0px;
+  color: white;
 }
 
 .teacher__experience {
@@ -35,9 +38,10 @@
   font-weight: 400;
   margin-top: 0px;
   margin-bottom: 0px;
+  color: white;
 }
 
 .teacher__card:hover {
   transform: scale(1.02);
-  background-color: #d1d1d117;
+  background-color: #b8629f;
 }

@@ -48,16 +48,17 @@ function TeacherProfile(): JSX.Element {
         <div className={style.teacher__links}>
           <a href="/">Школа Танцев</a>
         /
-        <a href="/teachers">Преподаватели</a>/{teacher.name}</div>
+        <a href="/teachers">Преподаватели</a>/{teacher.name}
+        </div>
         <div className={style.teacher__info}>
           <div className={style.profile__left}>
             <img src={teacher.photo} alt="teacher" />
           </div>
           <div className={style.profile__right}>
             <div className={style.profile__name}>{teacher.name} {teacher.surname}</div>
-            <div>Направление: {teacher.direction}</div>
-            <div>Опыт работы: {teacher.experience}</div>
-            <div>{teacher.description}</div>
+            <div className={style.profile__p}>Направление: {teacher.direction}</div>
+            <div className={style.profile__p}>Опыт работы: {teacher.experience}</div>
+            <div className={style.profile__p}>{teacher.description}</div>
             {user.authChecked && (<button type="button" onClick={toogle}>Записаться</button>)}
           </div>
         </div>
@@ -67,23 +68,19 @@ function TeacherProfile(): JSX.Element {
 
         <form onSubmit={handleSubmit(onSubmit)} className={style.modal_form}>
           <div className={style.form__div}>
-            <label htmlFor="name">Ваше имя</label>
-            <input {...register('name')} name="name" type="text" placeholder="Ваше имя" value={user.name} />
-            <label htmlFor="phone">Телефон для связи</label>
-            <input {...register('phone')} type="tel" name="phone" list="tel-list" placeholder="+7 (XXX) XXX-XX-XX" pattern="\+7\s?[\(]{0,1}9[0-9]{2}[\)]{0,1}\s?\d{3}[-]{0,1}\d{2}[-]{0,1}\d{2}" value={phone} />
-            <label htmlFor="lesson_type">Направление</label>
-            <select {...register('lesson_type')} name="lesson_type">
-              <option value="Латина">Латина</option>
-              <option value="Стандарт">Стандарт</option>
-              <option value="Двоеборье">Двоеборье</option>
-            </select>
-            <label htmlFor="date">Выбрать дату</label>
-            <input {...register('date')} name="date" type="date" placeholder="Ваше имя" />
-            <label htmlFor="time">Выбрать время</label>
-            <input {...register('time')} name="time" type="time" placeholder="Ваше имя" />
+            <label className={style.label__teach} htmlFor="name">Ваше имя</label>
+            <input className={style.input__teach} {...register('name')} name="name" type="text" placeholder="Ваше имя" value={user.name} required />
+            <label className={style.label__teach} htmlFor="phone">Телефон для связи</label>
+            <input className={style.input__teach} {...register('phone')} required type="tel" name="phone" list="tel-list" placeholder="+7 (XXX) XXX-XX-XX" value={phone} />
+            <label className={style.label__teach} htmlFor="lesson_type">Направление</label>
+            <input className={style.input__teach} {...register('lesson_type')} name="lesson_type" value={teacher.direction} required />
+            <label className={style.label__teach} htmlFor="date">Выбрать дату</label>
+            <input className={style.input__teach} {...register('date')} name="date" type="date" required />
+            <label className={style.label__teach} htmlFor="time">Выбрать время</label>
+            <input className={style.input__teach} {...register('time')} name="time" type="time" required />
           </div>
           <button className={style.btn__reg} type="submit">Записаться</button>
-          {active && <div>Спасибо! Наш Специалист свяжется с Вами в ближайшее время</div>}
+          {active && <div className={style.label__teach}>Спасибо! Наш Специалист свяжется с Вами в ближайшее время</div>}
           <br />
           <button className={style.btn__reg} onClick={toogle} type="button">Назад</button>
         </form>

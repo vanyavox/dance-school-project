@@ -1,7 +1,12 @@
 .about {
-  min-height: 100vh;
+  min-height: 75vh;
   margin: auto;
   width: 80%;
   color: #DCBCBC;
   font-size: 16pt;
+}
+
+.about_p{
+  color:#edcece;
+  text-align: justify;
 }

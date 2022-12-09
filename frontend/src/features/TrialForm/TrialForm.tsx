@@ -38,7 +38,7 @@ function TrialForm(): JSX.Element {
     <div className={style.trial__form}>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className={style.form__div}>
-          <h1 className={style.form_title}>Форма для записи</h1>
+          <h1 className={style.form_title}>Записаться на пробное занятие</h1>
           <input {...register('name')} minLength={2} maxLength={15} name="name" type="text" placeholder="Ваше имя" className={style.form_input} required />
           <input {...register('phone')} type="tel" name="phone" list="tel-list" placeholder="+7" defaultValue="+7" pattern="^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$" className={style.form_input} required />
           <select {...register('lesson_type')} name="lesson_type" className={style.select_box} required>

@@ -9,7 +9,8 @@
   justify-content: center;
   align-items: center;
   margin-top: 10px;
-  background-color:#6a315a ;
+  background-color:#6a315a;
+  padding: 20px;
 }
 
 .teacher__card > img {

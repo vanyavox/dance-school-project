@@ -70,7 +70,7 @@ function AdminPanel(): JSX.Element {
                   <br />
                   <label htmlFor="phone">Номер телефона</label>
                   <br />
-                  <input className={style.input__inf} {...register('phone')} type="tel" name="phone" list="tel-list" placeholder="+7 (XXX) XXX-XX-XX" pattern="\+7\s?[\(]{0,1}9[0-9]{2}[\)]{0,1}\s?\d{3}[-]{0,1}\d{2}[-]{0,1}\d{2}" required />
+                  <input className={style.input__inf} {...register('phone')} type="tel" name="phone" list="tel-list" placeholder="+7" defaultValue="+7" pattern="^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$" required />
                   <br />
                   <label htmlFor="lesson_type">Направление</label>
                   <br />

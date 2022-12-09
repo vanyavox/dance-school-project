@@ -102,11 +102,12 @@ ul {
 }
 
 .buttons {
-  width: 50%;
+  width: 180px;
   margin: auto;
 }
 
 .main__info {
   width: 80%;
   margin: auto;
+  margin-top: 150px;
 }

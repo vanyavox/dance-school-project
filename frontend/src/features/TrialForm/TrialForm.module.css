@@ -17,7 +17,6 @@
   display: flex;
   justify-content: center;
   flex-direction: column;
-  width: 500px;
   margin: auto;
 }
 
@@ -25,9 +24,8 @@
   font-size: 25pt;
   color: #DC6DBF;
   font-family: 'Comic Sans MS', 'Comic Sans', cursive;
-  /* margin-right: 95px; */
   font-weight: 500;
-  padding: 20px 20 0px 0px;
+  padding-left: 0;
 }
 
 .btn__reg {

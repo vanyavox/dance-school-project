@@ -1,5 +1,6 @@
 .container{
    background-color: #3D3131;
+   height: 78vh;
 }
 
 .modal_form {
@@ -12,7 +13,6 @@
   border: 2px;
   border-style: outset;
   border-color: #c89b9b;
-  
 }
 
 .avatar_log {

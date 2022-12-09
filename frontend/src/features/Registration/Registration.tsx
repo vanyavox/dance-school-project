@@ -17,6 +17,7 @@ import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import { RootState, useAppDispatch } from '../../store';
 import { clearEmailError, clearLoginError, clearPasswordError, registration } from './userSlice';
 import style from './Registration.module.css';
+import { loadLessons } from '../Lesson/lessonSlice';
 
 const theme = createTheme();
 
@@ -106,6 +107,7 @@ function Registration(): JSX.Element {
                     variant="filled"
                     label="Email Address"
                     name="email"
+                    type="email"
                     autoComplete="email"
                     helperText={loginError}
                     error={!!loginError}
@@ -123,6 +125,23 @@ function Registration(): JSX.Element {
                     name="name"
                     fullWidth
                     label="Name"
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <TextField
+                    value={userPhone}
+                    onChange={handlePhoneChange}
+                    autoComplete="given-phone"
+                    name="phone"
+                    focused
+                    color="secondary"
+                    id="Outlined secondary"
+                    variant="filled"
+                    fullWidth
+                    label="Phone"
+                    autoFocus
+                    helperText={emailError}
+                    error={!!emailError}
                   />
                 </Grid>
                 <Grid item xs={12}>
@@ -171,23 +190,6 @@ function Registration(): JSX.Element {
                         </IconButton>
                       </InputAdornment>
                     }}
-                  />
-                </Grid>
-                <Grid item xs={12}>
-                  <TextField
-                    value={userPhone}
-                    onChange={handlePhoneChange}
-                    autoComplete="given-phone"
-                    name="phone"
-                    focused
-                    color="secondary"
-                    id="Outlined secondary"
-                    variant="filled"
-                    fullWidth
-                    label="Phone"
-                    autoFocus
-                    helperText={emailError}
-                    error={!!emailError}
                   />
                 </Grid>
               </Grid>

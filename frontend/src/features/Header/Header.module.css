@@ -1,6 +1,5 @@
 .header{
   background-color: #3d3131;
-  
 }
 
 .header__main {
@@ -26,9 +25,9 @@
 
 a {
   color: white;
-  
 }
 
 a:hover {
-  transform: scale(1.1);
+  transform: scale(1.06);
+  color: #DCBCBC;
 }

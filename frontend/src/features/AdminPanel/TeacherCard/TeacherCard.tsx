@@ -1,12 +1,20 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import Snackbar from '@mui/material/Snackbar';
+import MuiAlert, { AlertProps } from '@mui/material/Alert';
 import { Teacher } from '../../TeacherList/types/state';
 import { useAppDispatch } from '../../../store';
 import { deleteAsyncTeachers, changeAsyncTeacher } from '../../TeacherList/teacherSlice';
 import style from './TeacherCard.module.css';
 
+const Alert = React.forwardRef<HTMLDivElement, AlertProps>((
+  props,
+  ref,
+) => <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />);
+
 function TeacherCard({ teacher }: { teacher: Teacher }): JSX.Element {
   const [edit, setEdit] = useState<boolean>(false);
+  const [open, setOpen] = useState<boolean>(false);
   const dispatch = useAppDispatch();
 
   const handleAdd = (changedTeacher: Teacher): void => {
@@ -20,6 +28,14 @@ function TeacherCard({ teacher }: { teacher: Teacher }): JSX.Element {
   const onSubmit = (data: Teacher): void => {
     handleAdd(data);
     toggleModal();
+    setOpen(true);
+  };
+
+  const handleCloseModal = (event?: React.SyntheticEvent | Event, reason?: string) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+    setOpen(false);
   };
 
   return (
@@ -31,7 +47,7 @@ function TeacherCard({ teacher }: { teacher: Teacher }): JSX.Element {
       <div><b>Стаж:</b> {teacher.experience}</div>
       <div><b>Описание:</b> {teacher.description}</div>
       <button
-      className={style.teacher_edit_save}
+        className={style.teacher_edit_save}
         onClick={toggleModal}
       >Редактировать профиль
       </button>
@@ -45,7 +61,7 @@ function TeacherCard({ teacher }: { teacher: Teacher }): JSX.Element {
         <form className={style.teacher_edit} onSubmit={handleSubmit(onSubmit)}>
           <div>
             <h3 className={style.h3__teach}>Редактирование</h3>
-            <input className={style.hiddenform} {...register('idd')} name="idd" type="number" value={teacher.id} style={{visibility: 'hidden'}}/>
+            <input className={style.hiddenform} {...register('idd')} name="idd" type="number" value={teacher.id} style={{ visibility: 'hidden' }} />
             <label htmlFor="name">Имя</label>
             <br />
             <input className={style.input__teach} defaultValue={teacher.name} {...register('name')} name="name" type="text" placeholder="Имя" />
@@ -78,6 +94,11 @@ function TeacherCard({ teacher }: { teacher: Teacher }): JSX.Element {
           </div>
         </form>
       )}
+      <Snackbar open={open} autoHideDuration={5000} onClose={handleCloseModal}>
+        <Alert onClose={handleCloseModal} severity="success" sx={{ width: '100%' }}>
+          Профиль учителя успешно обновлен
+        </Alert>
+      </Snackbar>
     </div>
   );
 }

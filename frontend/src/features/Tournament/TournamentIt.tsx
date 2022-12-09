@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useForm } from 'react-hook-form';
-import { Modal, Box, Button, Typography } from '@mui/material';
+import { Modal, Box } from '@mui/material';
 import Snackbar from '@mui/material/Snackbar';
 import MuiAlert, { AlertProps } from '@mui/material/Alert';
 import Toornament from './types/Toornament';
@@ -17,12 +17,17 @@ const Alert = React.forwardRef<HTMLDivElement, AlertProps>((
 
 function TournamentIt({ tournament }: { tournament: Toornament }): JSX.Element {
   const [openModal, setOpenModal] = useState<boolean>(false);
+  const [success, setSuccess] = useState<boolean>(false);
+  const [editing, setEditing] = useState<boolean>(false);
   const dispatch = useAppDispatch();
   const { role, authChecked, name, id, surname } = useSelector((state: RootState) => state.user);
   const { register, handleSubmit } = useForm<Toornament>();
 
   const [activeAdmin, setActiveAdmin] = useState(false);
-  const handleOpenAdmin = (): void => setActiveAdmin(!activeAdmin);
+  const handleOpenAdmin = (): void => {
+    setActiveAdmin(!activeAdmin);
+    setEditing(true);
+  };
 
   const [activeUser, setActiveUser] = useState(false);
   const handleOpenUser = (): void => setActiveUser(!activeUser);
@@ -33,6 +38,7 @@ function TournamentIt({ tournament }: { tournament: Toornament }): JSX.Element {
   };
   const handleAddTour = (tourAdd: TourList): void => {
     dispatch(addTourList(tourAdd));
+    setSuccess(true);
   };
 
   const handleCloseModal = (event?: React.SyntheticEvent | Event, reason?: string) => {
@@ -40,6 +46,20 @@ function TournamentIt({ tournament }: { tournament: Toornament }): JSX.Element {
       return;
     }
     setOpenModal(false);
+  };
+
+  const handleCloseSuccessModal = (event?: React.SyntheticEvent | Event, reason?: string) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+    setSuccess(false);
+  };
+
+  const handleCloseEditModal = (event?: React.SyntheticEvent | Event, reason?: string) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+    setEditing(false);
   };
 
   function onSubmitAdmin(data: Toornament): void {
@@ -74,8 +94,8 @@ function TournamentIt({ tournament }: { tournament: Toornament }): JSX.Element {
     padding: 'px',
     p: 4,
   };
-  const [open, setOpen] = useState(false);
-  const [acept, setAcept] = useState(false);
+  const [open, setOpen] = useState<boolean>(false);
+  const [acept, setAcept] = useState<boolean>(false);
   const handleOpen = (): void => setOpen(true);
   const handleClose = (): void => setOpen(false);
   const hanleAcept = (): void => setAcept(true);
@@ -98,6 +118,11 @@ function TournamentIt({ tournament }: { tournament: Toornament }): JSX.Element {
           </form>
         </Box>
       </Modal>
+      <Snackbar open={success} autoHideDuration={5000} onClose={handleCloseSuccessModal}>
+        <Alert onClose={handleCloseModal} severity="success" sx={{ width: '100%' }}>
+          Запись прошла успешно
+        </Alert>
+      </Snackbar>
       <div className={style.tournament__line}>
         {!activeAdmin && (
           <>
@@ -113,6 +138,13 @@ function TournamentIt({ tournament }: { tournament: Toornament }): JSX.Element {
         {role === 'admin' && authChecked === true && activeAdmin === false && (
           <>
             <button type="button" className={style.tournament__button} onClick={handleOpenAdmin}>Редактировать</button>
+
+            <Snackbar open={editing} autoHideDuration={5000} onClose={handleCloseEditModal}>
+              <Alert onClose={handleCloseEditModal} severity="success" sx={{ width: '100%' }}>
+                Запись успешно отредактирована
+              </Alert>
+            </Snackbar>
+
             <button type="button" className={style.tournament__button} onClick={() => dispatch(deleteToutnament(tournament.id))}>Удалить</button>
           </>
         )}
@@ -130,11 +162,6 @@ function TournamentIt({ tournament }: { tournament: Toornament }): JSX.Element {
           </form>
         )}
       </div>
-      <Snackbar open={openModal} autoHideDuration={5000} onClose={handleCloseModal}>
-        <Alert onClose={handleCloseModal} severity="success" sx={{ width: '100%' }}>
-          Турнир успешно изменён!
-        </Alert>
-      </Snackbar>
     </div>
   );
 }

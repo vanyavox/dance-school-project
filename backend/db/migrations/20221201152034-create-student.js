@@ -38,7 +38,7 @@ module.exports = {
         type: Sequelize.TEXT
       },
       partner_id: {
-        type: Sequelize.INTEGER
+        type: Sequelize.TEXT
       },
       user_points: {
         type: Sequelize.INTEGER

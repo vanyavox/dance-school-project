@@ -14,6 +14,8 @@ export interface User {
    phone: string
    role: string
    image: string
+   partner_id: string,
+   user_points: string,
    authChecked: boolean
 }
 export interface State {
@@ -24,6 +26,8 @@ export interface State {
    age: number,
    phone: string,
    role: string,
+   partner_id: string,
+   user_points: string,
    image: string,
    emailError?: string,
    loginError?: string,

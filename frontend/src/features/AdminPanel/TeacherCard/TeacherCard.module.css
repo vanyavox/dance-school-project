@@ -52,12 +52,10 @@
 }
 
 .teacher_edit {
-  width: 200px;
+  width: 100%;
 }
 
-input {
-  width: 408px;
-}
+
 
 select {
   width: 107%;
@@ -92,7 +90,7 @@ select {
 }
 
 .input__teach{
-  width: 200%;
+  width: 100%;
   border: 0;
   border-bottom: 2px solid #7D8195;
   outline: 0;
@@ -109,4 +107,7 @@ select {
 }
 .h3__teach{
   color: #ffffff;
+}
+.profile__div{
+  color:#f9e8e8;
 }

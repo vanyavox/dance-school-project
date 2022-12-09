@@ -40,12 +40,12 @@ function TeacherCard({ teacher }: { teacher: Teacher }): JSX.Element {
 
   return (
     <div className={style.teacher__card}>
-      <div><b>Имя:</b> {teacher.name}</div>
-      <div><b>Фамилия:</b> {teacher.surname}</div>
+      <div className={style.profile__div}><b>Имя:</b> {teacher.name}</div>
+      <div className={style.profile__div}><b>Фамилия:</b> {teacher.surname}</div>
       <img src={teacher.photo} alt={teacher.name} />
-      <div><b>Направление:</b> {teacher.direction}</div>
-      <div><b>Стаж:</b> {teacher.experience}</div>
-      <div><b>Описание:</b> {teacher.description}</div>
+      <div className={style.profile__div}><b>Направление:</b> {teacher.direction}</div>
+      <div className={style.profile__div}><b>Стаж:</b> {teacher.experience}</div>
+      <div className={style.profile__div}><b>Описание:</b> {teacher.description}</div>
       <button
         className={style.teacher_edit_save}
         onClick={toggleModal}

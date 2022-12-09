@@ -1,0 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Arapey:ital@0;1&display=swap');
+
+* {
+  font-family: 'Impact', 'fantasy';
+}
+
+a,
+a:hover,
+a:active {
+  text-decoration: none;
+}
+
+body {
+  background-color: #3D3131;
+  
+}

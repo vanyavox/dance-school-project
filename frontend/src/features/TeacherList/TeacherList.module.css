@@ -1,0 +1,19 @@
+.content__body {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 80%;
+  margin: auto;
+  height: 100%;
+  margin-bottom: 20px;
+}
+
+.teacher__links {
+  width: 80%;
+  padding-left: 50px;
+  margin: auto;
+  margin-top: 5px;
+  color: #6e6e6e;
+}

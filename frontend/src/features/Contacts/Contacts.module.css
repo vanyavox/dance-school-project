@@ -1,0 +1,17 @@
+.main__div{
+  height: 75vh;
+}
+.allText {
+  min-height: 30vh;
+  margin:auto;
+  width: 65%;
+}
+
+.YaMap {
+  margin-bottom: 50px;
+}
+
+.about_p{
+  color:#edcece;
+  text-align: justify;
+}

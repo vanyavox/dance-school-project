@@ -1,0 +1,67 @@
+.profile {
+  width: 100vw;
+  height: auto;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #3D3131;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  background-color: #fff1f1;
+  border-radius: 20px;
+  border: 2px;
+  border-style: outset;
+  border-color: #c89b9b;
+  width: 600px;
+  height: 40vh;
+  margin: 0 -40px;
+}
+
+.editprofile {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff1f1;
+  border-radius: 20px;
+  border: 2px;
+  border-style: outset;
+  border-color: #c89b9b;
+  width: 600px;
+  height: auto;
+  padding: 10px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.list {
+  display: flex;
+  align-items: center;
+}
+
+.item {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  margin-top: 10px;
+  margin: 0 20px;
+  align-items: center;
+  padding: 5px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+span {
+  font-size: 14pt;
+  color: white;
+}

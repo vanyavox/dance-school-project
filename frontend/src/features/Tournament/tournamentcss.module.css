@@ -1,0 +1,161 @@
+* {
+    font-family: 'Courier New', monospace;
+  }
+
+.toutnament__list{
+    display: flex;
+    margin: auto;
+    justify-content: center;
+    justify-items: center;
+    flex-direction: column;
+    width: 70%; 
+    color: #9b9b9b;
+    min-height: 80vh;   
+}
+
+.tournament__head{
+    font-family: 'Courier New', monospace;
+    align-self: center;
+    font-size: 43pt;
+    color:#b8629f;
+}
+
+.tournament__line{
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #7D8195;
+    border-top: 1px #7D8195;;
+    margin: 0;
+    padding: 0;
+    font-family: 'Courier New', monospace;
+}
+
+.tournament__p{
+    display: flex;
+    
+    align-items: center;
+    width: 25%;
+    text-align: center;
+    color: #9b9b9b;
+    margin: 0;
+    font-family: 'Courier New', monospace;
+}
+
+.tournament__button{
+    width: 25%;
+    padding: 0;
+    align-items: center;
+    justify-content: center;
+    height: 55px;
+    border-radius: 45px;
+    margin: 30px;
+    font-family: 'Courier New', monospace;
+    font-size: 15px;
+    text-transform: uppercase;
+    text-align: center;
+    vertical-align: center;
+    letter-spacing: 3px;
+    color: #ffffff;
+    background: #884a76;
+    box-shadow: 0 0px 0px rgba(0, 0, 0, .1);
+    transition: .3s;
+    margin: 5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.tournament__button:hover{
+    align-items: center;
+    background: #b8629f;
+    box-shadow: 0 5px 13px #a7598f;
+    color: white;
+    font-size: 15px;
+    transform: translateY(-1px);
+}
+
+.modal__content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    font-family: 'Courier New', monospace;
+}
+
+.tournament__button__modal{
+    align-items: center;
+    justify-content: center;
+    height: 55px;
+    border-radius: 45px;
+    font-family: 'Gill Sans', sans-serif;
+    font-size: 15px;
+    text-transform: uppercase;
+    text-align: center;
+    vertical-align: center;
+    letter-spacing: 3px;
+    color: #ffffff;
+    background: #af86af;
+    box-shadow: 0 0px 0px rgba(0, 0, 0, .1);
+    transition: .3s;
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.tournament__button_h{
+    align-items: center;
+    justify-content: center;
+    height: 55px;
+    border-radius: 45px;
+    font-family: 'Gill Sans', sans-serif;
+    font-size: 15px;
+    text-transform: uppercase;
+    text-align: center;
+    vertical-align: center;
+    letter-spacing: 3px;
+    color: #ffffff;
+    background: #884a76;
+    box-shadow: 0 0px 0px rgba(0, 0, 0, .1);
+    transition: .3s;
+    visibility: hidden;
+    
+}
+
+.tournament__button__modal:hover{
+    align-items: center;
+    background: #b8629f;
+    box-shadow: 0 5px 13px #a7598f;
+    color: white;
+    font-size: 15px;
+    transform: translateY(-1px);
+}
+
+.tournament__p__modal{
+    color: #9b9b9b;
+    padding: 0;
+    font-family: 'Courier New', monospace;
+}
+
+h3{
+    font-family: 'Courier New', monospace;
+    margin-bottom: 10px;
+    padding: 0;
+}
+
+.tournament__input{
+    font-family: inherit;
+    width: 100%;
+    border: 0;
+    border-bottom: 2px solid #7D8195;
+    outline: 0;
+    font-size: 1.3rem;
+    color: #7D8195;
+    padding: 7px 0;
+    background: transparent;
+    transition: border-color 0.2s;
+    margin: 0;
+    font-family: 'Courier New', monospace;
+}
+
+.tournament__label{
+    font-size: 25px;
+}

@@ -1,0 +1,26 @@
+.btn__modal {
+  align-items: center;
+  justify-content: center;
+  height: 55px;
+  border-radius: 45px;
+  margin: 30px;
+  font-family: 'Gill Sans', sans-serif;
+  font-size: 15px;
+  text-transform: uppercase;
+  text-align: center;
+  vertical-align: center;
+  letter-spacing: 3px;
+  color: #ffffff;
+  background: #884a76;
+  box-shadow: 0 0px 0px rgba(0, 0, 0, .1);
+  transition: .3s;
+}
+
+.btn__modal:hover {
+  align-items: center;
+  background: #b8629f;
+  box-shadow: 0 5px 13px #a7598f;
+  color: white;
+  font-size: 15px;
+  transform: translateY(-1px);
+}

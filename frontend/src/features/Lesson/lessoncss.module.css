@@ -1,0 +1,310 @@
+.main__div{
+    width: 100%;
+    display: flex;
+    margin: auto;
+    justify-content: center;
+    flex-direction: column;
+}
+h1{
+    font-family: 'Courier New', monospace;
+}
+
+.form__div{
+    font-family: 'Courier New', monospace;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    width: 70%;
+    min-width: 70%;
+}
+
+.table__header{
+    display: flex;
+    justify-content: space-around;
+    width: 70%; 
+}
+
+.table__line{
+    display: flex;
+    width: 100%;
+    border-bottom: 1px solid #9b9b9b;;
+    padding-top:  10px;
+    padding-bottom:  10px; 
+}
+
+
+.table__week{
+    display: flex;
+    flex-direction: row;
+    width: 70%;
+    justify-content: space-around;
+}
+
+.table__img{
+    width: 50%;
+    border-radius: 100%;
+}
+
+.table__teachers{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 30%;
+    padding: 0;
+    border-right: 1px solid #9b9b9b;
+    border-left: 1px solid #9b9b9b;;
+    margin: auto;
+    color: #9b9b9b;
+}
+
+.about__teacher{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding-left: 20px;
+    width: 150px;
+}
+
+.teacher__p{
+    margin: 0;
+    padding: 0;
+    margin-top: 5px ;
+    margin-bottom: 5px ;
+    font-size: 20px;
+    color: #9b9b9b;
+}
+
+.table__td{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    overflow: hidden;
+    border-right: 1px solid #9b9b9b;
+    color: #9b9b9b;
+    padding: 5px;
+   
+}
+
+.table__td:hover{
+    background-color: #b862a02b;
+    box-shadow: 0 5px 13px #b862a02b;
+}
+/*button ==========================================*/
+.btn__trial {
+    align-items: center;
+    justify-content: center;
+    height: 55px;
+    border-radius: 45px;
+    font-family: 'Gill Sans', sans-serif;
+    font-size: 15px;
+    text-transform: uppercase;
+    text-align: center;
+    vertical-align: center;
+    letter-spacing: 3px;
+    color: #ffffff;
+    background: #884a76;
+    box-shadow: 0 0px 0px rgba(0, 0, 0, .1);
+    transition: .3s;
+}
+
+.btn__trial:hover {
+    align-items: center;
+    background: #b8629f;
+    box-shadow: 0 5px 13px #a7598f;
+    color: white;
+    font-size: 15px;
+    transform: translateY(-1px);
+}
+.btn__trial_b{
+    width: 25%;
+    align-items: center;
+    justify-content: center;
+    height: 55px;
+    border-radius: 45px;
+    font-family: 'Gill Sans', sans-serif;
+    font-size: 15px;
+    text-transform: uppercase;
+    text-align: center;
+    vertical-align: center;
+    letter-spacing: 3px;
+    color: #ffffff;
+    background: #884a76;
+    box-shadow: 0 0px 0px rgba(0, 0, 0, .1);
+    transition: .3s;
+    margin-top: 10%;
+    margin-left: 75%;
+}
+.btn__trial_b:hover {
+    align-items: center;
+    background: #b8629f;
+    box-shadow: 0 5px 13px #a7598f;
+    color: white;
+    font-size: 15px;
+    transform: translateY(-1px);
+}
+
+/*admin*/
+.table__day{
+    display: flex;
+    height: 50px;
+}
+
+.table__label{
+    width: 50%;
+    height: 10px;
+   color: #9b9b9b;
+   padding: 0;
+}
+.table__input{
+    font-family: inherit;
+    width: 70%;
+    border: 0;
+    border-bottom: 2px solid #7D8195;
+    outline: 0;
+    font-size: 1.3rem;
+    color: #7D8195;
+    padding: 7px 0;
+    background: transparent;
+    transition: border-color 0.2s;
+    margin: 0;
+}
+.table__input_d{
+    font-family: inherit;
+    width: 70%;
+    height: 30px;
+    border: 0;
+    border-bottom: 2px solid #7D8195;
+    outline: 0;
+    color: #d4a4d3;
+    padding: 15px 0;
+    background: transparent;
+    transition: border-color 0.2s;
+    font-size: 20px;
+}
+.table__input_mod{
+    font-family: inherit;
+    width: 70%;
+    border: 0;
+    border-bottom: 2px solid #7D8195;
+    outline: 0;
+    font-size: 1.3rem;
+    color: #d4a4d3;
+    padding: 7px 0;
+    background: transparent;
+    transition: border-color 0.2s;
+    margin: 0;
+}
+.btn__trial_mod{
+    align-items: center;
+    justify-content: center;
+    height: 55px;
+    border-radius: 45px;
+    font-family: 'Gill Sans', sans-serif;
+    font-size: 15px;
+    text-transform: uppercase;
+    text-align: center;
+    vertical-align: center;
+    letter-spacing: 3px;
+    color: #ffffff;
+    background: #af86af;
+    box-shadow: 0 0px 0px rgba(0, 0, 0, .1);
+    transition: .3s;
+}
+
+
+.btn__trial_mod:hover {
+    align-items: center;
+    background: #b8629f;
+    box-shadow: 0 5px 13px #a7598f;
+    color: white;
+    font-size: 15px;
+    transform: translateY(-1px);
+}
+.table__option_mod{
+    background-color: #7D8195;
+    color: #dfaddf;
+    font-size: 15px;
+}
+
+button{
+    cursor: pointer;
+}
+.modal__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    font-family: 'Courier New', monospace;
+}
+
+@media(max-width: 640px) {
+    .btn__trial_b{
+        width: 40%;
+        margin-top: 10%;
+        margin-left: 60%;
+    }
+    .table__line{
+        flex-direction: column;
+        
+    }
+
+    .table__label{
+        width: 50%;
+        margin-left: 0;
+        font-size: 15px;
+        padding-left: 20px ;
+    }
+
+    .table__input{
+        width: 40%;
+    }
+    .table__input_d{
+        width: 40%;
+    }
+
+    .btn__trial {
+        width: 120px;
+        font-size: 10px;
+        margin: auto;
+        padding: 5px;
+    }
+
+    .btn__trial:hover {
+        font-size: 12px;
+    }
+    .teacher__p{
+        margin-top: 5px ;
+        margin-bottom: 5px ;
+        font-size: 15px;
+    }
+
+    .table__teachers{
+        font-size: 15px;
+        width: 100%;
+    }
+    
+    .table__td{
+        font-size: 15px;
+    }
+    .table__week{
+        width: 100%;
+    }
+
+    .table__td:last-child{
+        border-right: 0;
+    }
+
+    .table__header{
+        width: 100%;
+    }
+
+    .table__week{
+        border-left: 1px solid #9b9b9b;
+        border-right: 1px solid #9b9b9b;
+    }
+   
+}
+

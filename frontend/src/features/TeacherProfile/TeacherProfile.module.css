@@ -1,0 +1,112 @@
+.teacher__info {
+  padding-top: 15px;
+  width: 60%;
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 75vh;
+}
+
+.profile__left > img {
+  width: 300px;
+  border-radius: 3%;
+}
+
+.profile__right {
+  font-size: 16pt;
+  margin-left: 10px;
+  width: 70%;
+}
+
+.profile__name {
+  font-weight: 600;
+  font-size: 20pt;
+  color: #edcece;
+}
+
+button {
+  align-items: center;
+  justify-content: center;
+  height: 55px;
+  border-radius: 45px;
+  margin: 30px;
+  font-family: 'Gill Sans', sans-serif;
+  font-size: 15px;
+  text-transform: uppercase;
+  text-align: center;
+  vertical-align: center;
+  letter-spacing: 3px;
+  color: #ffffff;
+  background: #884a76;
+  box-shadow: 0 0px 0px rgba(0, 0, 0, .1);
+  transition: .3s;
+  border: none;
+}
+
+button:hover {
+  align-items: center;
+  background: #b8629f;
+  box-shadow: 0 5px 13px #a7598f;
+  color: white;
+  font-size: 15px;
+  transform: translateY(-1px);
+}
+
+.teacher__links {
+  width: 80%;
+  padding-left: 50px;
+  margin: auto;
+  margin-top: 5px;
+  color: #6e6e6e;
+}
+
+.modal__form {
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 65%;
+  /* margin-top: 5vh; */
+  height: 75vh;
+}
+
+.form__div {
+  padding-top: 10px;
+  margin-right: 10px;
+  padding-left: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.btn__reg {
+  padding: 15px;
+  margin: 10px;
+}
+.profile__p{
+  color:#edcece;
+  padding: 10px;
+  text-align: justify;
+}
+.input__teach{
+  width: 100%;
+  border: 0;
+  border-bottom: 2px solid #7D8195;
+  outline: 0;
+  font-size: 1.3rem;
+  color: #edcece;
+  padding: 7px 0;
+  background: transparent;
+  transition: border-color 0.2s;
+  margin-bottom: 20px ;
+}
+.option__teach{
+  background-color: #69445f;
+  color: #ffffff;
+}
+.label__teach{
+  color:#f9e8e8;
+  font-size: 20px;
+}

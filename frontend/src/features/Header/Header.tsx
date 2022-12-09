@@ -70,7 +70,7 @@ function Header(): JSX.Element {
           </NavLink>
            {authChecked === true && role === 'admin' && (
           <NavLink to="/admin">
-          Admin panel
+          Панель управления
           </NavLink>
        )}
 

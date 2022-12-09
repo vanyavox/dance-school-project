@@ -13,7 +13,7 @@ module.exports = {
       phone: '+791100102334',
       role: 'admin',
       image: '1573725783_1.jpeg',
-      partner_id: 'Leila G.',
+      partner_id: 'Leila .G',
       user_points: '1700',
       createdAt: new Date(),
       updatedAt: new Date()

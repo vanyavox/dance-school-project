@@ -24,7 +24,7 @@ import style from './Login.module.css';
 const theme = createTheme();
 
 export default function Login(): JSX.Element {
-  const [userEmail, setEmail] = useState('');
+  const [userEmail, setEmail] = useState<string>('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
